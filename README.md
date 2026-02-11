@@ -24,6 +24,8 @@ This fundamental knowledge is the minimum requirement for you to review, modify,
 
 ## Curriculum Structure
 
+The total estimated time required to complete this course is approximately **40 hours**.
+
 The repository is organized into modules. Each module contains the following:
 
 * **Goals & Checkpoints**:  
