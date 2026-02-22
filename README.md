@@ -5,12 +5,13 @@
 Welcome to **Web Zero to One**.
 
 This course is designed to take you from knowing nothing about code (Zero) to shipping your first real product (One).
+(Name referenced from Zero to Hero)
 
 Unlike traditional tutorials that force you to memorize every single tag, we focus on **foundational understanding** combined with **"Vibe Coding"**—leveraging AI to build faster, better, and with more style.
 
 ## Philosophy
 
-In the age of AI, coding has changed. You don't need to hand-code every margin or padding.  
+In the age of AI, coding has changed. You don't need to hand-code every single line anymore.
 
 **However, AI is best suited for handling common requirements or building rapid prototypes.**
 
