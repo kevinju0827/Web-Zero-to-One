@@ -1,8 +1,12 @@
 # M04 List and Table
 
+## The "Why?"
+
 ## Goals
 
 Organize structured data effectively using ordered/unordered lists and tables.
+
+## Core Concepts
 
 ## CheckPoints
 

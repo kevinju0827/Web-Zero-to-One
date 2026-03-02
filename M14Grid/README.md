@@ -1,8 +1,12 @@
 # M14 Grid
 
+## The "Why?"
+
 ## Goals
 
 Build robust, two-dimensional layouts for complex page structures.
+
+## Core Concepts
 
 ## CheckPoints
 

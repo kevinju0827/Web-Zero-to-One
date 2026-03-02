@@ -1,8 +1,12 @@
 # M10 Box Model
 
+## The "Why?"
+
 ## Goals
 
 Master the core of CSS layout by understanding margins, borders, padding, and content areas.
+
+## Core Concepts
 
 ## CheckPoints
 

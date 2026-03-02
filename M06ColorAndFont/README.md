@@ -1,8 +1,12 @@
 # M06 Color and Font
 
+## The "Why?"
+
 ## Goals
 
 Introduce basic styling to enhance the visual appeal and establish the "vibe" of your raw HTML.
+
+## Core Concepts
 
 ## CheckPoints
 

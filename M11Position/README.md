@@ -1,8 +1,12 @@
 # M11 Position
 
+## The "Why?"
+
 ## Goals
 
 Break out of the normal document flow to place elements exactly where they are needed.
+
+## Core Concepts
 
 ## CheckPoints
 

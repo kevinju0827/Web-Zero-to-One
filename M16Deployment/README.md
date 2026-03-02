@@ -1,8 +1,12 @@
 # M16 Deployment
 
+## The "Why?"
+
 ## Goals
 
 Complete the journey from knowing nothing about code (Zero) to shipping your first real product (One).
+
+## Core Concepts
 
 ## CheckPoints
 

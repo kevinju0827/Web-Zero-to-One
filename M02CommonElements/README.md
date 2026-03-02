@@ -1,8 +1,12 @@
 # M02 Common Elements
 
+## The "Why?"
+
 ## Goals
 
 Learn semantic HTML by applying headings and paragraphs to structure your project's content logically.
+
+## Core Concepts
 
 ## CheckPoints
 

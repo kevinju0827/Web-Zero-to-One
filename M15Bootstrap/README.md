@@ -1,8 +1,12 @@
 # M15 Bootstrap
 
+## The "Why?"
+
 ## Goals
 
 Speed up development and ensure consistency by utilizing the world's most popular frontend framework.
+
+## Core Concepts
 
 ## CheckPoints
 

@@ -1,8 +1,12 @@
 # M13 Flex
 
+## The "Why?"
+
 ## Goals
 
 Master one-dimensional layouts for perfect alignment and flexible distribution of space.
+
+## Core Concepts
 
 ## CheckPoints
 

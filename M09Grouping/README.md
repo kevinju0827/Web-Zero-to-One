@@ -1,8 +1,12 @@
 # M09 Grouping
 
+## The "Why?"
+
 ## Goals
 
 Group elements logically to apply targeted styling and prepare for complex layouts.
+
+## Core Concepts
 
 ## CheckPoints
 

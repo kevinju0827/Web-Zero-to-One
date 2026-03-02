@@ -1,8 +1,12 @@
 # M03 Reference
 
+## The "Why?"
+
 ## Goals
 
 Connect pages and embed visual media to make the website interactive and engaging.
+
+## Core Concepts
 
 ## CheckPoints
 

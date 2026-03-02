@@ -1,8 +1,12 @@
 # M08 Block and Inline
 
+## The "Why?"
+
 ## Goals
 
 Understand the default display behavior of HTML elements and how they flow on the page.
+
+## Core Concepts
 
 ## CheckPoints
 

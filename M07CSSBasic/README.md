@@ -1,8 +1,12 @@
 # M07 CSS Basic
 
+## The "Why?"
+
 ## Goals
 
 Separate content from design by moving styles to an external CSS file and mastering basic selectors.
+
+## Core Concepts
 
 ## CheckPoints
 

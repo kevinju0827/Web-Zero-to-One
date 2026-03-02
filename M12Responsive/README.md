@@ -1,8 +1,12 @@
 # M12 Responsive
 
+## The "Why?"
+
 ## Goals
 
 Ensure the website looks great and functions well on all devices, from mobile phones to desktop monitors.
+
+## Core Concepts
 
 ## CheckPoints
 

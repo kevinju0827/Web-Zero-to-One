@@ -1,8 +1,12 @@
 # M05 Form
 
+## The "Why?"
+
 ## Goals
 
 Build the UI for user input, focusing on the visual structure rather than backend processing.
+
+## Core Concepts
 
 ## CheckPoints
 
