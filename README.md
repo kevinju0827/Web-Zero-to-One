@@ -4,82 +4,59 @@
 
 Welcome to **Web Zero to One**.
 
-This course is designed to take you from knowing nothing about code (Zero) to shipping your first real product (One).
+This course is designed to take you from knowing nothing about code (Zero) to writing and shipping your first real website (One).  
 (Name referenced from Zero to Hero)
 
-Unlike traditional tutorials that force you to memorize every single tag, we focus on **foundational understanding** combined with **"Vibe Coding"**—leveraging AI to build faster, better, and with more style.
-
-## Philosophy
-
-In the age of AI, coding has changed. You don't need to hand-code every single line anymore.
-
-**However, AI is best suited for handling common requirements or building rapid prototypes.**
-
-Due to context limitations, it often struggles to account for the full details of large-scale projects or handle highly specific, niche customizations.
-
-To use AI effectively, you cannot rely on it blindly.
-
-The core focus of this course is to equip you with the **understanding of programming concepts and basic syntax**.
-
-This fundamental knowledge is the minimum requirement for you to review, modify, and fix the AI-generated content when it inevitably hallucinates.
-
-## Curriculum Structure
+We'll learn how to use AI to generate rapid prototypes, then refine those outputs into production-ready code by building solid conceptual understanding.
 
 The total estimated time required to complete this course is approximately **40 hours**.
 
-The repository is organized into modules. Each module contains the following:
+## Philosophy
 
-* **Goals & Checkpoints**:  
-  Each module features a **Primary Goal** and a **Checkpoint** to verify your learning.
-* **No Unique Solutions**:  
-  Since we embrace the use of AI tools for content generation, **there is no single "correct" answer** for the checkpoints.
-* **Focus on Quality**:  
-  Instead of matching a standard answer, you should focus on building **maintainable and extensible code architectures**.  
-  Your success is defined by your ability to **explain** your code and **modify** it confidently.
+**AI is best suited for handling common requirements, boilerplate code, or building rapid prototypes.**
+
+In the age of AI, coding has changed. You don't need to hand-code every single line anymore.
+
+However, because AI works with limited context, it can struggle to account for the full details of large-scale projects or handle highly specific, complex business logic.
+
+**To use AI effectively, you cannot rely on it blindly.**
+
+The core focus of this course is to equip you with the **understanding of programming concepts, control flow, and basic syntax**.
+
+This fundamental knowledge is the minimum requirement for you to review, modify, and fix the AI-generated content when it occasionally hallucinates or makes logical errors.
+
+## Curriculum Structure
+
+The repository is organized into modules. Each module in this course is designed as a self-contained learning journey, moving from conceptual understanding to practical mastery.
+
+To ensure a consistent and effective learning experience, Each module contains the following:
+
+1. **The "Why?"**  
+   Before diving into the code, we answer the most important question: Why are we learning this?  
+   You will explore how these specific concepts are applied in the real-world context.
+2. **Goals**  
+   The Goals serve as your objectives for learning this module.   
+   Written in plain, accessible language, these goals define what you should understand and be able to articulate by the end of the module.
+3. **Core Concepts**  
+   This is the heart of the module. Core Concepts provide a deep-dive explanation of programming syntax and technical concepts.  
+   It includes detailed explanations and code demonstrations for each topic.
+4. **Checkpoints**  
+   Checkpoints are designed to verify your learning through practical scripting.  
+   Successfully completing these checkpoints serves as proof of your technical competency and readiness for the next module.  
+   > **There is no single "correct" answer for the checkpoints.**  
+   > Programming is about problem-solving. Since we embrace AI tools for code generation, success is defined by your ability to **explain** your logic, handle errors, and **modify** your code confidently.  
+   > Please do not consider a checkpoint "done" just because AI produced an output.
 
 ## Tech Stack
 
 ### Languages
 
-* HTML5
-* CSS3
+- **HTML5**  
+  The standard markup language for structuring web content with semantic elements (headings, sections, forms, and media).
+- **CSS3**  
+  The styling language for designing layouts, typography, and responsive, modern-looking web pages across devices.
 
-### Frameworks
-
-* **[Bootstrap 5](https://getbootstrap.com/)**:  
-The world’s most popular frontend framework. It provides pre-built CSS components (like buttons, navbars, and grids) to help you build responsive, mobile-first sites quickly.
-
-### Tools
-
-#### Browser
-
-* **[Google Chrome](https://www.google.com/intl/en/chrome/)**:  
-The browser of choice for web developers. Its built-in **Developer Tools** are essential for inspecting code, debugging, and testing responsive designs.
-
-#### Integrated Development Environment(IDE)
-
-* **[Visual Studio Code](https://code.visualstudio.com/)**:  
-The industry-standard code editor. It is lightweight, free, and supports a massive ecosystem of extensions.
-  * **[GitHub Copilot Chat](https://github.com/microsoft/vscode-copilot-chat)**:  
-  The AI pair programmer for VS Code. You can chat with it to generate code, explain concepts, or fix bugs directly in your editor.
-* **[JetBrains WebStorm](https://www.jetbrains.com/webstorm/)**:  
-A powerful, "smart" IDE designed specifically for web development. It understands your project structure deeply right out of the box.
-  * **[JetBrains AI](https://www.jetbrains.com/ai-ides/)**:  
-  Integrated AI assistant that provides code generation, explanation, and refactoring tools seamlessly within WebStorm.
-  * **[Junie](https://www.jetbrains.com/junie/)**:  
-  The next-generation AI agent for JetBrains, focusing on advanced code completion and predictive coding assistance.
-
-#### Assets
-
-* **[Pixabay](https://pixabay.com/)**:  
-  A huge collection of royalty-free stock photos, illustrations, and vectors. Perfect for finding specific visuals without copyright hassles.
-* **[unDraw](https://undraw.co/)**:  
-  Open-source illustrations that you can customize to match your brand color. Perfect for giving your project a modern, tech-savvy look.
-* **[Animista](https://animista.net/)**:  
-  An on-demand CSS animation library. Visually tweak animations and generate the code instantly—perfect for adding "vibe" to your site.
-
-
-## A Note on JavaScript
+#### A Note on JavaScript
 
 This course intentionally excludes in-depth JavaScript instruction.
 
@@ -91,21 +68,55 @@ You may encounter small amounts of JavaScript in this course (often generated by
 
 If you are interested in learning more, please refer to the external links in the **Recommended Resources** section.
 
+### Frameworks
+
+- **[Bootstrap 5](https://getbootstrap.com/)**  
+  The world’s most popular frontend framework. It provides pre-built CSS components (like buttons, navbars, and grids) to help you build responsive, mobile-first sites quickly.
+
+### Tools
+
+#### Browser
+
+- **[Google Chrome](https://www.google.com/intl/en/chrome/)**  
+  The browser of choice for web developers. Its built-in **Developer Tools** are essential for inspecting code, debugging, and testing responsive designs.
+
+#### Integrated Development Environment(IDE)
+
+- **[Visual Studio Code](https://code.visualstudio.com/)**  
+  The industry-standard code editor. It is lightweight, free, and supports a massive ecosystem of extensions.
+  - **[GitHub Copilot Chat](https://github.com/microsoft/vscode-copilot-chat)**  
+    The AI pair programmer for VS Code. You can chat with it to generate code, explain concepts, or fix bugs directly in your editor.
+- **[JetBrains WebStorm](https://www.jetbrains.com/webstorm/)**  
+  A powerful, "smart" IDE designed specifically for web development. It understands your project structure deeply right out of the box.
+  - **[JetBrains AI](https://www.jetbrains.com/ai-ides/)**  
+    Integrated AI assistant that provides code generation, explanation, and refactoring tools seamlessly within WebStorm.
+  - **[Junie](https://www.jetbrains.com/junie/)**  
+    The next-generation AI agent for JetBrains, focusing on advanced code completion and predictive coding assistance.
+
+#### Assets
+
+- **[Pixabay](https://pixabay.com/)**  
+  A huge collection of royalty-free stock photos, illustrations, and vectors. Perfect for finding specific visuals without copyright hassles.
+- **[unDraw](https://undraw.co/)**  
+  Open-source illustrations that you can customize to match your brand color. Perfect for giving your project a modern, tech-savvy look.
+- **[Animista](https://animista.net/)**  
+  An on-demand CSS animation library. Visually tweak animations and generate the code instantly—perfect for adding "vibe" to your site.
+
 ## Recommended Resources
 
 (Optional) In addition to the resources provided within this repository, we highly recommend learning from and utilizing the following:
 
-* **[roadmap.sh Frontend Developer](https://roadmap.sh/frontend)**:  
+- **[roadmap.sh Frontend Developer](https://roadmap.sh/frontend)**  
   A visual guide to the developer landscape. Use this to track your progress and understand how different technologies fit together in the frontend ecosystem.
-* **[W3Schools](https://www.w3schools.com)**:  
+- **[W3Schools](https://www.w3schools.com)**  
   The "dictionary" of web development. It provides simple, isolated examples. Great for quick syntax lookups or when you need to check if a specific HTML tag or CSS property actually exists.
-* **[MDN Web Docs](https://developer.mozilla.org)**:  
+- **[MDN Web Docs](https://developer.mozilla.org)**  
   The gold standard documentation by Mozilla. If you need a deeper, more technical explanation of how the browser works, look here.
-* **[Atguigu HTML5+CSS3](https://youtu.be/E-DErp0IcA0?list=PLmOn9nNkQxJGGuwYhQzTmRGFwF9cHYS-x)**  
+- **[Atguigu HTML5+CSS3](https://youtu.be/E-DErp0IcA0?list=PLmOn9nNkQxJGGuwYhQzTmRGFwF9cHYS-x)**  
   Comprehensive and free video tutorials in Chinese. An excellent choice if you prefer learning complex concepts through video content in Mandarin.
-* **[Flexbox Froggy](https://flexboxfroggy.com)**:  
+- **[Flexbox Froggy](https://flexboxfroggy.com)**  
   A game where you help Froggy and friends by writing CSS code. The most fun and intuitive way to master Flexbox layouts.
-* **[CSS Grid Garden](https://cssgridgarden.com)**:  
+- **[CSS Grid Garden](https://cssgridgarden.com)**  
   Similar to Flexbox Froggy, but for CSS Grid. Essential for practicing modern grid-based web layouts.
 
 ## License
