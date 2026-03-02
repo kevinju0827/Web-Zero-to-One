@@ -9,7 +9,7 @@ This course is designed to take you from knowing nothing about code (Zero) to wr
 
 We'll learn how to use AI to generate rapid prototypes, then refine those outputs into production-ready code by building solid conceptual understanding.
 
-The total estimated time required to complete this course is approximately **40 hours**.
+The total estimated time required to complete this course is approximately **30 hours**.
 
 ## Philosophy
 
