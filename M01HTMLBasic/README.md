@@ -43,7 +43,7 @@ Key parts:
 - `<head>`  
   “Metadata” that is not the main visible content:
   - `<meta charset="utf-8">` for character encoding
-  - `<meta name="viewport" ...>` for responsive behavior on mobile
+  - `<meta name="viewport" content="width=device-width,initial-scale=1" />` for responsive behavior on mobile
   - `<title>` for the browser tab title
 
 - `<body>`  
