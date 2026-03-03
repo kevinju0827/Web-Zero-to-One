@@ -93,6 +93,11 @@ If you are interested in learning more, please refer to the external links in th
   - **[Junie](https://www.jetbrains.com/junie/)**  
     The next-generation AI agent for JetBrains, focusing on advanced code completion and predictive coding assistance.
 
+#### AI
+
+- **[Gemini](https://gemini.google.com/)**  
+    Google’s AI assistant for brainstorming, explaining concepts, and generating code or content from prompts.
+
 #### Assets
 
 - **[Pixabay](https://pixabay.com/)**  

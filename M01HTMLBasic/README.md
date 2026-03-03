@@ -10,7 +10,8 @@ That’s what HTML is: a standardized markup language designed to describe the s
 
 ## Goals
 
-Understand the basic syntax and common skeleton of an HTML document.
+Understand the basic syntax and standard skeleton of an HTML document,and be able to write valid HTML files on your own.  
+By the end of this module, you should be able to turn plain text into a structured web page using semantic elements like headings and paragraphs. 
 
 ## Core Concepts
 
@@ -51,5 +52,6 @@ Key parts:
 
 ## Checkpoints
 
-* [ ] Manually write (or use AI to generate) a short article, then convert it into an HTML document.
+* [ ] Convert `sample_latte.txt` into a proper HTML document,  
+      then open both files in a browser to compare the differences.
 * [ ] Modify the `<title>` element of the HTML document to append `(Course Practice)` to the end.
