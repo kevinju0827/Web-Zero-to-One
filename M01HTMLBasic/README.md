@@ -4,7 +4,7 @@
 
 Imagine you’re writing a note on your computer. Unlike writing on paper, you can’t naturally organize your content just by switching pens, changing handwriting style, or adjusting font size on the fly.
 
-To support richer structure—like headings, lists, and images—we need a format that tells the computer which parts of the text are *special elements*, not just plain words.
+To support richer structure—like headings, lists, and images — we need a format that tells the computer which parts of the text are *special elements*, not just plain words.
 
 That’s what HTML is: a standardized markup language designed to describe the structure of content so browsers can display it correctly.
 
@@ -30,7 +30,7 @@ Example:
 
 ### The HTML document skeleton
 
-A typical HTML file is not just random tags—it follows a standard structure.
+A typical HTML file is not just random tags — it follows a standard structure.
 
 Key parts:
 
