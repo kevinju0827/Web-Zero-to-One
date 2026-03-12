@@ -5,20 +5,14 @@
 Welcome to **Web Zero to One**.
 
 This course is designed to take you from knowing nothing about code (Zero) to building and shipping your first website (One).  
-(The name is inspired by the phrase "Zero to Hero.")
-
-We'll learn how to use AI to generate rapid prototypes, then refine those outputs into more concise and reliable code by learning basic syntax and concepts.
-
+(The name is inspired by the phrase "Zero to Hero.")  
+We'll learn how to use AI to generate rapid prototypes, then refine those outputs into more concise and reliable code by learning basic syntax and concepts.  
 The total estimated time required to complete this course is approximately 30 hours.
 
 ## Getting Started
 
 Before you begin this course, please set up the following environment.
 > The following tools are not mandatory; you can use any alternative.
-
-### Windows
-
-### MacOS
 
 * Step 1: Install a browser
 
@@ -37,7 +31,7 @@ Before you begin this course, please set up the following environment.
 * Step 3: Install a code editor / IDE
 
   Code editors and IDEs make it easy to write and debug code.  
-  Even if you can use a text editor, code editors and IDEs often offer more features and can significantly improve efficiency.
+  Even if you can use a text editor, code editors and IDEs often offer more features and can significantly improve efficiency.  
   JetBrains is a leading provider of IDEs and tools.  
   Download and install [JetBrains WebStorm](https://www.jetbrains.com/webstorm/).  
 
@@ -49,10 +43,22 @@ Before you begin this course, please set up the following environment.
   Copy the URL of this repository: `https://github.com/kevinju0827/Web-Zero-to-One.git` and paste the URL into the field.  
   Click the `Clone` button to download the repository to your local machine.  
   Next time you want to update the course materials, you can simply click the `Update Project` button to pull the latest changes.
+  
+  > **MacOS Users**  
+  > On macOS, we recommend installing [Homebrew](https://brew.sh/) first, then using it to install Git.  
+  > Homebrew is a package manager for macOS that makes it much easier to install and manage developer tools.  
+  > Open the `Terminal` app and run the following commands:
+  > ```bash
+  > /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  > ```
+  > Then, run the following command to install Git:
+  > ```bash
+  > brew install git
+  > ```
 
 * Step 5: Open the `README.md` file
 
-  `README.md` is the first file you should see when you open the repository.
+  `README.md` is the first file you should see when you open the repository.  
   Open the `Web-Zero-to-One` repository in your WebStorm and click the `README.md` file to open it.  
   Switch to the `Preview` tab at the top right to view the content.
   
