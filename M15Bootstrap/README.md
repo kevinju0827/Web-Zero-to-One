@@ -8,6 +8,8 @@ Speed up development and ensure consistency by utilizing the world's most popula
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Include Bootstrap 5 in your project via a CDN link in the `<head>` section.

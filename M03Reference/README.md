@@ -8,6 +8,9 @@ Connect pages and embed visual media to make the website interactive and engagin
 
 ## Core Concepts
 
+## Guided Practice
+
+
 ## CheckPoints
 
 * [ ] Insert at least one `<a>` tag that links to an external website, using the `target="_blank"` attribute.

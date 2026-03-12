@@ -8,6 +8,8 @@ Learn semantic HTML by applying headings and paragraphs to structure your projec
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Ensure the document contains exactly one `<h1>` tag representing the main topic.

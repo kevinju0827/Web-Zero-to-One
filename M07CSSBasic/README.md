@@ -8,6 +8,8 @@ Separate content from design by moving styles to an external CSS file and master
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Create a separate style.css file and link it to your HTML document using the `<link>` tag.

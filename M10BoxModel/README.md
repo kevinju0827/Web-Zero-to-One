@@ -8,6 +8,8 @@ Master the core of CSS layout by understanding margins, borders, padding, and co
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Use Google Chrome Developer Tools to inspect the Box Model of at least three different elements.

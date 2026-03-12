@@ -8,6 +8,8 @@ Introduce basic styling to enhance the visual appeal and establish the "vibe" of
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Apply text colors and background colors to your elements using inline styles or an internal `<style>` tag.

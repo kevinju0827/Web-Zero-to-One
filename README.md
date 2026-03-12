@@ -1,15 +1,66 @@
 # Web Zero to One
 
-> **From absolute beginner to building modern, aesthetic websites—amplified by AI.**
+> From absolute beginner to building modern, aesthetic websites—amplified by AI.
 
 Welcome to **Web Zero to One**.
 
-This course is designed to take you from knowing nothing about code (Zero) to writing and shipping your first real website (One).  
-(Name referenced from Zero to Hero)
+This course is designed to take you from knowing nothing about code (Zero) to building and shipping your first website (One).  
+(The name is inspired by the phrase "Zero to Hero.")
 
-We'll learn how to use AI to generate rapid prototypes, then refine those outputs into production-ready code by building solid conceptual understanding.
+We'll learn how to use AI to generate rapid prototypes, then refine those outputs into more concise and reliable code by learning basic syntax and concepts.
 
-The total estimated time required to complete this course is approximately **30 hours**.
+The total estimated time required to complete this course is approximately 30 hours.
+
+## Getting Started
+
+Before you begin this course, please set up the following environment.
+> The following tools are not mandatory; you can use any alternative.
+
+### Windows
+
+### MacOS
+
+* Step 1: Install a browser
+
+  Browsers are used to view web pages and come with developer tools that make inspection and debugging easier.  
+  Google Chrome is the most popular browser in the world.  
+  Download and install [Google Chrome](https://www.google.com/intl/en/chrome/)
+
+* Step 2: Prepare at least one AI Assistant
+
+  AI assistants can generate suitable examples and help solve many of your learning-related problems.  
+  Gemini was launched by Google and is offered free of charge.  
+  We will use Gemini as our AI assistant throughout the course.  
+  Open [Gemini](https://gemini.google.com/) in your browser.  
+  If you encounter any problems, you can first ask Gemini to confirm whether it can be resolved.
+
+* Step 3: Install a code editor / IDE
+
+  Code editors and IDEs make it easy to write and debug code.  
+  Even if you can use a text editor, code editors and IDEs often offer more features and can significantly improve efficiency.
+  JetBrains is a leading provider of IDEs and tools.  
+  Download and install [JetBrains WebStorm](https://www.jetbrains.com/webstorm/).  
+
+* Step 4: Clone this repository
+
+  Git is a version control system that allows you to easily update the course materials.  
+  Download and install [Git](https://git-scm.com/).  
+  Open your WebStorm and click the `Clone Repository` button.  
+  Copy the URL of this repository: `https://github.com/kevinju0827/Web-Zero-to-One.git` and paste the URL into the field.  
+  Click the `Clone` button to download the repository to your local machine.  
+  Next time you want to update the course materials, you can simply click the `Update Project` button to pull the latest changes.
+
+* Step 5: Open the `README.md` file
+
+  `README.md` is the first file you should see when you open the repository.
+  Open the `Web-Zero-to-One` repository in your WebStorm and click the `README.md` file to open it.  
+  Switch to the `Preview` tab at the top right to view the content.
+  
+  > `.md` stands for Markdown, which is a lightweight markup language that allows you to write formatted text using a simple syntax.  
+  > It is not necessary to understand Markdown to follow along with this course.  
+  > You can refer to the [Markdown Guide](https://www.markdownguide.org/basic-syntax/) for a quick introduction.
+  
+  In every module, we will also provide a `README.md` file as a learning guide.
 
 ## Philosophy
 
@@ -29,18 +80,24 @@ This fundamental knowledge is the minimum requirement for you to review, modify,
 
 The repository is organized into modules. Each module in this course is designed as a self-contained learning journey, moving from conceptual understanding to practical mastery.
 
-To ensure a consistent and effective learning experience, Each module contains the following:
+To ensure a consistent and effective learning experience, each module includes the following:
 
 1. **The "Why?"**  
    Before diving into the code, we answer the most important question: Why are we learning this?  
-   You will explore how these specific concepts are applied in the real-world context.
+   You will explore how these concepts are applied in real-world situations.
 2. **Goals**  
-   The Goals serve as your objectives for learning this module.   
+   The goals serve as your learning objectives for this module.   
    Written in plain, accessible language, these goals define what you should understand and be able to articulate by the end of the module.
 3. **Core Concepts**  
-   This is the heart of the module. Core Concepts provide a deep-dive explanation of programming syntax and technical concepts.  
+   This is the heart of the module. Core Concepts provides a deep-dive explanation of programming syntax and technical concepts.  
    It includes detailed explanations and code demonstrations for each topic.
-4. **Checkpoints**  
+4. **Guided Practice**  
+   To make each module easier to follow, we also provide a step-by-step walkthrough.  
+   This section is designed to guide you through a small but complete practice sequence, allowing you to apply what you just learned in a concrete way.  
+   By following the execution flow, you will:
+   - know exactly where to start
+   - produce a small example that demonstrates the core concepts of the module
+5. **Checkpoints**  
    Checkpoints are designed to verify your learning through practical scripting.  
    Successfully completing these checkpoints serves as proof of your technical competency and readiness for the next module.  
    > **There is no single "correct" answer for the checkpoints.**  
@@ -71,7 +128,7 @@ If you are interested in learning more, please refer to the external links in th
 ### Frameworks
 
 - **[Bootstrap 5](https://getbootstrap.com/)**  
-  The world’s most popular frontend framework. It provides pre-built CSS components (like buttons, navbars, and grids) to help you build responsive, mobile-first sites quickly.
+  One of the most popular frontend frameworks. It provides pre-built CSS components (like buttons, navbars, and grids) to help you build responsive, mobile-first sites quickly.
 
 ### Tools
 
@@ -82,16 +139,16 @@ If you are interested in learning more, please refer to the external links in th
 
 #### Integrated Development Environment(IDE)
 
+- **[JetBrains WebStorm](https://www.jetbrains.com/webstorm/)**  
+  A powerful IDE designed specifically for web development. It has a strong understanding of your project structure right out of the box.
+  - **[JetBrains AI](https://www.jetbrains.com/ai-ides/)**  
+    An integrated AI assistant that provides code generation, explanations, and refactoring tools seamlessly in WebStorm.
+  - **[Junie](https://www.jetbrains.com/junie/)**  
+    An AI coding assistant for JetBrains IDEs, focusing on advanced code completion and predictive assistance.
 - **[Visual Studio Code](https://code.visualstudio.com/)**  
   The industry-standard code editor. It is lightweight, free, and supports a massive ecosystem of extensions.
   - **[GitHub Copilot Chat](https://github.com/microsoft/vscode-copilot-chat)**  
     The AI pair programmer for VS Code. You can chat with it to generate code, explain concepts, or fix bugs directly in your editor.
-- **[JetBrains WebStorm](https://www.jetbrains.com/webstorm/)**  
-  A powerful, "smart" IDE designed specifically for web development. It understands your project structure deeply right out of the box.
-  - **[JetBrains AI](https://www.jetbrains.com/ai-ides/)**  
-    Integrated AI assistant that provides code generation, explanation, and refactoring tools seamlessly within WebStorm.
-  - **[Junie](https://www.jetbrains.com/junie/)**  
-    The next-generation AI agent for JetBrains, focusing on advanced code completion and predictive coding assistance.
 
 #### AI
 

@@ -8,6 +8,8 @@ Understand the default display behavior of HTML elements and how they flow on th
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Use CSS to change a block-level element's default behavior to `display: inline` or `display: inline-block`.

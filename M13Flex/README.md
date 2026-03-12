@@ -8,6 +8,8 @@ Master one-dimensional layouts for perfect alignment and flexible distribution o
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Apply `display: flex` to a container element to create a one-dimensional layout (e.g., a row of navigation links).

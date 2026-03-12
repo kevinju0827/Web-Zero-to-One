@@ -8,6 +8,8 @@ Organize structured data effectively using ordered/unordered lists and tables.
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Use AI to generate a data table (e.g., a schedule or feature comparison) and manually check for `<table>`, `<tr>`, `<th>`, and `<td>` tags.

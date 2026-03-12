@@ -8,6 +8,8 @@ Ensure the website looks great and functions well on all devices, from mobile ph
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Write at least one CSS @media query to change the layout for screens smaller than 768 px (mobile devices).

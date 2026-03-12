@@ -8,6 +8,8 @@ Build the UI for user input, focusing on the visual structure rather than backen
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Create a `<form>` element containing at least three different input types (e.g., text, email, password).

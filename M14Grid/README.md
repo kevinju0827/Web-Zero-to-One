@@ -8,6 +8,8 @@ Build robust, two-dimensional layouts for complex page structures.
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Apply `display: grid` to a container element to create a two-dimensional layout (e.g., a photo gallery).

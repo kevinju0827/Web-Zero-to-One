@@ -8,6 +8,8 @@ Complete the journey from knowing nothing about code (Zero) to shipping your fir
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Review your code to ensure you can confidently explain your code and modify it.

@@ -8,6 +8,8 @@ Break out of the normal document flow to place elements exactly where they are n
 
 ## Core Concepts
 
+## Guided Practice
+
 ## CheckPoints
 
 * [ ] Apply position: relative to a parent container element.
