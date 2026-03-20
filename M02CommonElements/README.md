@@ -54,7 +54,7 @@ It is useful when you want text to continue in the same paragraph but appear on 
 
 Example:
 
-`<p>Good morning.<br>Welcome to my page.</p>`
+`Good morning.<br>Welcome to my page.`
 
 Unlike most HTML elements, `<br>` does not wrap content with opening and closing tags.
 
@@ -64,7 +64,7 @@ The `<b>` element makes text visually bold.
 
 Example:
 
-`<p>This is a <b>very important</b> word.</p>`
+`This is a <b>very important</b> word.`
 
 Use it when you want a visual emphasis.  
 Later, as you learn more semantic HTML, you will also encounter tags like `<strong>`, which carry stronger meaning.
@@ -75,7 +75,7 @@ The `<i>` element displays text in italic style.
 
 Example:
 
-`<p>I want to say this in <i>a softer tone</i>.</p>`
+`I want to say this in <i>a softer tone</i>.`
 
 It is often used for stylistic changes, foreign words, thoughts, or special terms.
 
