@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking Form</title>
+</head>
+<body>
+    <h1>Flight Booking Form</h1>
+
+    <form action="/submit-booking" method="POST">
+
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required placeholder="John Doe"><br><br>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com"><br><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="123-456-7890"><br><br>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob"><br><br>
+
+            <label for="passportPhoto">Passport Photo Upload:</label>
+            <input type="file" id="passportPhoto" name="passportPhoto" accept="image/*">
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <legend>Flight Details</legend>
+
+            <label for="destination">Destination:</label>
+            <select id="destination" name="destination" required>
+                <option value="">Select a city</option>
+                <option value="tokyo">Tokyo</option>
+                <option value="paris">Paris</option>
+                <option value="new-york">New York</option>
+            </select><br><br>
+
+            <label for="passengers">Number of Passengers:</label>
+            <input type="number" id="passengers" name="passengers" min="1" max="10" value="1"><br><br>
+
+            <p>Cabin Class:</p>
+            <input type="radio" id="economy" name="cabinClass" value="economy" checked>
+            <label for="economy">Economy</label>
+
+            <input type="radio" id="business" name="cabinClass" value="business">
+            <label for="business">Business</label>
+
+            <input type="radio" id="firstClass" name="cabinClass" value="firstClass">
+            <label for="firstClass">First Class</label>
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <legend>Custom Services</legend>
+
+            <p>Extra Add-ons:</p>
+            <input type="checkbox" id="meal" name="addons" value="meal">
+            <label for="meal">In-flight Meal</label>
+
+            <input type="checkbox" id="lounge" name="addons" value="lounge">
+            <label for="lounge">Lounge Access</label>
+
+            <input type="checkbox" id="baggage" name="addons" value="baggage">
+            <label for="baggage">Extra Baggage</label><br><br>
+
+            <label for="tagColor">Preferred Luggage Tag Color:</label>
+            <input type="color" id="tagColor" name="tagColor" value="#0055ff"><br><br>
+
+            <label for="specialRequests">Special Requests / Dietary Restrictions:</label><br>
+            <textarea id="specialRequests" name="specialRequests" rows="4" cols="50" placeholder="e.g., Vegetarian meal, wheelchair assistance..."></textarea>
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <legend>Confirmation</legend>
+
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I agree to the Terms and Conditions (Required)</label><br><br>
+
+            <button type="submit">Confirm Booking</button>
+            <button type="reset">Clear Form</button>
+        </fieldset>
+
+    </form>
+</body>
+</html>

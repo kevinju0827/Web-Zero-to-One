@@ -21,11 +21,6 @@ Forms are built using a container element that holds various input controls. To 
 
 The `<form>` element acts as a wrapper for all your input fields. While it doesn't change the visual appearance on its own, it tells the browser that all the inputs inside it belong together.
 
-### Describing Inputs: `<label>`
-
-A `<label>` tells the user what information belongs in a specific input field. 
-More importantly, labels improve accessibility. When you correctly link a label to an input, clicking the text of the label will automatically focus the input box. You link them by matching the label's `for` attribute with the input's `id` attribute.
-
 ### Single-Line Inputs: `<input>`
 
 The `<input>` tag is the most versatile element in forms. Like `<img>`, it is an empty tag (it does not have a closing tag). Its behavior completely changes based on its `type` attribute.
@@ -42,8 +37,44 @@ You can also use the `placeholder` attribute to display a temporary hint inside 
 Example:
 
 ```html
-<label for="username">Your Name:</label>
+<input type="text" placeholder="e.g. John Doe">
+<br>
+<input type="password" placeholder="Enter your password">
+```
+
+### Describing Inputs: `<label>`
+
+A `<label>` tells the user what information belongs in a specific input field. 
+More importantly, labels improve accessibility. When you correctly link a label to an input, clicking the text of the label will automatically focus the input box. You link them by matching the label's `for` attribute with the input's `id` attribute.
+
+Example:
+
+```html
+<label for="username">Name:</label>
 <input type="text" id="username" placeholder="e.g. John Doe">
+<br>
+<label for="password">Password:</label>
+<input type="password" id="password" placeholder="Enter your password">
+```
+
+### Grouping Elements: `<fieldset>` and `<legend>`
+
+When forms get longer, it is helpful to group related pieces of information together. The `<fieldset>` element acts as a container that groups related inputs and labels, often drawing a visual box around them by default. 
+
+To give this grouped section a descriptive title, use the `<legend>` element. The `<legend>` must be the very first element inside the `<fieldset>`. This pairing not only makes your form visually organized but also greatly improves accessibility, especially when grouping things like radio buttons or checkboxes.
+
+Example:
+
+```html
+<fieldset>
+    <legend>Contact Preferences</legend>
+    
+    <input type="radio" id="emailPref" name="contact_method">
+    <label for="emailPref">Email</label><br>
+    
+    <input type="radio" id="smsPref" name="contact_method">
+    <label for="smsPref">Text Message</label>
+</fieldset>
 ```
 
 ### Multi-Line Inputs: `<textarea>`
@@ -66,27 +97,44 @@ Example:
 ```html
 <button type="submit">Send Message</button>
 ```
-
-*(Note: Clicking this button will usually refresh the page by default. Because we are only building the visual interface in this course, we won't be writing the code to actually send the data!)*
+> Note: Clicking this button will usually refresh the page by default. Because we are only building the visual interface in this course, we won't be writing the code to actually send the data!
 
 ## Guided Practice
 
 * Step 1: Set up your file
-  Create a new HTML file named `contact.html` with the standard document skeleton. Add an `<h1>` heading like `<h1>Contact Us</h1>`.
+  Create a new HTML file named booking.html with the standard document skeleton. Add an `<h1>` heading like `<h1>Flight Booking Form</h1>`.
+
 * Step 2: Create the form container
-  Below your heading, add the opening and closing `<form>` tags. All following steps will go *inside* these tags.
-* Step 3: Add basic text inputs
-  Create a `<label>` and an `<input>` for the user's Name. Remember to link them using the `for` and `id` attributes. Do the same for their Email address, using `type="email"`.
-* Step 4: Add a message area
-  Below the text inputs, add a `<label>` and a `<textarea>` so the user can write a detailed message.
-* Step 5: Add a submit button
-  At the bottom of the form, add a `<button type="submit">`. Give it a clear label like "Submit" or "Send".
-* Step 6: Preview in the browser
-  Open `contact.html` in your browser. Try clicking on your labels to see if your cursor automatically jumps into the corresponding input boxes. Type some text to see how the inputs behave!
+  Below your heading, add the opening and closing `<form>` tags. All following steps will go inside these tags.
+
+* Step 3: Add personal information fields
+  Use a `<fieldset>` and a `<legend>` (e.g., "Personal Information") to create a section for the passenger's basic details. 
+  Add `<label>` and `<input>` elements for Full Name (`type="text"`), Email (`type="email"`), Phone Number (`type="tel"`), Date of Birth (`type="date"`), and a Passport Photo upload (`type="file"`). 
+  Remember to link them using the for and id attributes. Use required and placeholder attributes where appropriate.
+
+* Step 4: Add flight and cabin selection
+  Create a section for the flight details. 
+  Add a `<select>` dropdown menu for the Destination (e.g., Tokyo, Paris, New York). 
+  Add an `<input type="number">` for the Number of Passengers, restricting it with `min="1"` and `max="10"`. 
+  Then, add a group of radio buttons (`type="radio"`) for Cabin Class (Economy, Business, First Class). 
+  Ensure all three radio buttons share the exact same name attribute so the user can only select one.
+
+* Step 5: Add custom services and requests
+  Create a section for extra services. 
+  Add multiple checkboxes (`type="checkbox"`) for add-ons like "In-flight Meal", "Lounge Access", or "Extra Baggage".
+  Add an `<input type="color">` so the user can choose a preferred color for their printable luggage tags. 
+  Below that, add a `<label>` and a `<textarea>` so the user can type out any special requests or dietary restrictions.
+
+* Step 6: Add confirmation and submit buttons
+  At the bottom of the form, add a final checkbox (`type="checkbox"`) requiring the user to agree to the Terms and Conditions (make this one required). 
+  Finally, add two buttons: `<button type="submit">` labeled "Confirm Booking," and `<button type="reset">` labeled "Clear Form."
+
+* Step 7: Preview in the browser
+  Open booking.html in your browser. Click on your labels to ensure your cursor automatically jumps into the corresponding input boxes. 
+  Try typing text, picking a date, selecting a color, and clicking the "Confirm Booking" button to see how the HTML5 built-in validation behaves!
 
 ## Checkpoints
 
-* [ ] Create a `<form>` container to hold all user input elements.
-* [ ] Add at least two different `<input>` elements (e.g., text and email) and use the `placeholder` attribute.
-* [ ] Successfully link a `<label>` to an input using the `for` and `id` attributes.
-* [ ] Add a `<button>` at the bottom to visually complete the form interface.
+* [ ] Create an HTML event registration form that includes fields for personal contact details, a dropdown for ticket type selection, 
+      checkboxes for optional workshops, a text area for special accommodations, and a mandatory terms of service agreement before submission. 
+      Use <fieldset> and <legend> to group related sections logically.

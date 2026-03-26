@@ -87,22 +87,31 @@ Example:
 
 ## Guided Practice
 
-* Step 1: Set up your file
-  Create a new HTML file named `data.html` with the standard document skeleton. Add an `<h1>` heading at the top, like `<h1>My Favorite Recipes and Schedule</h1>`.
-* Step 2: Create an Unordered List
-  Think of a meal you like. Add an `<h2>` heading for "Ingredients", and below it, create a `<ul>` containing at least three `<li>` elements for the ingredients.
-* Step 3: Create an Ordered List
-  Below your ingredients, add an `<h2>` for "Instructions". Create an `<ol>` with at least three `<li>` steps explaining how to make the meal.
-* Step 4: Build a Table
-  Let's create a simple weekly schedule. Add an `<h2>` for "My Schedule".
-  Create a `<table>`.
-  Add a first row (`<tr>`) and put three headers (`<th>`) inside it: "Day", "Morning", and "Afternoon".
-  Add two more rows (`<tr>`), and fill them with data (`<td>`) matching those columns (e.g., "Monday", "Work", "Gym").
-* Step 5: Preview in the browser
-  Open `data.html` in your browser. Verify that your ingredients have bullet points, your instructions have numbers, and your schedule is aligned in columns.
+* Step 1: Set Up Your Recipe Page  
+  Create a new HTML file named `recipe.html` and add the standard HTML document structure.  
+  At the top of the page, include an `<h1>` heading such as `<h1>Homemade Pancakes</h1>`.  
+  You may also add a short introduction below the title to briefly describe the recipe.
+
+* Step 2: Create a Shopping List  
+  Add an `<h2>` heading such as `<h2>Shopping List</h2>`.  
+  Then build a `<table>` to display the ingredients you need to buy.  
+  Include the item name, quantity, and unit price, and add a final row that shows the total price.  
+  Example columns:
+  - Item
+  - Quantity
+  - Unit Price
+  - Total
+
+* Step 3: Write the Cooking Instructions with an Ordered List  
+  Below the shopping list, add another `<h2>` heading such as `<h2>Cooking Instructions</h2>`.  
+  Use an `<ol>` to write the recipe steps in the correct order.  
+  Place each step inside an `<li>` so the instructions are easy to follow from start to finish.  
+  Make sure the steps flow naturally, such as preparing the ingredients, mixing the batter, cooking, and serving.
+
+* Step 4: Preview and Review  
+  Open `recipe.html` in your browser and check that the shopping list appears as a clear table and the cooking instructions are displayed as a numbered list.  
+  If needed, refine the wording so the recipe feels complete, smooth, and easy to read.
 
 ## Checkpoints
 
-* [ ] Successfully create an unordered list (`<ul>`) with at least three list items (`<li>`).
-* [ ] Successfully create an ordered list (`<ol>`) with at least three list items (`<li>`).
-* [ ] Build a table (`<table>`) containing at least one header row (using `<th>`) and two data rows (using `<td>`).
+* [ ] Create an HTML travel planner page that includes a packing list, trip dates, a simple itinerary, and a few general travel tips or recommendations.
