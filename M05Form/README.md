@@ -137,4 +137,4 @@ Example:
 
 * [ ] Create an HTML event registration form that includes fields for personal contact details, a dropdown for ticket type selection, 
       checkboxes for optional workshops, a text area for special accommodations, and a mandatory terms of service agreement before submission. 
-      Use <fieldset> and <legend> to group related sections logically.
+      Use `<fieldset>` and `<legend>` to group related sections logically.
