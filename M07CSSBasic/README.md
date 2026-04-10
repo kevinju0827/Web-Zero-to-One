@@ -19,7 +19,6 @@ To separate CSS rules from HTML, we typically add a `<style>` tag inside the `<h
 
 The most basic selector uses the HTML tag name directly. This applies the styling to **all** instances of that specific tag on the page.
 
-Example:
 ```html
 <head>
   <style>
@@ -36,10 +35,33 @@ Example:
 </body>
 ```
 
+### Identifiers and the ID Selector: `#id`
+
+The id attribute is used to mark a single, unique element on the page.
+One important rule is that an id value should only be used once per HTML page.  
+This makes it ideal for elements like a navigation bar, a main title, or a specific container.  
+In CSS, we use a hashtag (#) to select an id.
+
+```html
+<head>
+  <style>
+    /* Targets the unique element with id="top-banner" */
+    #top-banner {
+      background-color: lightblue;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <p id="top-banner">Summer Sale: 50% Off Everything!</p>
+  <p>Check out our latest products below.</p>
+</body>
+```
 ### Classes and the Class Selector: `.class`
 
-What if you only want to change the style of **some** paragraphs, not all of them? This is when we use the `class` attribute.
-Think of a `class` as sticking a label on an HTML element. You can apply the exact same `class` name to multiple different elements. In CSS, we use a **period (`.`)** to select a class.
+The `class` attribute is used when you want to apply the same style to **multiple elements**.
+Think of a `class` as sticking a label on HTML elements. You can apply the exact same `class` name to many different elements. In CSS, we use a **period (`.`)** to select a class.
 
 Example:
 ```html
@@ -59,46 +81,40 @@ Example:
 </body>
 ```
 
-### Identifiers and the ID Selector: `#id`
-
-The `id` attribute is very similar to `class`, but with one strict rule: **An `id` name can only be used once per HTML page**.
-It is used to mark a unique and specific element on the page (like a navigation bar, a main title, or a specific container). In CSS, we use a **hashtag (`#`)** to select an id.
-
-Example:
-```html
-<head>
-  <style>
-    /* Targets the unique element with id="main-title" */
-    #main-title {
-      color: blue;
-      font-size: 32px;
-    }
-  </style>
-</head>
-<body>
-  <h1 id="main-title">Welcome to My Website</h1>
-  <h1>Another Heading</h1>
-</body>
-```
-
 ## Guided Practice
 
-* Step 1: Set up your file
-  Create a new HTML file named `style.html` with the standard document skeleton.
-* Step 2: Add the Style Block
-  Inside the `<head>` tag, add an opening `<style>` and closing `</style>` tag. All of our CSS rules will go in here.
-* Step 3: Use an Element Selector
-  Add three `<li>` list items inside the `<body>`. Then, write a rule in your `<style>` block: type `li`, add `{}`, and set the `font-size` to `18px` inside the braces.
-* Step 4: Create and Target a Class
-  Add two `<p>` paragraphs inside the `<body>`. Add `class="alert"` to the first paragraph. Go back up to the `<style>` block and add `.alert { color: red; }`.
-* Step 5: Create and Target an ID
-  At the very top of your `<body>`, add an `<h1>` heading and give it `id="hero-text"`. In the `<style>` block, add `#hero-text { color: purple; }`.
-* Step 6: Preview in the browser
-  Open `style.html` in your browser. Verify that your list items have larger text, your paragraph with the `alert` class is red, and your heading with the `hero-text` id is purple.
+Now, let's use all three selectors to build a realistic **"Tech Blog Article Page"**! This scenario perfectly illustrates *why* CSS Selectors are so powerful: multiple paragraphs share the same base style, specific sections are individually highlighted, and a reusable "tag" style can be applied to various elements at once.
+
+* Step 1: Set Up the HTML Structure
+  Create a new HTML file. Inside `<head>`, add a `<style>` tag — this is where all your CSS rules will live. In `<body>`, add the following content blocks in order:
+  * A top banner `<div>` with `id="top-banner"`.
+  * An `<h1>` for the article title.
+  * Three `<p>` tags for article body text.
+  * An `<h2>` subheading before the third paragraph.
+  * Inside the second and third `<p>`, wrap one keyword each with a `<span>` and give them both `class="highlight"`.
+  * Below the article, add a `<div>` with `id="author-box"` containing a small `<p>` describing the author.
+
+* Step 2: Style All Paragraphs with an Element Selector
+  Inside `<style>`, write a rule targeting the `p` element. Set `font-family` to `system-ui, sans-serif`, `font-size` to `16px`, `color` to `#374151` (a dark gray), and `line-height` to `1.8`. Notice how this single rule instantly styles **all** your paragraphs — no repetitive `style=""` needed!
+
+* Step 3: Style the Top Banner with an ID Selector
+  Use the `#top-banner` selector to style the announcement bar. Set `background-color` to `#1D4ED8` (a strong blue), `color` to `white`, `text-align` to `center`, and `font-weight` to `bold`. Because IDs are unique, this exact style will only ever apply to this one element.
+
+* Step 4: Create a Reusable Highlight Class
+  Use the `.highlight` selector to create a reusable inline highlight style. Set `background-color` to `#FEF9C3` (a soft yellow), `color` to `#92400E` (a dark amber), and `font-weight` to `bold`. Apply `class="highlight"` to the `<span>` elements inside your paragraphs. Notice how the same class styles elements in completely different paragraphs consistently.
+
+* Step 5: Style the Author Box with an ID Selector
+  Use the `#author-box` selector to make the author section distinct from the main content. Set `background-color` to `#F3F4F6`, add a left border accent with `border-left: 4px solid #1D4ED8`, and give it some breathing room with `padding: 12px 16px`. Because the `p` Element Selector already applies `color: #374151`, the author text inherits that style automatically — showing how Element and ID selectors work *together*.
+
+* Step 6: Style the Subheading
+  Target the `h2` element with an Element Selector. Set `color` to `#1D4ED8` to match the banner's blue, creating a cohesive color theme across the page.
 
 ## Checkpoints
 
-* [ ] Successfully add a `<style>` tag within the `<head>` section.
-* [ ] Use an element selector to change the global styling of a specific HTML tag.
-* [ ] Successfully add a `class` attribute to at least one element and style it correctly using `.` in CSS.
-* [ ] Successfully add an `id` attribute to a unique element and style it correctly using `#` in CSS.
+* [ ] Build an HTML **"Online Store Product Listing"** page using a `<style>` tag (no inline styles allowed).
+      The page should display at least **three product cards**, each built with a `<div>`. Each card must contain: a product name (`<h2>`), a short description (`<p>`), and a price (`<p>`).
+      Apply the following requirements:
+      * Use an **Element Selector** to give all `<p>` tags on the page a consistent `font-family` and `color`.
+      * Use a **Class Selector** (e.g., `.product-card`) to give every card the same `background-color`, `border`, and `border-radius`.
+      * Mark exactly one product as a featured deal: give that card's `<div>` a unique `id` (e.g., `id="featured"`). Use an **ID Selector** to make it stand out — change its `background-color` to a different accent color and make its `border` more prominent.
+      * Apply a **Class Selector** (e.g., `.sale-price`) to the price `<p>` of the featured product to display it in a bold, eye-catching color (e.g., `color: #DC2626`).
