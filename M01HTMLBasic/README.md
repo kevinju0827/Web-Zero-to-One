@@ -35,7 +35,7 @@ Each element has a specific purpose and meaning, which helps the browser underst
 ### The HTML document skeleton
 
 A typical HTML file is not just random tags — it follows a standard structure.  
-Please open the `standard_sample.html` file in your editor and browser to see the structure.
+Please open the `standard_example.html` file in your editor and browser to see the structure.
 
 Key parts:
 
@@ -67,5 +67,5 @@ Key parts:
 
 ## Checkpoints
 
-* [ ] Convert `latte_sample.txt` into a proper HTML document.
+* [ ] Convert `latte_example.txt` into a proper HTML document.
 * [ ] Modify the `<title>` element of the HTML document to append `(Course Practice)` to the end.

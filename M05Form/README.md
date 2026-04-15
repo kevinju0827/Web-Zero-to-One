@@ -29,9 +29,15 @@ Common types include:
 * `type="text"`: Standard single-line text (e.g., a username).
 * `type="email"`: Text field that expects an email address format.
 * `type="password"`: Hides the characters as the user types.
+* `type="number"`: Restricts input to numbers (can use `min` and `max`).
+* `type="tel"`: Used for phone numbers.
+* `type="date"`: Provides a date picker interface.
+* `type="file"`: Allows the user to select and upload a file.
+* `type="color"`: Provides a color picker interface.
 * `type="radio"`: Allows the user to select only one option from a group.
 * `type="checkbox"`: Allows the user to select multiple options.
 
+You can also use the `required` attribute to ensure a field is not left empty.
 You can also use the `placeholder` attribute to display a temporary hint inside the box before the user types.
 
 Example:
@@ -75,6 +81,24 @@ Example:
     <input type="radio" id="smsPref" name="contact_method">
     <label for="smsPref">Text Message</label>
 </fieldset>
+```
+
+### Dropdown Lists: `<select>` and `<option>`
+
+When you want users to choose from a list of options without taking up much space, use a dropdown menu.
+
+* `<select>`: The container for the dropdown.
+* `<option>`: The individual choices inside the dropdown.
+
+Example:
+
+```html
+<label for="city">Choose a city:</label>
+<select id="city">
+  <option value="tokyo">Tokyo</option>
+  <option value="paris">Paris</option>
+  <option value="newyork">New York</option>
+</select>
 ```
 
 ### Multi-Line Inputs: `<textarea>`

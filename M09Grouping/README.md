@@ -53,7 +53,7 @@ Let's build a **"Personal Profile Page"** using logical grouping and semantic ta
 *   **Step 2: Add Navigation**
     Inside the `<header>`, add a `<nav>` tag with a few links (`<a>`).
 *   **Step 3: Group the Profile Info**
-    Inside `<main>`, create a `<div>` with a class of `profile-card`. Inside this card, put an `<img>`, an `<h1>`, and a `<p>`.
+    Inside `<main>`, create a `<div>` with a class of `profile-card`. Inside this card, put an `<img>`, an `<h2>`, and a `<p>`.
 *   **Step 4: Use Inline Grouping**
     Inside the `<p>`, use a `<span>` with a class of `status-dot` to create a small visual indicator.
 *   **Step 5: Apply Basic Styles**

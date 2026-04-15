@@ -81,6 +81,23 @@ Example:
 </body>
 ```
 
+### Spacing and Layout Basics
+
+In the upcoming practice, we will use a few properties to make our text more readable:
+
+*   **`line-height`**: Controls the vertical space between lines of text. A value like `1.8` makes the text feel more "airy" and easier to read.
+*   **`padding`**: Adds space **inside** an element, creating a "cushion" between the content and the edge of the box.
+*   **`border-left`**: Adds a border only to the left side of an element.
+
+Example:
+```css
+p {
+  line-height: 1.6;
+  padding: 10px;
+  border-left: 4px solid blue;
+}
+```
+
 ## Guided Practice
 
 Now, let's use all three selectors to build a realistic **"Tech Blog Article Page"**! This scenario perfectly illustrates *why* CSS Selectors are so powerful: multiple paragraphs share the same base style, specific sections are individually highlighted, and a reusable "tag" style can be applied to various elements at once.

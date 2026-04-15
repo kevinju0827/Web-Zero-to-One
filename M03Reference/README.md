@@ -36,7 +36,7 @@ It requires two essential attributes:
 - `alt` (Alternative text): Provides a text description of the image for screen readers or if the image fails to load.
 
 Example (using a local `.webp` image in the same folder):
-`<img src="island_sample.webp" alt="A small island floating on the sea">`
+`<img src="island_example.webp" alt="A small island floating on the sea">`
 
 ### Links: `<a>`
 

@@ -163,4 +163,4 @@ Browsers ignore comments when rendering the page.
 
 ## Checkpoints
 
-* [ ] Use `<h1>`~`<h6>` to separate paragraphs in the content of `notes_sample.txt`, and highlight important points in bold.
+* [ ] Use `<h1>`~`<h6>` to separate paragraphs in the content of `notes_example.txt`, and highlight important points in bold.

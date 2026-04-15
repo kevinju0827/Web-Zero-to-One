@@ -35,8 +35,10 @@ A block-level element always starts on a new line and takes up the full width av
 
 An inline element does not start on a new line. It only takes up as much width as absolutely necessary to wrap its content. Think of them as words in a sentence; they simply flow next to each other.
 
-* Common examples: `<a>`, `<strong>`, `<i>`, `<img>`.
-* Characteristics: You **cannot** set their `width` or `height` properties. They completely ignore those CSS rules because their dimensions are dictated entirely by the text or content inside them.
+* Common examples: `<a>`, `<strong>`, `<i>`.
+* Characteristics: You **cannot** set their `width` or `height` properties. They completely ignore those CSS rules because their dimensions are dictated entirely by the text inside them.
+
+> **Exception: The `<img>` Tag**: While technically an inline element, `<img>` is unique because it is "replaced content." This means it **does** have an intrinsic width and height, and you **can** set its width and height in CSS, unlike other inline elements.
 
 ```html
 <span style="background-color: yellow;">I am inline.</span>

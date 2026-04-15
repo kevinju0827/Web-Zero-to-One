@@ -46,7 +46,7 @@ Let's build a **"Rapid Landing Page"** using Bootstrap to create a hero section 
 *   **Step 2: Create a Navbar**
     Copy a basic Navbar component from the Bootstrap documentation and paste it at the top of your `<body>`.
 *   **Step 3: Build the Hero Section**
-    Use a `div` with classes `bg-light p-5 rounded-lg m-3` to create a prominent hero area (previously called a Jumbotron).
+    Use a `div` with classes `bg-light p-5 rounded-3 m-3` to create a prominent hero area (previously called a Jumbotron).
 *   **Step 4: Create a Responsive Grid**
     Use `.container`, `.row`, and `.col-md-4` to create a 3-column feature section that automatically stacks on mobile.
 *   **Step 5: Use Bootstrap Cards**

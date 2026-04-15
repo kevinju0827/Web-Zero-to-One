@@ -54,7 +54,7 @@ Let's build a **"Responsive Hero Section"** that changes its layout from a singl
 *   **Step 3: Define a Breakpoint**
     In your CSS, add an `@media (min-width: 768px)` rule.
 *   **Step 4: Change Layout for Desktop**
-    Inside the media query, change the `hero` container to use `display: flex;`. This will make the text and image sit side-by-side on larger screens.
+    Inside the media query, change the `hero` container to use `display: flex;`. This will make the text and image sit side-by-side on larger screens. (Don't worry, we will learn all about **Flexbox** in the next module!)
 *   **Step 5: Test it Out**
     Open your browser, right-click and select **Inspect**. Use the "Device Toggle" icon to shrink the screen and watch the layout snap between mobile and desktop views.
 

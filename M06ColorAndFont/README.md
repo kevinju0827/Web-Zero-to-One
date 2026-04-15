@@ -59,6 +59,17 @@ The `color` property is specifically used to change the color of the text. In mo
    <p style="color: rgba(15, 23, 42, 0.6);">Published on April 9, 2026</p>
    ```
 
+### Background Color: `background-color`
+
+This property sets the background color of an element.
+
+Example:
+```html
+<div style="background-color: #1e293b; color: white;">
+  This box has a dark blue background.
+</div>
+```
+
 ### Text Alignment: `text-align`
 
 This controls the horizontal alignment of the text inside an element. It is one of the most frequently used styling properties!
@@ -105,6 +116,8 @@ Example:
 ## Guided Practice
 
 Now, let's combine these techniques to build a highly refined, dark-themed **"Digital Business Card"**! By setting a contrast between the page background and the card container, and applying some targeted text styling, we can create a professional and modern visual experience.
+
+> **Note on Layout**: In this practice, we will use a few advanced properties like `width`, `border`, `border-radius`, and `display`. Don't worry if they feel new—we will dive deep into these in the upcoming "Box Model" and "Block and Inline" modules. For now, just follow the instructions to see how they affect your design!
 
 * Step 1: Set the Page Background
   Create a new HTML file. To set the dark mode mood, first apply a deep slate-blue background to the `<body>` tag (`background-color: #0F172A`). Make sure all text uses a clean sans-serif font (`font-family: Arial, sans-serif;`) and center everything on the page using `text-align: center;`.
