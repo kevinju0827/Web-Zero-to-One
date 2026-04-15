@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M09 Grouping Example</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+
+        /* Semantic Header */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: #4f46e5;
+        }
+
+        /* Semantic Nav */
+        nav a {
+            text-decoration: none;
+            color: #4b5563;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #4f46e5;
+        }
+
+        /* Main Content Container */
+        main {
+            padding: 2rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Generic Container: Div Card */
+        .feature-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h2 {
+            margin-top: 0;
+            color: #111827;
+        }
+
+        /* Generic Container: Span for Inline styling */
+        .badge {
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            vertical-align: middle;
+        }
+
+        .highlight {
+            background-color: #fef08a;
+            font-weight: bold;
+            padding: 0 2px;
+        }
+
+        /* Semantic Footer */
+        footer {
+            background-color: #1f2937;
+            color: #f9fafb;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Semantic Grouping: Header and Navigation -->
+    <header>
+        <h1>DevPortfolio</h1>
+        <nav>
+            <a href="#">Projects</a>
+            <a href="#">Blog</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+    <!-- Semantic Grouping: Main Content Area -->
+    <main>
+        <section>
+            <h2>Latest Update <span class="badge">New</span></h2>
+            
+            <!-- Generic Grouping: Div for a logical block -->
+            <div class="feature-card">
+                <h2>Logical Grouping Matters</h2>
+                <p>
+                    By using <span class="highlight">semantic tags</span>, you make your code readable for humans and machines. 
+                    Adding a <span class="highlight">div</span> allows you to create specialized containers like this card.
+                </p>
+                <p>
+                    This whole card is a <code>&lt;div&gt;</code>, which makes it easy to add a border, shadow, and padding to everything inside at once.
+                </p>
+            </div>
+        </section>
+
+        <!-- Another Semantic Section -->
+        <article>
+            <h2>My Coding Journey</h2>
+            <p>I started learning web development because I wanted to build tools that help people...</p>
+        </article>
+    </main>
+
+    <!-- Semantic Grouping: Footer -->
+    <footer>
+        <p>&copy; 2026 DevPortfolio. Built with love and Semantic HTML.</p>
+    </footer>
+
+</body>
+</html>

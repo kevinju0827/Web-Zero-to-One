@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M08 Display Types Practice</title>
+    <style>
+        .box {
+            background-color: lightblue;
+            border: 1px solid blue;
+            margin: 10px 0;
+            padding: 10px;
+            /* Default behavior: display: block; */
+        }
+
+        .label {
+            background-color: yellow;
+            padding: 5px;
+            margin: 5px;
+            /* Inline elements ignore width/height by default */
+            width: 200px; 
+            height: 100px;
+        }
+
+        .inline-block-example {
+            display: inline-block;
+            background-color: lightgreen;
+            width: 150px;
+            height: 50px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid green;
+            text-align: center;
+        }
+
+        .inline-box {
+            display: inline;
+            background-color: lightcoral;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>M08 Display Types Practice</h1>
+
+    <h3>1. Block-level Elements (Default)</h3>
+    <div class="box">I am Box 1. I take up the full width.</div>
+    <div class="box">I am Box 2. I am forced to a new line.</div>
+
+    <hr>
+
+    <h3>2. Inline-level Elements (Default)</h3>
+    <p>
+        The following spans are inline:
+        <span class="label">Label A</span>
+        <span class="label">Label B</span>
+        Notice how they ignore the 200px width and 100px height set in CSS!
+    </p>
+
+    <hr>
+
+    <h3>3. Inline-Block Elements</h3>
+    <div class="inline-block-example">Item 1</div>
+    <div class="inline-block-example">Item 2</div>
+    <div class="inline-block-example">Item 3</div>
+    <p>These divs sit side-by-side but <strong>respect</strong> width and height!</p>
+
+    <hr>
+
+    <h3>4. Block forced to Inline</h3>
+    <div class="box inline-box">Box 3 (now inline)</div>
+    <div class="box inline-box">Box 4 (now inline)</div>
+    <p>These were originally &lt;div&gt; tags, but now they behave like words in a sentence.</p>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout Demo</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            background-color: #f1f5f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Mobile First: Single column cards */
+        .card-grid {
+            display: block;
+        }
+
+        .card {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.25rem;
+        }
+
+        /* Responsive Breakpoints */
+
+        /* Tablets: 2 Columns */
+        @media (min-width: 640px) {
+            .card-grid {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0 -10px;
+            }
+            .card {
+                width: calc(50% - 20px);
+                margin: 10px;
+            }
+        }
+
+        /* Desktop: 3 Columns */
+        @media (min-width: 1024px) {
+            .card {
+                width: calc(33.333% - 20px);
+            }
+        }
+
+        header {
+            background-color: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { opacity: 0.8; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Responsive Cards</h1>
+        <p>Resize your browser window to see the grid change from 1 to 2 to 3 columns!</p>
+    </header>
+
+    <div class="container">
+        <div class="card-grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500" alt="Code">
+                <div class="card-content">
+                    <h2>Web Development</h2>
+                    <p>Learn how to build modern, responsive websites using the latest technologies.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=500" alt="Design">
+                <div class="card-content">
+                    <h2>UI/UX Design</h2>
+                    <p>Focus on the user experience and create beautiful interfaces that people love.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500" alt="Data">
+                <div class="card-content">
+                    <h2>Data Analysis</h2>
+                    <p>Turn raw data into meaningful insights to drive better business decisions.</p>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500" alt="App">
+                <div class="card-content">
+                    <h2>Mobile Apps</h2>
+                    <p>Build native and cross-platform mobile applications for iOS and Android.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

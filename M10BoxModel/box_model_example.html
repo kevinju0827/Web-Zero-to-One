@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Demonstration</title>
+    <style>
+        /* Global Reset */
+        * {
+            box-sizing: border-box; /* The modern standard */
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #f3f4f6;
+            padding: 40px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .box-container {
+            background-color: white;
+            width: 400px;
+            /* MARGIN: Space outside the border */
+            margin-bottom: 30px;
+            
+            /* BORDER: The visual boundary */
+            border: 4px solid #4f46e5;
+            
+            /* PADDING: Space inside the border */
+            padding: 30px;
+            
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .box-container h2 {
+            margin-top: 0;
+            color: #111827;
+        }
+
+        .inner-box {
+            background-color: #e0e7ff;
+            border: 2px dashed #4f46e5;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #4338ca;
+        }
+
+        .label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Comparison of box-sizing */
+        .comparison-box {
+            width: 200px;
+            padding: 20px;
+            border: 10px solid #ef4444;
+            margin: 10px;
+            background-color: #fee2e2;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .content-box {
+            box-sizing: content-box; /* Old default */
+        }
+
+        .border-box {
+            box-sizing: border-box; /* New standard */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Visualizing the Box Model</h1>
+
+    <div class="box-container">
+        <div class="label">Outer Container (Div)</div>
+        <h2>I have Padding & Margin</h2>
+        <div class="inner-box">
+            <div class="label">Inner Content</div>
+            I am the content area!
+        </div>
+    </div>
+
+    <hr style="width: 100%; margin: 40px 0;">
+
+    <h2>Box-Sizing Comparison</h2>
+    <p>Both boxes below have <code>width: 200px</code>, <code>padding: 20px</code>, and <code>border: 10px</code>.</p>
+    
+    <div class="comparison-box content-box">
+        <strong>content-box</strong><br>
+        Width is only the content.<br>
+        Total width: 260px
+    </div>
+
+    <div class="comparison-box border-box">
+        <strong>border-box</strong><br>
+        Width includes padding & border.<br>
+        Total width: 200px
+    </div>
+
+    <p style="margin-top: 20px; font-style: italic; color: #666;">
+        Tip: Open Chrome DevTools (F12), go to the "Elements" tab, and scroll down in the "Styles" sub-tab to see the colored Box Model diagram!
+    </p>
+
+</body>
+</html>

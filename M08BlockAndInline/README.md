@@ -56,16 +56,73 @@ What if you want a link (`<a>`) to look and function like a large, clickable blo
 
 Let's build a simple layout to see these display types in action and learn how to manipulate them.
 
-* Step 1: Set up the structure
+### Step-by-Step Instructions
+
+* **Step 1: Set up the structure**
     Create a new HTML file. In the `<head>`, add your `<style>` block. We will write our CSS rules here.
-* Step 2: Add Block Elements
+* **Step 2: Add Block Elements**
     In the `<body>`, add two `<div>` tags and assign them both the class `box`. In your CSS, style `.box` with a background color and a thin border. Open your browser. You will see they stack vertically and span the entire screen.
-* Step 3: Add Inline Elements
+* **Step 3: Add Inline Elements**
     Below the boxes, add two `<span>` tags and assign them the class `label`. In your CSS, give `.label` a different background color and try setting `width: 200px;`. Check the browser. They sit side-by-side, but the width property is completely ignored!
-* Step 4: Fix with Inline-Block
+* **Step 4: Fix with Inline-Block**
     In your CSS, add `display: inline-block;` to your `.label` rule. Refresh the browser. The spans will still sit side-by-side, but now they will successfully expand to 200px wide.
-* Step 5: Transform a Block
+* **Step 5: Transform a Block**
     Let's force a block to act like text. Go to your `.box` CSS rule and add `display: inline;`. Refresh the page. Your large `<div>` boxes will shrink to fit their internal text and snap next to each other on the same line, acting exactly like `<span>` tags.
+
+### Example Code
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>M08 Display Types Practice</title>
+    <style>
+        .box {
+            background-color: lightblue;
+            border: 1px solid blue;
+            margin: 10px 0;
+            padding: 10px;
+            /* Default: display: block; */
+        }
+
+        .label {
+            background-color: yellow;
+            padding: 5px;
+            /* Inline elements ignore width/height by default */
+            width: 200px; 
+            margin: 5px;
+        }
+
+        /* Try uncommenting these to see the behavior change */
+        /*
+        .label {
+            display: inline-block;
+        }
+
+        .box {
+            display: inline;
+        }
+        */
+    </style>
+</head>
+<body>
+
+    <h1>Display Types Practice</h1>
+
+    <!-- Block elements stack vertically -->
+    <div class="box">Box 1 (Block Level)</div>
+    <div class="box">Box 2 (Block Level)</div>
+
+    <hr>
+
+    <!-- Inline elements sit side-by-side -->
+    <span class="label">Label 1 (Inline)</span>
+    <span class="label">Label 2 (Inline)</span>
+
+</body>
+</html>
+```
 
 ## Checkpoints
 
