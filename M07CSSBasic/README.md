@@ -83,18 +83,23 @@ Example:
 
 ### Spacing and Layout Basics
 
-In the upcoming practice, we will use a few properties to make our text more readable:
+Since we haven't officially covered the "Box Model" (which includes Margin and Padding) yet, we can use a few clever properties to make our text more readable and organized:
 
-*   **`line-height`**: Controls the vertical space between lines of text. A value like `1.8` makes the text feel more "airy" and easier to read.
-*   **`padding`**: Adds space **inside** an element, creating a "cushion" between the content and the edge of the box.
-*   **`border-left`**: Adds a border only to the left side of an element.
+*   **`line-height`**: Controls the vertical space between lines of text. A value like `1.8` makes the text feel more "airy" and much easier to read. For a single line of text (like a banner), a large `line-height` (e.g., `3`) acts like vertical padding!
+*   **`margin: 0`**: Although we'll cover the full "Box Model" later, setting `margin: 0` on the `body` tag is a common "reset" that removes the default white gap around the edges of the screen.
+*   **`text-align`**: Used to align text to the `left`, `right`, or `center`.
+*   **`border-bottom` / `border-left`**: Can be used to create visual separation between sections without needing extra spacing.
 
 Example:
 ```css
 p {
-  line-height: 1.6;
-  padding: 10px;
+  line-height: 1.8;
   border-left: 4px solid blue;
+}
+
+#banner {
+  text-align: center;
+  line-height: 3; /* Creates vertical space above and below the text */
 }
 ```
 
@@ -103,28 +108,24 @@ p {
 Now, let's use all three selectors to build a realistic **"Tech Blog Article Page"**! This scenario perfectly illustrates *why* CSS Selectors are so powerful: multiple paragraphs share the same base style, specific sections are individually highlighted, and a reusable "tag" style can be applied to various elements at once.
 
 * Step 1: Set Up the HTML Structure
-  Create a new HTML file. Inside `<head>`, add a `<style>` tag — this is where all your CSS rules will live. In `<body>`, add the following content blocks in order:
+  Create a new HTML file. Inside `<head>`, add a `<style>` tag. In `<body>`, add the following content blocks:
   * A top banner `<div>` with `id="top-banner"`.
-  * An `<h1>` for the article title.
-  * Three `<p>` tags for article body text.
-  * An `<h2>` subheading before the third paragraph.
-  * Inside the second and third `<p>`, wrap one keyword each with a `<span>` and give them both `class="highlight"`.
-  * Below the article, add a `<div>` with `id="author-box"` containing a small `<p>` describing the author.
+  * A `<div>` with `class="container"` to hold the main content.
+  * Inside the container: an `<h1>` for the title, several `<p>` tags for text, and an `<h2>` subheading.
+  * Use `<span>` with `class="highlight"` for important keywords.
+  * At the bottom, add a `<div>` with `id="author-box"`.
 
-* Step 2: Style All Paragraphs with an Element Selector
-  Inside `<style>`, write a rule targeting the `p` element. Set `font-family` to `system-ui, sans-serif`, `font-size` to `16px`, `color` to `#374151` (a dark gray), and `line-height` to `1.8`. Notice how this single rule instantly styles **all** your paragraphs — no repetitive `style=""` needed!
+* Step 2: Style the Layout and All Paragraphs
+  First, set `body { text-align: center; margin: 0; }`. This removes the default screen border and centers your content without needing complex layout rules. Then, target the `.container` element: set `max-width: 800px`, `display: inline-block`, and `text-align: left`. Finally, target the `p` element: set `font-family` to `sans-serif`, `font-size` to `18px`, `color` to `#374151`, and `line-height` to `1.8`.
 
 * Step 3: Style the Top Banner with an ID Selector
-  Use the `#top-banner` selector to style the announcement bar. Set `background-color` to `#1D4ED8` (a strong blue), `color` to `white`, `text-align` to `center`, and `font-weight` to `bold`. Because IDs are unique, this exact style will only ever apply to this one element.
+  Use the `#top-banner` selector. Set `background-color` to `#1D4ED8`, `color` to `white`, and `text-align` to `center`. To give it some "breathing room" without using padding, set `line-height` to `3`.
 
 * Step 4: Create a Reusable Highlight Class
-  Use the `.highlight` selector to create a reusable inline highlight style. Set `background-color` to `#FEF9C3` (a soft yellow), `color` to `#92400E` (a dark amber), and `font-weight` to `bold`. Apply `class="highlight"` to the `<span>` elements inside your paragraphs. Notice how the same class styles elements in completely different paragraphs consistently.
+  Use the `.highlight` selector. Set `background-color` to `#FEF9C3` and `color` to `#92400E`. This same style can be applied to any element across your page just by adding the class.
 
-* Step 5: Style the Author Box with an ID Selector
-  Use the `#author-box` selector to make the author section distinct from the main content. Set `background-color` to `#F3F4F6`, add a left border accent with `border-left: 4px solid #1D4ED8`, and give it some breathing room with `padding: 12px 16px`. Because the `p` Element Selector already applies `color: #374151`, the author text inherits that style automatically — showing how Element and ID selectors work *together*.
-
-* Step 6: Style the Subheading
-  Target the `h2` element with an Element Selector. Set `color` to `#1D4ED8` to match the banner's blue, creating a cohesive color theme across the page.
+* Step 5: Style the Author Box and Headings
+  Target `#author-box` and set a light `background-color: #F3F4F6` and a `border-left: 4px solid #1D4ED8`. For the `h1`, add a `border-bottom: 2px solid #E5E7EB`. Finally, style the `h2` with `color: #1D4ED8`. Notice how these simple borders and colors help organize the page visually.
 
 ## Checkpoints
 
@@ -135,3 +136,5 @@ Now, let's use all three selectors to build a realistic **"Tech Blog Article Pag
       * Use a **Class Selector** (e.g., `.product-card`) to give every card the same `background-color`, `border`, and `border-radius`.
       * Mark exactly one product as a featured deal: give that card's `<div>` a unique `id` (e.g., `id="featured"`). Use an **ID Selector** to make it stand out — change its `background-color` to a different accent color and make its `border` more prominent.
       * Apply a **Class Selector** (e.g., `.sale-price`) to the price `<p>` of the featured product to display it in a bold, eye-catching color (e.g., `color: #DC2626`).
+
+> **💡 Tip:** To make your product cards look better without using `padding`, try using `text-align: center` on your elements! 
