@@ -23,12 +23,12 @@ A block-level element always starts on a new line and takes up the full width av
 * Characteristics: Because they act as physical boxes, you can freely set their `width` and `height` properties in CSS.
 
 ```html
-<div style="background-color: lightblue;">
+<p style="background-color: lightblue;">
   I am a block! I take up the whole width, even if my text is short.
-</div>
-<div style="background-color: lightcoral;">
+</p>
+<p style="background-color: lightcoral; width: 500px">
   I am forced onto a new line!
-</div>
+</p>
 ```
 
 ### Inline-level Elements
@@ -41,8 +41,8 @@ An inline element does not start on a new line. It only takes up as much width a
 > **Exception: The `<img>` Tag**: While technically an inline element, `<img>` is unique because it is "replaced content." This means it **does** have an intrinsic width and height, and you **can** set its width and height in CSS, unlike other inline elements.
 
 ```html
-<span style="background-color: yellow;">I am inline.</span>
-<span style="background-color: lightgreen;">I sit right next to my neighbor!</span>
+<i style="background-color: yellow;">I am inline.</i>
+<i style="background-color: lightgreen;">I sit right next to my neighbor!</i>
 ```
 
 ### The `display` Property
@@ -54,80 +54,40 @@ What if you want a link (`<a>`) to look and function like a large, clickable blo
 3. `display: inline-block;` The best of both worlds! The element sits side-by-side with others (like inline), but it respects the `width` and `height` properties you set in CSS (like a block). This is incredibly useful for creating grid-like layouts, image galleries, or navigation buttons.
 4. `display: none;` Completely hides the element from the page. It will look and act as if the element doesn't exist in the HTML at all, freeing up the space it previously occupied.
 
+Here is a step-by-step English Guided Practice designed to teach the `display` property, structured similarly to your course material and focusing on practical scenarios without relying on the Box Model, `<div>`, or `<span>`.
+
 ## Guided Practice
 
-Let's build a simple layout to see these display types in action and learn how to manipulate them.
+Now, let's use the `display` property to build a **"Modern Web Startup Layout"**! This scenario perfectly illustrates why we need to change default behaviors: we will turn a vertical list into a horizontal navigation bar, transform a simple text link into a clickable pill-shaped button, and see how inline text flows naturally.
 
-### Step-by-Step Instructions
+* Step 1: Set Up the HTML Structure
+  Create a new HTML file. To separate CSS rules from HTML, add a `<style>` tag inside the `<head>` section of your HTML document. In the `<body>`, add the following content:
+  * A `<ul>` containing three `<li>` tags. Inside each `<li>`, put an `<a>` tag (e.g., "Products", "Solutions", "Pricing") to act as our site navigation.
+  * An `<img>` with `src="logo.svg"` and `width="500"`.
+  * An `<h1>` for the page title (e.g., "Build the Future with Us").
+  * A `<p>` for a welcome message. Inside this paragraph, wrap a key phrase (like "innovative platform") in a `<strong>` tag with `class="highlight"`.
+  * At the bottom, add a standalone `<a>` tag with `class="action-btn"` that says "Get Started for Free".
+  * Finally, add one more `<p>` with `id="secret"` that says "Special discount code: MYCOUPON".
 
-* **Step 1: Set up the structure**
-    Create a new HTML file. In the `<head>`, add your `<style>` block. We will write our CSS rules here.
-* **Step 2: Add Block Elements**
-    In the `<body>`, add two `<div>` tags and assign them both the class `box`. In your CSS, style `.box` with a background color and a thin border. Open your browser. You will see they stack vertically and span the entire screen.
-* **Step 3: Add Inline Elements**
-    Below the boxes, add two `<span>` tags and assign them the class `label`. In your CSS, give `.label` a different background color and try setting `width: 200px;`. Check the browser. They sit side-by-side, but the width property is completely ignored!
-* **Step 4: Fix with Inline-Block**
-    In your CSS, add `display: inline-block;` to your `.label` rule. Refresh the browser. The spans will still sit side-by-side, but now they will successfully expand to 200px wide.
-* **Step 5: Transform a Block**
-    Let's force a block to act like text. Go to your `.box` CSS rule and add `display: inline;`. Refresh the page. Your large `<div>` boxes will shrink to fit their internal text and snap next to each other on the same line, acting exactly like `<span>` tags.
+* Step 2: Create a Horizontal Navigation Menu (Block to Inline-Block)
+  By default, `<li>` tags are block elements, which means your navigation links are stacking vertically on top of each other. Let's fix this!
+  Inside your `<style>` tag, target the `li` element. Set `display: inline-block`. This forces the list items to sit side-by-side on the same line, creating a classic horizontal menu. To make them look modern and airy, add `line-height: 4` to create generous vertical space.
 
-### Example Code
+* Step 3: Transform a Link into a Modern Button (Inline to Inline-Block)
+  Look at your "Get Started for Free" link. By default, `<a>` tags are inline elements, meaning they just look like regular text. We want it to look like a massive, clickable button!
+  Target the `.action-btn` class selector. Change its behavior by setting `display: inline-block`. Now, you can give it a solid structure: set `background-color` to a sleek dark blue (`#0f172a`), `color` to `white`, and use `line-height: 3` to create vertical space above and below the text. Add `border-radius: 50px;` to give it a modern "pill" shape.
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>M08 Display Types Practice</title>
-    <style>
-        .box {
-            background-color: lightblue;
-            border: 1px solid blue;
-            margin: 10px 0;
-            padding: 10px;
-            /* Default: display: block; */
-        }
+* Step 4: Decorate Text without Breaking the Line (Maintaining Inline)
+  Target the `.highlight` class selector. Set `background-color: #dbeafe` (a soft pastel blue) and `color: #1d4ed8`. Notice how the background only covers the specific words and does *not* force the rest of the sentence to a new line. This is the natural power of `display: inline`!
 
-        .label {
-            background-color: yellow;
-            padding: 5px;
-            /* Inline elements ignore width/height by default */
-            width: 200px; 
-            margin: 5px;
-        }
-
-        /* Try uncommenting these to see the behavior change */
-        /*
-        .label {
-            display: inline-block;
-        }
-
-        .box {
-            display: inline;
-        }
-        */
-    </style>
-</head>
-<body>
-
-    <h1>Display Types Practice</h1>
-
-    <!-- Block elements stack vertically -->
-    <div class="box">Box 1 (Block Level)</div>
-    <div class="box">Box 2 (Block Level)</div>
-
-    <hr>
-
-    <!-- Inline elements sit side-by-side -->
-    <span class="label">Label 1 (Inline)</span>
-    <span class="label">Label 2 (Inline)</span>
-
-</body>
-</html>
-```
+* Step 5: Make Elements Disappear (Any to None)
+  Sometimes you want content to exist in the HTML but remain invisible to the user until a specific action occurs.
+  Target the unique element with the `#secret` ID selector. Set `display: none`. Refresh your page, and watch the paragraph completely vanish from the layout as if it never existed!
 
 ## Checkpoints
 
-* [ ] Create an HTML file containing at least two default block-level elements and two default inline-level elements.
-* [ ] Use CSS to change one of your block-level elements into an `inline` element, demonstrating that it now sits on the same line as surrounding elements.
-* [ ] Apply the `display: inline-block;` property to an inline-level element (like a `<span>` or `<a>`) and successfully give it a specific `width` and `height`.
+* [ ] Build a "Team Member Profile" Section
+  Write an HTML webpage containing a `<style>` tag to implement a modern employee or user profile card. Please complete the following requirements:
+  * Skill Tags: Use a `<ul>` and `<li>` tags to create three professional skill tags for the member (e.g., "HTML", "CSS", "JavaScript"). Since `<li>` tags are block elements by default and stack vertically, use `display: inline-block;` to force them to sit side-by-side on the same line. Set a fixed width and background color for each tag.
+  * Inline Status Highlighting: Within a `<p>` tag containing a short biography, use an `<i>` or `<strong>` tag to wrap the member's current status (e.g., "Open to work" or "Online"). Give this status text a prominent background color, and verify that this inline element does *not* force the rest of the sentence to a new line.
+  * Contact Button: Add an `<a>` tag at the bottom of the card to act as a "Send Message" link. Because `<a>` tags are inline elements by default and just look like regular text, use `display: inline-block;` to change its behavior. This will allow you to apply `line-height`, `width`, and a background color to transform it into a solid, clickable button.
