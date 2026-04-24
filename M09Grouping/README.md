@@ -32,99 +32,61 @@ When there isn't a specific tag that fits your needs, you use these "generic" co
 
 ### Semantic Containers
 
-Modern HTML5 introduced tags that describe the **meaning** of the content they contain. These behave exactly like `<div>` (they are block-level), but they are much better for accessibility and SEO.
+Modern HTML5 introduced tags that describe the **meaning** of the content they contain. These behave exactly like `<div>` (they are block-level), but they are much better for accessibility and **SEO** (Search Engine Optimization). 
 
-*   **`<header>`**: Contains introductory content or navigation links.
-*   **`<nav>`**: A section specifically for navigation links.
-*   **`<main>`**: The unique, primary content of the page.
-*   **`<section>`**: A generic standalone section of a document.
-*   **`<article>`**: A self-contained piece of content (like a blog post or news story).
-*   **`<aside>`**: Content tangentially related to the main content (like a sidebar).
-*   **`<footer>`**: Contains copyright info, contact details, or site maps.
+**SEO** is the practice of optimizing your website to increase its visibility and ranking in search engine results. 
+By using semantic tags instead of generic `<div>` containers, you provide search engines with a clear map of your page's structure. 
+This helps crawlers understand which parts of your site are the most important (like `<main>` or `<article>`), leading to better indexing and improved discoverability for your content.
+
+* **`<header>`**: Contains introductory content or navigation links.
+* **`<nav>`**: A section specifically for navigation links.
+* **`<main>`**: The unique, primary content of the page.
+* **`<section>`**: A generic standalone section of a document.
+* **`<article>`**: A self-contained piece of content (like a blog post or news story).
+* **`<aside>`**: Content tangentially related to the main content (like a sidebar).
+* **`<footer>`**: Contains copyright info, contact details, or site maps.
 
 ## Guided Practice
 
-Let's build a **"Personal Profile Page"** using logical grouping and semantic tags.
+In this practice, you will use logical grouping to organize a professional developer portfolio. You'll learn how to wrap related elements into containers to create distinct sections like a navigation header and a featured content card.
 
-### Step-by-Step Instructions
+### Step 1: Establish the Semantic Shell
+Before adding content, define the high-level structure of your page using semantic grouping tags. These tags tell the browser exactly what role each section plays.
+* Create an HTML file and add a `<style>` tag in the `<head>`.
+* Inside the `<body>`, add a `<header>` for your branding and navigation.
+* Below the header, add a `<main>` tag to hold the primary content of your portfolio.
+* At the very bottom, add a `<footer>` for copyright information.
 
-*   **Step 1: Create the Semantic Shell**
-    Use `<header>`, `<main>`, and `<footer>` to define the top, middle, and bottom of your page.
-*   **Step 2: Add Navigation**
-    Inside the `<header>`, add a `<nav>` tag with a few links (`<a>`).
-*   **Step 3: Group the Profile Info**
-    Inside `<main>`, create a `<div>` with a class of `profile-card`. Inside this card, put an `<img>`, an `<h2>`, and a `<p>`.
-*   **Step 4: Use Inline Grouping**
-    Inside the `<p>`, use a `<span>` with a class of `status-dot` to create a small visual indicator.
-*   **Step 5: Apply Basic Styles**
-    Add some CSS to give the `profile-card` a border and padding, and make the `status-dot` a small green circle.
+### Step 2: Group the Header Content
+The header often contains both a title and a navigation menu. We group them to style the top bar of the site as one unit.
+* Inside your `<header>`, add an `<h1>` with the text "DevPortfolio".
+* Next to the heading, add a `<nav>` container.
+* Inside the `<nav>`, add three `<a>` tags for "Projects", "Blog", and "About".
+* **CSS Tip:** Target the `header` in your styles and add `border-bottom: 2px solid #e5e7eb;` and `padding: 20px;` to create a clean separator from the rest of the page.
 
-### Example Code
+### Step 3: Create a Featured Card (The `<div>` Container)
+A "card" is a classic web design pattern where a group of elements (heading, text, links) are treated as a single visual object.
+* Inside the `<main>` tag, add a `<section>`.
+* Inside that section, create a `<div>` and give it a class: `<div class="feature-card">`.
+* Inside this `div`, add an `<h2>` for a project title and a few `<p>` tags for descriptions.
+* **CSS Tip:** Target `.feature-card` in your CSS. Give it `background: white;`, `border: 1px solid #e5e7eb;`, and `box-shadow: 0 1px 3px rgba(0,0,0,0.1);`. Notice how the border and shadow surround the entire group of elements.
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Personal Profile</title>
-    <style>
-        body { font-family: sans-serif; margin: 0; background-color: #f4f4f4; }
-        header { background: #333; color: white; padding: 1rem; text-align: center; }
-        nav a { color: white; margin: 0 10px; text-decoration: none; }
-        
-        .profile-card {
-            background: white;
-            width: 300px;
-            margin: 2rem auto;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+### Step 4: Use Inline Grouping for Emphasis
+Sometimes you need to group just a few words within a sentence without breaking the flow of the text.
+* Find a sentence inside your card's paragraph.
+* Wrap a specific phrase (like "semantic tags") in a `<span>` tag with the class `highlight`: `<span class="highlight">...</span>`.
+* **CSS Tip:** Target `.highlight` and set `background-color: #fef9c3;`. This allows you to style specific words within the block-level paragraph.
 
-        .status-dot {
-            height: 10px;
-            width: 10px;
-            background-color: #2ecc71;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 5px;
-        }
-
-        footer { text-align: center; padding: 1rem; font-size: 0.8rem; color: #777; }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>My Website</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
-
-    <main>
-        <div class="profile-card">
-            <img src="https://via.placeholder.com/100" alt="Profile" style="border-radius: 50%;">
-            <h2>Jane Doe</h2>
-            <p><span class="status-dot"></span> Available for hire</p>
-            <p>Frontend Developer & Designer</p>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Jane Doe. Built with Semantic HTML.</p>
-    </footer>
-
-</body>
-</html>
-```
+### Step 5: Finalize the Footer
+The footer acts as the final group at the bottom of the document.
+* Inside your `<footer>`, add a `<p>` tag with your copyright notice.
+* **CSS Tip:** Set the `footer` to have a dark `background-color: #1f2937;` and `color: white;`. Use `text-align: center;` and `line-height: 5;` to give the footer height and center the text.
 
 ## Checkpoints
 
-* [ ] Wrap major semantic sections of your page (e.g., header, main content area, footer) inside semantic tags like `<header>`, `<main>`, and `<footer>`.
-* [ ] Wrap specific highlight words or phrases within your paragraphs using `<span>` tags.
-* [ ] Create a "Content Card" using a `<div>` that groups a heading, an image, and a description.
-* [ ] Apply unique CSS classes to these containers and use them to apply layout-wide styles (like `text-align: center` or `background-color`).
+* [ ] Build a "Tech Blog Article" Layout
+  Write an HTML webpage containing a `<style>` tag to implement a structured, modern blog post layout. Please complete the following requirements:
+  * **Semantic Page Structure**: Use semantic containers to define the high-level structure of your page. Create a `<header>` for the blog's introductory content or navigation links, a `<main>` tag to house the unique, primary content of the page, and a `<footer>` at the bottom for copyright information.
+  * **Grouping Content and Sidebars**: Inside your `<main>` element, group the actual blog post content within an `<article>` tag to represent a self-contained piece of content. Below or alongside the article, add an `<aside>` tag to contain tangentially related content, such as a "Related Posts" sidebar. 
+  * **Author Bio Card (Generic Block Grouping)**: At the end of your `<article>`, use a `<div>` tag as a block-level container to group large sections of content together. Place an author's name, profile picture, and short biography inside this `<div>`. Apply CSS to this container (such as a border and background color) to style the grouped elements as a single visual card.
+  * **Keyword Highlighting (Generic Inline Grouping)**: Pick a sentence within your blog post. Use a `<span>` tag as an inline-level container to wrap a specific phrase or keyword, which allows you to group small bits of content. Apply a special text color or background highlight to this `<span>` to emphasize the text, ensuring it does not break the natural flow of the paragraph.

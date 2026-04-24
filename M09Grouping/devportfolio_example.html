@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevPortfolio</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+
+        header {
+            background-color: #ffffff;
+            border-bottom: 2px solid #e5e7eb;
+            padding: 20px 5%;
+        }
+
+        header h1 {
+            display: inline;
+            font-size: 1.25rem;
+            color: #4f46e5;
+        }
+
+        nav {
+            display: inline;
+        }
+
+        nav a {
+            display: inline-block;
+            width: 80px;
+            text-decoration: none;
+            text-align: center;
+            color: #4b5563;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            min-height: 550px;
+        }
+
+        footer {
+            background-color: #1f2937;
+            color: #f9fafb;
+            text-align: center;
+            line-height: 5;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .highlight {
+            background-color: #FEF9C3;
+            color: #92400E;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>DevPortfolio</h1>
+        <nav>
+            <a href="#">Projects</a>
+            <a href="#">Blog</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Latest Update</h2>
+
+            <div class="feature-card">
+                <h2>Logical Grouping Matters</h2>
+                <p>
+                    By using <span class="highlight">semantic tags</span>, you make your code readable for humans and machines.
+                    Adding a <span class="highlight">div</span> allows you to create specialized containers like this card.
+                </p>
+                <p>
+                    This whole card is a <code>&lt;div&gt;</code>, which makes it easy to add a border, shadow, and padding to everything inside at once.
+                </p>
+            </div>
+        </section>
+
+        <article>
+            <h2>My Coding Journey</h2>
+            <p>I started learning web development because I wanted to build tools that help people...</p>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 DevPortfolio. Built with love and Semantic HTML.</p>
+    </footer>
+
+</body>
+</html>
