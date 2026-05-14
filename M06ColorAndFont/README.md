@@ -113,6 +113,47 @@ Example:
 <p style="font-family: system-ui, -apple-system, sans-serif;">This is a highly modern sans-serif font.</p>
 ```
 
+### Understanding Size Units: `px`, `em`, and `rem`
+
+While we used pixels (`px`) in the previous example, modern web design relies on a few different units for sizing text, margins, and other elements. Understanding the difference between absolute and relative units is essential for building accessible and responsive websites.
+
+1. **Pixels (`px`) - The Absolute Unit** Pixels are fixed-size units. Think of them as tiny, exact dots on your screen. If you set a font size to `16px`, it will stay exactly that size, regardless of the user's personal browser preferences.
+   * *Best used for:* Precise borders, strict spacing, or elements that absolutely must not change size.
+
+   ```html
+   <p style="font-size: 16px;">This text is firmly fixed at 16 pixels.</p>
+   
+   ```
+2. **`em` - The Relative Unit (Parent-based)** The `em` unit scales dynamically. It is relative to the font size of its **direct parent element**. If a parent container has a font size of `16px`, then `1em` equals `16px`, `2em` equals `32px`, and `0.5em` equals `8px`.
+   * *Warning:* Because `em` values inherit and multiply based on their parents, nesting elements with `em` sizing can sometimes lead to unexpectedly huge or tiny text!
+
+   ```html
+   <div style="font-size: 20px;">
+     <p style="font-size: 1.5em;">This text will evaluate to 30px (20px * 1.5).</p>
+   </div>
+   
+   ```
+3. **`rem` (Root em) - The Modern Standard** `rem` stands for "root em." Unlike `em`, `rem` is entirely relative to the **root element** of the document (the `<html>` tag), bypassing all parent elements. Browsers typically have a default root size of `16px`. Using `rem` prevents the compounding size issues of `em` while remaining fully flexible.
+   * *Best used for:* Overall typography and major layout spacing. If a visually impaired user increases their browser's default text size, `rem` units will scale proportionally, making your site highly accessible!
+
+   ```html
+   <h1 style="font-size: 2rem;">This heading evaluates to 32px (16px * 2).</h1>
+   <p style="font-size: 1rem;">This body text evaluates to 16px (16px * 1).</p>
+   
+   ```
+   
+4. **Percentages (`%`) - The Layout Transformer** While `em` and `rem` are fantastic for typography, percentages are most commonly used for defining the physical dimensions (like `width` or `height`) of structural elements. A percentage value is directly relative to the size of its **parent container**. For example, if a parent container is 800 pixels wide, setting a child element's width to `50%` will make it exactly 400 pixels wide.
+   * *Best used for:* Building flexible, responsive layouts where you want containers to adapt fluidly to different screen sizes rather than being rigidly fixed.
+
+   ```html
+   <div style="width: 400px; background-color: #e2e8f0; padding: 10px;">
+     <div style="width: 50%; background-color: #3b82f6; color: white; text-align: center;">
+       I am 50% wide!
+     </div>
+   </div>
+   
+   ```
+
 ## Guided Practice
 
 Now, let's combine these techniques to build a highly refined, dark-themed **"Digital Business Card"**! By setting a contrast between the page background and the card container, and applying some targeted text styling, we can create a professional and modern visual experience.

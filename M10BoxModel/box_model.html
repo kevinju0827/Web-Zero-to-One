@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M10 Box Model</title>
+  <style>
+    body {
+      background-color: #0f172a; /* Modern dark blue */
+      color: white;
+      font-family: sans-serif;
+      padding: 50px;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #334155;
+      margin: 40px 0;
+    }
+
+    .box {
+      display: inline-block;
+      background-color: #3b82f6; /* Bright blue */
+      color: white;
+      font-weight: bold;
+      width: 200px;
+      height: 200px;
+      border: 0 solid #f59e0b;
+    }
+  </style>
+</head>
+<body>
+  <h1>Box Model</h1>
+  <p>Tip: Press <strong>F12</strong> to open your Developer Tools, inspect these four boxes, and see their actual computed pixel dimensions for yourself!</p>
+  <hr>
+  <div class="box" style="padding: 20px;border-width: 20px;margin: 20px">
+      width: 200px
+      <br>
+      height: 200px
+      <br>
+      padding: 20px
+      <br>
+      border: 20px
+      <br>
+      margin: 20px
+  </div>
+  <hr>
+  <h2>box-sizing: content-box</h2>
+  <div class="box">
+    Content Only
+  </div>
+  <div class="box" style="padding: 20px;">
+    padding: 20px
+  </div>
+  <div class="box" style="border-width: 20px;">
+    border: 20px
+  </div>
+  <div class="box" style="margin: 20px">
+    margin: 20px
+  </div>
+  <hr>
+  <h2>box-sizing: border-box</h2>
+  <div class="box" style="box-sizing: border-box">
+    Content Only
+  </div>
+  <div class="box" style="box-sizing: border-box; padding: 20px;">
+    padding: 20px
+  </div>
+  <div class="box" style="box-sizing: border-box; border-width: 20px;">
+    border: 20px
+  </div>
+  <div class="box" style="box-sizing: border-box; margin: 20px">
+    margin: 20px
+  </div>
+</body>
+</html>
