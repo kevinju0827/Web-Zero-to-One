@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundwave — Music Streaming UI</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            background: #0f172a;
+            color: #f1f5f9;
+            min-height: 200vh;       /* tall enough so we can scroll */
+            padding-bottom: 110px;   /* leave room for the fixed Now Playing bar */
+        }
+
+        /* 1. STICKY top navigation -------------------------- */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1e293b;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a78bfa, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links { display: flex; gap: 1.75rem; }
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: #f1f5f9; }
+        .avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a78bfa, #ec4899);
+            border: 2px solid #f1f5f9;
+        }
+
+        /* 2. Main layout ------------------------------------ */
+        main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin: 0 0 1.5rem;
+        }
+        .section-header h1, .section-header h2 { margin: 0; }
+        .section-header a { color: #a78bfa; text-decoration: none; font-size: 0.9rem; }
+
+        /* 3. RELATIVE album card + ABSOLUTE children -------- */
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .album-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 1rem;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .album-card:hover { background: #334155; transform: translateY(-4px); }
+
+        .album-cover {
+            position: relative;       /* anchor for the absolutely-positioned badges */
+            aspect-ratio: 1 / 1;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.85);
+            overflow: hidden;
+        }
+        .cover-1 { background: linear-gradient(135deg, #6366f1, #ec4899); }
+        .cover-2 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+        .cover-3 { background: linear-gradient(135deg, #10b981, #06b6d4); }
+        .cover-4 { background: linear-gradient(135deg, #8b5cf6, #3b82f6); }
+        .cover-5 { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+        .cover-6 { background: linear-gradient(135deg, #14b8a6, #6366f1); }
+
+        /* Hanging "NEW" tag — sits in the top-left corner of the cover */
+        .new-badge {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background: #ef4444;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+            z-index: 2;
+        }
+
+        /* "Explicit" pill — top-right corner */
+        .explicit-tag {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            z-index: 2;
+        }
+
+        /* Green play FAB — bottom-right of the cover */
+        .play-fab {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #22c55e;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 6px 14px rgba(34, 197, 94, 0.4);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.2s, transform 0.2s;
+            z-index: 2;
+        }
+        .album-card:hover .play-fab { opacity: 1; transform: translateY(0); }
+
+        .album-title { margin: 0; font-weight: 700; }
+        .album-artist { margin: 0.25rem 0 0; color: #94a3b8; font-size: 0.9rem; }
+
+        /* 4. RELATIVE nudge — small "Hot" indicator that floats next to a heading */
+        .hot-tag {
+            position: relative;
+            top: -4px;
+            display: inline-block;
+            background: #f59e0b;
+            color: #1e293b;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            margin-left: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* 5. FIXED Now Playing bar -------------------------- */
+        .now-playing {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: #1e1b4b;
+            border-top: 1px solid #312e81;
+            z-index: 200;
+        }
+        .now-playing .thumb {
+            width: 48px; height: 48px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+        }
+        .now-playing .info { flex: 1; min-width: 0; }
+        .now-playing .info strong { display: block; }
+        .now-playing .info span { color: #94a3b8; font-size: 0.85rem; }
+        .controls { display: flex; gap: 0.5rem; }
+        .controls button {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: #312e81;
+            color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .controls button:hover { background: #4338ca; }
+        .controls button.play { background: #22c55e; }
+
+        /* z-index stacking demo (overlapping cards) */
+        .stack-demo { position: relative; height: 160px; margin-top: 1rem; }
+        .stack-card {
+            position: absolute;
+            width: 200px; height: 120px;
+            padding: 1rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 700;
+        }
+        .stack-back   { top: 0;   left: 0;   background: #6366f1; z-index: 1; }
+        .stack-middle { top: 20px; left: 80px; background: #ec4899; z-index: 2; }
+        .stack-front  { top: 40px; left: 160px; background: #22c55e; z-index: 3; }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky navigation -->
+    <nav class="top-nav">
+        <div class="logo">♫ Soundwave</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Discover</a>
+            <a href="#">Library</a>
+        </div>
+        <div class="avatar" title="Your profile"></div>
+    </nav>
+
+    <main>
+        <div class="section-header">
+            <h1>New This Week <span class="hot-tag">HOT</span></h1>
+            <a href="#">See all →</a>
+        </div>
+
+        <div class="album-grid">
+            <div class="album-card">
+                <div class="album-cover cover-1">
+                    🎵
+                    <span class="new-badge">NEW</span>
+                    <span class="explicit-tag">EXPLICIT</span>
+                    <div class="play-fab">▶</div>
+                </div>
+                <p class="album-title">Midnight Echoes</p>
+                <p class="album-artist">Luna Vega</p>
+            </div>
+
+            <div class="album-card">
+                <div class="album-cover cover-2">
+                    🔥
+                    <span class="new-badge">NEW</span>
+                    <div class="play-fab">▶</div>
+                </div>
+                <p class="album-title">Solar Drift</p>
+                <p class="album-artist">Atlas Reign</p>
+            </div>
+
+            <div class="album-card">
+                <div class="album-cover cover-3">
+                    🌊
+                    <span class="new-badge">NEW</span>
+                    <div class="play-fab">▶</div>
+                </div>
+                <p class="album-title">Tidewater Hymns</p>
+                <p class="album-artist">Marina Cove</p>
+            </div>
+
+            <div class="album-card">
+                <div class="album-cover cover-4">
+                    ✨
+                    <span class="new-badge">NEW</span>
+                    <span class="explicit-tag">EXPLICIT</span>
+                    <div class="play-fab">▶</div>
+                </div>
+                <p class="album-title">Neon Cathedral</p>
+                <p class="album-artist">VOIDLINE</p>
+            </div>
+        </div>
+
+        <div class="section-header" style="margin-top: 3.5rem;">
+            <h2>Your Recent Mixes</h2>
+            <a href="#">See all →</a>
+        </div>
+
+        <div class="album-grid">
+            <div class="album-card">
+                <div class="album-cover cover-5">
+                    🎧
+                    <div class="play-fab">▶</div>
+                </div>
+                <p class="album-title">Daily Mix 1</p>
+                <p class="album-artist">For your evening</p>
+            </div>
+            <div class="album-card">
+                <div class="album-cover cover-6">
+                    🎶
+                    <div class="play-fab">▶</div>
+                </div>
+                <p class="album-title">Focus Flow</p>
+                <p class="album-artist">Deep work playlist</p>
+            </div>
+            <div class="album-card">
+                <div class="album-cover cover-1">
+                    💜
+                    <div class="play-fab">▶</div>
+                </div>
+                <p class="album-title">Throwback Vibes</p>
+                <p class="album-artist">2010s favorites</p>
+            </div>
+        </div>
+
+        <div class="section-header" style="margin-top: 3.5rem;">
+            <h2>z-index in action</h2>
+        </div>
+        <p style="color:#94a3b8;">Three absolutely-positioned cards overlapping. The highest <code>z-index</code> wins the front row.</p>
+        <div class="stack-demo">
+            <div class="stack-card stack-back">z-index: 1</div>
+            <div class="stack-card stack-middle">z-index: 2</div>
+            <div class="stack-card stack-front">z-index: 3</div>
+        </div>
+
+        <p style="color:#94a3b8; margin-top:6rem;">Keep scrolling — the navigation stays glued to the top, and the Now Playing bar stays glued to the bottom no matter how far you go.</p>
+    </main>
+
+    <!-- Fixed Now Playing bar -->
+    <div class="now-playing">
+        <div class="thumb"></div>
+        <div class="info">
+            <strong>Midnight Echoes</strong>
+            <span>Luna Vega · 3:42 / 4:18</span>
+        </div>
+        <div class="controls">
+            <button>⏮</button>
+            <button class="play">⏸</button>
+            <button>⏭</button>
+        </div>
+    </div>
+
+</body>
+</html>

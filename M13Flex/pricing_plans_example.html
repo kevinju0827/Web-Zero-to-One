@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly — Pricing</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+
+        /* ----------------------------- */
+        /* NAVBAR (space-between)         */
+        /* ----------------------------- */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .nav .brand {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: #4f46e5;
+        }
+        .nav .menu {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        .nav .menu a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .nav .menu .btn-primary {
+            background: #4f46e5;
+            color: white;
+            padding: 0.5rem 1.1rem;
+            border-radius: 8px;
+        }
+
+        /* ----------------------------- */
+        /* HERO (perfect centering)       */
+        /* ----------------------------- */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 1.5rem 3rem;
+            background: linear-gradient(180deg, white 0%, #f8fafc 100%);
+        }
+        .hero .eyebrow {
+            color: #4f46e5;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin: 0.5rem 0 0.75rem;
+        }
+        .hero p {
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 0 1.75rem;
+        }
+
+        /* Billing toggle */
+        .toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: white;
+            padding: 0.4rem;
+            border-radius: 999px;
+            box-shadow: inset 0 0 0 1px #e2e8f0;
+        }
+        .toggle button {
+            border: none;
+            background: transparent;
+            padding: 0.5rem 1.25rem;
+            border-radius: 999px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+        }
+        .toggle button.active {
+            background: #4f46e5;
+            color: white;
+        }
+        .toggle .pill {
+            background: #ddd6fe;
+            color: #5b21b6;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* ----------------------------- */
+        /* PRICING TIERS (flex row)       */
+        /* ----------------------------- */
+        .tiers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: stretch;
+            padding: 2rem 1.5rem 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .tier {
+            display: flex;
+            flex-direction: column;     /* stack contents vertically */
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+            flex: 1 1 280px;
+            max-width: 340px;
+        }
+
+        .tier.featured {
+            background: #0f172a;
+            color: white;
+            transform: translateY(-12px);     /* visually lift the popular plan */
+            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.25);
+            position: relative;
+        }
+        .tier.featured .badge {
+            position: absolute;
+            top: -14px; left: 50%; transform: translateX(-50%);
+            background: #fbbf24;
+            color: #0f172a;
+            padding: 4px 14px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+        }
+
+        .tier h3 { margin: 0 0 0.25rem; font-size: 1.1rem; }
+        .tier .desc { color: #94a3b8; font-size: 0.9rem; margin: 0; }
+        .tier:not(.featured) .desc { color: #64748b; }
+
+        .tier .price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.25rem;
+            margin: 1.5rem 0;
+        }
+        .tier .price .amount {
+            font-size: 2.75rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .tier .price .per {
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+
+        /* Feature list — vertical flex column */
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .features li::before {
+            content: "✓";
+            background: #d1fae5;
+            color: #047857;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+        .tier.featured .features li::before {
+            background: #312e81;
+            color: #c7d2fe;
+        }
+        .features li.muted {
+            color: #94a3b8;
+            text-decoration: line-through;
+        }
+        .features li.muted::before {
+            content: "✕";
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        /* Push the CTA button to the bottom of the card no matter how tall it is */
+        .tier .cta {
+            margin-top: auto;
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .tier .cta {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+        .tier.featured .cta {
+            background: #fbbf24;
+            color: #0f172a;
+        }
+
+        /* ----------------------------- */
+        /* COMPARISON STATS (equal flex)  */
+        /* ----------------------------- */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: #0f172a;
+            color: white;
+            padding: 2.5rem 1.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .stat { flex: 1; min-width: 140px; text-align: center; }
+        .stat .num { font-size: 2.25rem; font-weight: 800; color: #fbbf24; }
+        .stat .label { color: #94a3b8; font-size: 0.9rem; }
+
+        /* ----------------------------- */
+        /* FAQ (vertical flex column)     */
+        /* ----------------------------- */
+        .faq {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .faq h2 { text-align: center; margin: 0 0 1.5rem; }
+        details {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+        }
+        details summary {
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        details[open] summary { margin-bottom: 0.75rem; }
+        details p { margin: 0; color: #64748b; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Navbar: brand on left, navigation + CTA on right (space-between) -->
+    <nav class="nav">
+        <div class="brand">⌬ Stackly</div>
+        <div class="menu">
+            <a href="#">Features</a>
+            <a href="#">Customers</a>
+            <a href="#">Docs</a>
+            <a href="#">Log in</a>
+            <a href="#" class="btn-primary">Start free</a>
+        </div>
+    </nav>
+
+    <!-- 2. Hero: centered using flex-direction: column + align-items: center -->
+    <section class="hero">
+        <span class="eyebrow">Pricing</span>
+        <h1>Simple, fair pricing.<br>No surprise invoices.</h1>
+        <p>Start free. Upgrade when your team grows. Cancel any time — we'll even help you export your data.</p>
+        <div class="toggle">
+            <button>Monthly</button>
+            <button class="active">Yearly <span class="pill">−20%</span></button>
+        </div>
+    </section>
+
+    <!-- 3. Pricing tiers: flex row, each card is a flex column with cta pushed to bottom -->
+    <section class="tiers">
+        <div class="tier">
+            <h3>Starter</h3>
+            <p class="desc">For solo builders trying things out.</p>
+            <div class="price">
+                <span class="amount">$0</span>
+                <span class="per">/ month</span>
+            </div>
+            <ul class="features">
+                <li>1 project</li>
+                <li>Up to 3 collaborators</li>
+                <li>Community support</li>
+                <li class="muted">Custom domains</li>
+                <li class="muted">Priority support</li>
+            </ul>
+            <a href="#" class="cta">Get started free</a>
+        </div>
+
+        <div class="tier featured">
+            <span class="badge">MOST POPULAR</span>
+            <h3>Team</h3>
+            <p class="desc">For growing teams that ship every day.</p>
+            <div class="price">
+                <span class="amount">$24</span>
+                <span class="per">/ user / month</span>
+            </div>
+            <ul class="features">
+                <li>Unlimited projects</li>
+                <li>Up to 25 collaborators</li>
+                <li>Custom domains</li>
+                <li>Slack &amp; email support</li>
+                <li>Audit log (90 days)</li>
+            </ul>
+            <a href="#" class="cta">Start 14-day trial</a>
+        </div>
+
+        <div class="tier">
+            <h3>Enterprise</h3>
+            <p class="desc">For organizations with compliance needs.</p>
+            <div class="price">
+                <span class="amount">Custom</span>
+            </div>
+            <ul class="features">
+                <li>Everything in Team</li>
+                <li>SSO &amp; SCIM</li>
+                <li>SOC 2 report</li>
+                <li>Dedicated CSM</li>
+                <li>99.99% uptime SLA</li>
+            </ul>
+            <a href="#" class="cta">Talk to sales</a>
+        </div>
+    </section>
+
+    <!-- 4. Stats banner: flex with space-around, each stat has flex: 1 -->
+    <section class="stats">
+        <div class="stat"><div class="num">12K+</div><div class="label">Teams shipping</div></div>
+        <div class="stat"><div class="num">99.99%</div><div class="label">Uptime, last 12 mo.</div></div>
+        <div class="stat"><div class="num">38</div><div class="label">Countries</div></div>
+        <div class="stat"><div class="num">4.9 / 5</div><div class="label">Avg. support rating</div></div>
+    </section>
+
+    <!-- 5. FAQ: vertical flex column -->
+    <section class="faq">
+        <h2>Frequently asked</h2>
+        <details>
+            <summary>Can I switch plans later? <span>+</span></summary>
+            <p>Yes. Upgrade or downgrade any time from your billing settings — we prorate everything to the day.</p>
+        </details>
+        <details>
+            <summary>What happens if I exceed my plan limits? <span>+</span></summary>
+            <p>We'll email you. Nothing breaks — you'll have 14 days to either upgrade or trim your usage.</p>
+        </details>
+        <details>
+            <summary>Do you offer student or non-profit discounts? <span>+</span></summary>
+            <p>Yes — 50% off Team plans for verified students and registered non-profits. Just reach out.</p>
+        </details>
+        <details>
+            <summary>Is my data safe if I cancel? <span>+</span></summary>
+            <p>You can export everything as JSON or CSV with one click. We hold deleted data for 30 days in case you change your mind.</p>
+        </details>
+    </section>
+
+</body>
+</html>

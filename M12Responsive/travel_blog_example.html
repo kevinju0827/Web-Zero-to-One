@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust — A travel blog</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            color: #1f2937;
+            background: #fffaf3;
+            line-height: 1.6;
+        }
+
+        a { color: #c2410c; text-decoration: none; }
+
+        /* ----------------------------- */
+        /* NAVBAR: hamburger on mobile,   */
+        /* full links on tablet and up    */
+        /* ----------------------------- */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: white;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .nav .brand { font-weight: 800; font-size: 1.25rem; color: #c2410c; }
+        .nav .hamburger {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .nav .links { display: none; }
+        .nav .links a {
+            color: #1f2937;
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+
+        @media (min-width: 768px) {
+            .nav .hamburger { display: none; }
+            .nav .links { display: block; }
+        }
+
+        /* ----------------------------- */
+        /* HERO: stacked on mobile,       */
+        /* side-by-side on desktop        */
+        /* ----------------------------- */
+        .hero {
+            padding: 2rem 1.5rem;
+            background: linear-gradient(135deg, #fed7aa, #fdba74);
+        }
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2rem;
+            margin: 0 0 0.75rem;
+            color: #7c2d12;
+        }
+        .hero p {
+            color: #9a3412;
+            margin: 0 0 1.25rem;
+            font-size: 1rem;
+        }
+        .hero img {
+            max-width: 100%;
+            border-radius: 16px;
+            display: block;
+            margin-top: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .hero .cta {
+            display: inline-block;
+            background: #c2410c;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            font-weight: 700;
+        }
+
+        @media (min-width: 768px) {
+            .hero { padding: 4rem 2rem; }
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.15rem; }
+            .hero-inner {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                align-items: center;
+            }
+            .hero img { margin-top: 0; }
+        }
+
+        /* ----------------------------- */
+        /* LAYOUT: main + sidebar         */
+        /* sidebar hidden on mobile       */
+        /* ----------------------------- */
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+            display: block;       /* mobile: single column */
+        }
+
+        .sidebar { display: none; }
+
+        @media (min-width: 1024px) {
+            .page {
+                display: grid;
+                grid-template-columns: 1fr 300px;
+                gap: 2.5rem;
+            }
+            .sidebar { display: block; }
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin: 0 0 1.5rem;
+            color: #7c2d12;
+        }
+
+        /* ----------------------------- */
+        /* DESTINATION CARDS:             */
+        /*   1 col  → mobile              */
+        /*   2 cols → tablet              */
+        /*   3 cols → desktop             */
+        /* ----------------------------- */
+        .destinations {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .destinations { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .destinations { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-4px); }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .card-body { padding: 1.25rem; }
+        .card-body h3 { margin: 0 0 0.25rem; }
+        .card-body .meta { color: #9ca3af; font-size: 0.85rem; margin: 0 0 0.5rem; }
+        .card-body p { margin: 0; color: #4b5563; }
+
+        /* Sidebar styling */
+        .sidebar h4 { color: #7c2d12; }
+        .popular-post {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #fde68a;
+        }
+        .popular-post:last-child { border-bottom: none; }
+        .popular-post img {
+            width: 64px; height: 64px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        .popular-post p {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        .popular-post span { font-size: 0.75rem; color: #9ca3af; }
+
+        /* ----------------------------- */
+        /* NEWSLETTER                     */
+        /* ----------------------------- */
+        .newsletter {
+            background: #1f2937;
+            color: white;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+        .newsletter h2 { margin: 0 0 0.5rem; font-size: 1.5rem; }
+        .newsletter p { margin: 0 0 1.5rem; color: #d1d5db; }
+        .newsletter form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .newsletter input {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+        }
+        .newsletter button {
+            padding: 0.75rem 1rem;
+            background: #c2410c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        @media (min-width: 640px) {
+            .newsletter form { flex-direction: row; }
+            .newsletter input { flex: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="brand">✈ Wanderlust</div>
+        <button class="hamburger" aria-label="Menu">☰</button>
+        <div class="links">
+            <a href="#">Destinations</a>
+            <a href="#">Guides</a>
+            <a href="#">Stories</a>
+            <a href="#">About</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-inner">
+            <div>
+                <h1>Slow travel,<br>real moments.</h1>
+                <p>Hand-picked itineraries from people who actually lived there — not algorithms. Find your next favorite place to disappear into.</p>
+                <a class="cta" href="#">Browse destinations →</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800" alt="Mountain road">
+        </div>
+    </header>
+
+    <div class="page">
+        <main>
+            <h2 class="section-title">This month's picks</h2>
+            <div class="destinations">
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=600" alt="Tokyo">
+                    <div class="card-body">
+                        <h3>Tokyo, Japan</h3>
+                        <p class="meta">7-day itinerary · ¥¥</p>
+                        <p>Neon-lit alleyways, the world's best convenience-store coffee, and a sunrise from the Park Hyatt's 52nd floor.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600" alt="Paris">
+                    <div class="card-body">
+                        <h3>Paris, France</h3>
+                        <p class="meta">5-day itinerary · €€</p>
+                        <p>Skip the Eiffel. Wander the Marais at sunset, eat at a 30-cover bistro, and finish with a canal-side natural-wine bar.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600" alt="Bali">
+                    <div class="card-body">
+                        <h3>Ubud, Bali</h3>
+                        <p class="meta">10-day itinerary · $</p>
+                        <p>Rice terraces, monkey-filled jungle, and a quiet co-working scene if you'd rather extend the trip indefinitely.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600" alt="Iceland">
+                    <div class="card-body">
+                        <h3>Reykjavík, Iceland</h3>
+                        <p class="meta">6-day itinerary · €€€</p>
+                        <p>The northern lights, geothermal pools at 2 a.m., and roads that go to absolutely nowhere — in the best possible way.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600" alt="Venice">
+                    <div class="card-body">
+                        <h3>Venice, Italy</h3>
+                        <p class="meta">4-day itinerary · €€</p>
+                        <p>Get lost on purpose. The good cicchetti bars are the ones tourists can't find on a map.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1565967511849-76a60a516170?w=600" alt="Patagonia">
+                    <div class="card-body">
+                        <h3>Patagonia, Argentina</h3>
+                        <p class="meta">12-day itinerary · €€€</p>
+                        <p>End of the world hiking, glaciers that calve into turquoise lakes, and the best steak you'll ever eat.</p>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <h4>Popular this week</h4>
+            <div class="popular-post">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=200" alt="">
+                <div>
+                    <p>How to pack carry-on for 3 weeks</p>
+                    <span>5 min read</span>
+                </div>
+            </div>
+            <div class="popular-post">
+                <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=200" alt="">
+                <div>
+                    <p>The case for one-bag travel</p>
+                    <span>8 min read</span>
+                </div>
+            </div>
+            <div class="popular-post">
+                <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=200" alt="">
+                <div>
+                    <p>10 places that won't be quiet in 5 years</p>
+                    <span>12 min read</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <section class="newsletter">
+        <h2>Get a new place to escape to, every Sunday.</h2>
+        <p>One short email. No tracking, no affiliate spam.</p>
+        <form onsubmit="event.preventDefault();">
+            <input type="email" placeholder="you@somewhere-beautiful.com" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+</body>
+</html>
