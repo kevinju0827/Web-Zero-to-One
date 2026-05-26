@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse — Music Magazine</title>
+
+    <style>
+      /* ── Reset ──────────────────────────────────────────────── */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* ── Element selectors — global defaults ────────────────── */
+      body {
+        font-family: system-ui, sans-serif;
+        background-color: #f8fafc;
+        color: #0f172a;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      h1 {
+        font-size: 3rem;
+        letter-spacing: -1px;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        line-height: 1.7;
+        color: #475569;
+      }
+
+      /* ── ID selector — site header ──────────────────────────── */
+      #site-header {
+        background-color: #0f172a;
+        color: #f8fafc;
+        padding: 3rem 2rem;
+        margin-bottom: 0;
+      }
+
+      /* Descendant selector: <p> inside #site-header only */
+      #site-header p {
+        color: #94a3b8;
+        font-size: 1.05rem;
+        margin-top: 0.5rem;
+      }
+
+      /* ── Descendant + pseudo-class — nav links ──────────────── */
+      nav {
+        background-color: #1e293b;
+        padding: 1rem 2rem;
+        margin-bottom: 2rem;
+      }
+
+      nav a {
+        color: #94a3b8;
+        text-decoration: none;
+        margin-right: 2rem;
+        font-size: 0.9rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      /* Pseudo-class: hover state */
+      nav a:hover {
+        color: #f8fafc;
+      }
+
+      /* ── Class selector — all article cards ─────────────────── */
+      .article-card {
+        background-color: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .article-card a {
+        color: #2563eb;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .article-card a:hover {
+        text-decoration: underline;
+      }
+
+      /* ── Class selector — genre tags ────────────────────────── */
+      .genre-tag {
+        display: inline-block;
+        background-color: #f1f5f9;
+        color: #475569;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        margin-bottom: 0.75rem;
+      }
+
+      /* ── Class selector — byline ────────────────────────────── */
+      .byline {
+        font-size: 0.85rem;
+        color: #94a3b8;
+        margin-bottom: 0.75rem;
+      }
+
+      /* ── ID selector — featured article ─────────────────────── */
+      /* ID overrides .article-card (higher specificity) */
+      #featured {
+        border-color: #2563eb;
+        border-width: 2px;
+        background-color: #eff6ff;
+      }
+
+      /* Descendant + class: .genre-tag only inside #featured */
+      #featured .genre-tag {
+        background-color: #dbeafe;
+        color: #1d4ed8;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ID selector target -->
+    <header id="site-header">
+      <h1>Pulse</h1>
+      <p>Your weekly guide to music worth hearing.</p>
+    </header>
+
+    <!-- Descendant selector: nav a {} -->
+    <nav>
+      <a href="#">Reviews</a>
+      <a href="#">Charts</a>
+      <a href="#">Artists</a>
+      <a href="#">Interviews</a>
+    </nav>
+
+    <main>
+
+      <!-- Both id="featured" and class="article-card" — ID wins conflicts -->
+      <article id="featured" class="article-card">
+        <span class="genre-tag">Album Review</span>
+        <h2>A Cathedral of Sound: The Album That Redefines Ambient Music</h2>
+        <p class="byline">By Jordan Lee &middot; 4 min read</p>
+        <p>Every decade or so, an album arrives that doesn't just contribute to a genre — it reshapes it. This is that album.</p>
+        <a href="#">Read full review &rarr;</a>
+      </article>
+
+      <!-- class="article-card" — shares styles with all other cards -->
+      <article class="article-card">
+        <span class="genre-tag">Live Report</span>
+        <h2>Tokyo in Three Nights: A World Tour Like No Other</h2>
+        <p class="byline">By Sam Park &middot; 3 min read</p>
+        <p>The lights went dark at exactly 9pm, and 18,000 people held their breath in the Budokan.</p>
+        <a href="#">Read full report &rarr;</a>
+      </article>
+
+      <article class="article-card">
+        <span class="genre-tag">Interview</span>
+        <h2>Talking Craft: A Producer Who Built a Studio in a Shipping Container</h2>
+        <p class="byline">By Maya Chen &middot; 5 min read</p>
+        <p>The studio is not what you would expect. There is no soundproofed vocal booth, no mixing desk the size of a car.</p>
+        <a href="#">Read full interview &rarr;</a>
+      </article>
+
+    </main>
+
+  </body>
+</html>

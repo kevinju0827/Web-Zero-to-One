@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarForge Open — Registration</title>
+  </head>
+  <body>
+
+    <h1>StarForge Open</h1>
+    <p><i>Season 4 — Online Qualifier Registration</i></p>
+
+    <form action="/register" method="POST">
+
+      <!-- ── Player Information ─────────────────────────────── -->
+      <fieldset>
+        <legend>Player Information</legend>
+
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="full_name" required
+               placeholder="e.g. Alex Rivera"><br><br>
+
+        <label for="alias">In-Game Alias</label>
+        <input type="text" id="alias" name="alias" required
+               minlength="3" maxlength="20" placeholder="e.g. ShadowPulse"><br><br>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required
+               placeholder="you@example.com"><br><br>
+
+        <!-- pattern: Username#0000 — letters/numbers 2–32 chars, then #, then 4 digits -->
+        <label for="discord">Discord Tag</label>
+        <input type="text" id="discord" name="discord" required
+               pattern=".{2,32}#[0-9]{4}" title="Format: Username#0000"
+               placeholder="Username#0000"><br><br>
+
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required>
+      </fieldset>
+      <br>
+
+      <!-- ── Tournament Details ─────────────────────────────── -->
+      <fieldset>
+        <legend>Tournament Details</legend>
+
+        <!-- optgroup organises options into labelled categories -->
+        <label for="game">Game Title</label>
+        <select id="game" name="game" required>
+          <option value="">Select a game</option>
+          <optgroup label="First-Person Shooter">
+            <option value="valorant">Valorant</option>
+            <option value="cs2">Counter-Strike 2</option>
+            <option value="overwatch2">Overwatch 2</option>
+          </optgroup>
+          <optgroup label="Real-Time Strategy">
+            <option value="sc2">StarCraft II</option>
+            <option value="aoe4">Age of Empires IV</option>
+          </optgroup>
+          <optgroup label="Fighting">
+            <option value="sf6">Street Fighter 6</option>
+            <option value="tekken8">Tekken 8</option>
+          </optgroup>
+        </select><br><br>
+
+        <!-- radio group: shared name="platform" makes them mutually exclusive -->
+        <fieldset>
+          <legend>Platform</legend>
+
+          <input type="radio" id="pc" name="platform" value="pc" checked>
+          <label for="pc">PC</label>
+
+          <input type="radio" id="console" name="platform" value="console">
+          <label for="console">Console</label>
+
+          <input type="radio" id="mobile" name="platform" value="mobile">
+          <label for="mobile">Mobile</label>
+        </fieldset>
+        <br>
+
+        <label for="team">Team Name <em>(optional)</em></label>
+        <input type="text" id="team" name="team_name"
+               placeholder="Leave blank if registering solo">
+      </fieldset>
+      <br>
+
+      <!-- ── Experience ─────────────────────────────────────── -->
+      <fieldset>
+        <legend>Experience</legend>
+
+        <label for="rank">Current Rank / Tier</label>
+        <select id="rank" name="rank">
+          <option value="unranked">Unranked</option>
+          <option value="bronze">Bronze</option>
+          <option value="silver">Silver</option>
+          <option value="gold">Gold</option>
+          <option value="platinum">Platinum</option>
+          <option value="diamond">Diamond</option>
+          <option value="master">Master</option>
+          <option value="grandmaster">Grandmaster</option>
+        </select><br><br>
+
+        <label for="years">Years Playing Competitively</label>
+        <input type="number" id="years" name="years_competitive"
+               min="0" max="20" value="1"><br><br>
+
+        <label for="achievements">Notable Achievements</label><br>
+        <textarea id="achievements" name="achievements" rows="4" cols="50"
+                  placeholder="e.g. Top 500, regional finalist, online league champion..."></textarea>
+      </fieldset>
+      <br>
+
+      <!-- ── Availability ───────────────────────────────────── -->
+      <fieldset>
+        <legend>Weekend Availability</legend>
+        <p>Select all time slots you are available for matches:</p>
+
+        <!-- checkboxes: same name sends multiple values -->
+        <input type="checkbox" id="sat-am" name="availability" value="sat-am">
+        <label for="sat-am">Saturday Morning (09:00–13:00)</label><br>
+
+        <input type="checkbox" id="sat-pm" name="availability" value="sat-pm">
+        <label for="sat-pm">Saturday Afternoon (14:00–18:00)</label><br>
+
+        <input type="checkbox" id="sun-am" name="availability" value="sun-am">
+        <label for="sun-am">Sunday Morning (09:00–13:00)</label><br>
+
+        <input type="checkbox" id="sun-pm" name="availability" value="sun-pm">
+        <label for="sun-pm">Sunday Afternoon (14:00–18:00)</label>
+      </fieldset>
+      <br>
+
+      <!-- ── Confirmation ───────────────────────────────────── -->
+      <fieldset>
+        <legend>Confirmation</legend>
+
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I agree to the tournament rules and code of conduct (required)</label><br><br>
+
+        <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+        <label for="newsletter">Subscribe to StarForge news and future events</label><br><br>
+
+        <button type="submit">Submit Registration</button>
+        <button type="reset">Clear Form</button>
+      </fieldset>
+
+    </form>
+
+  </body>
+</html>

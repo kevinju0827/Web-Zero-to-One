@@ -1,208 +1,373 @@
 # M16 Deployment
 
-## The "Why?"
+![Module 16 of 16](https://img.shields.io/badge/Module-16_of_16-6366f1?style=flat-square)
+![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
+![1-2 hours](https://img.shields.io/badge/Time-1--2_hours-60a5fa?style=flat-square)
+![Prerequisites: M01–M15](https://img.shields.io/badge/Prerequisites-M01–M15-94a3b8?style=flat-square)
 
-Congratulations—you've reached the final module. You can now structure pages with semantic HTML, style them with the CSS box model, build layouts with Flexbox and Grid, make them responsive with media queries, and accelerate everything with Bootstrap.
+**Topics covered:** GitHub Pages · repository setup · `index.html` requirement · deploying from a branch · custom domains · DNS basics · production checklist
 
-But so far, your masterpiece only exists on your own computer. The HTML file lives somewhere on your hard drive and no one else in the world can see it. A site that no one can visit is just a clever local document.
+---
 
-**Deployment** is the step that fixes that. It is the process of moving your files from your local machine to a **web server**—a computer that is connected to the internet 24/7 and serves your site to anyone with the URL. The best part: for a static site like the ones we built in this course, deployment is **completely free** thanks to services like GitHub Pages, Netlify, and Vercel. Within five minutes of finishing this module, your site can be live on the public internet with a real URL you can share.
+## The Why?
 
-## Goals
+A website that only runs on your computer is not a website — it is a file. Deployment is the step that turns your local HTML and CSS into something with a real URL that anyone in the world can visit.
 
-Understand the difference between static and dynamic hosting, and learn how to deploy a static website for free using GitHub Pages.  
-By the end of this module, you should be able to prepare a project for deployment (correct file naming, relative paths, no broken assets), push it to a GitHub repository, enable GitHub Pages, and verify the live site loads correctly on a public URL you can share.
+GitHub Pages is the simplest free hosting option for static sites (HTML, CSS, and JavaScript without a server). It integrates directly with the Git repository you have been using throughout this course. Deploying your project is four steps: push your code to GitHub, enable Pages in the repository settings, wait 60 seconds, and open your URL.
+
+Understanding deployment also means understanding what "static" hosting means and what it cannot do — so you know when you have outgrown it and need something more.
+
+By the end of this module you will be able to:
+- Deploy a static HTML/CSS site to GitHub Pages
+- Understand what `index.html` must be named and why
+- Set a custom domain for your project
+- Know the basics of how DNS works
+
+---
 
 ## Core Concepts
 
-### 1. What Is a "Web Server"?
+### What GitHub Pages Does
 
-A web server is just a computer that is **always online**, listening for HTTP requests, and ready to send back HTML, CSS, JavaScript, and image files to anyone who asks. Your home Wi-Fi router could technically do this, but in practice we use cloud-hosted services so we don't have to worry about uptime, security, bandwidth, or the electricity bill.
+GitHub Pages takes any HTML, CSS, and JavaScript files in a public GitHub repository and serves them at:
 
-### 2. Static vs. Dynamic Hosting
-
-This distinction decides which kind of hosting service you can use.
-
-* **Static hosting** — the server simply hands out the exact same HTML, CSS, JS, and image files to every visitor. Nothing is generated on the fly. This is what everything you built in this course needs. Hosts: **GitHub Pages**, **Netlify**, **Vercel**, **Cloudflare Pages**. All are free for personal projects.
-* **Dynamic hosting** — the server runs code (PHP, Python, Node.js, Ruby, etc.) and talks to a database to build a different page for every request. Used for things like full-stack apps, blogs with logins, and e-commerce sites. Hosts: **AWS**, **Heroku**, **DigitalOcean**, **Render**. These usually cost money once you exceed a small free tier.
-
-Since every project in this course is HTML + CSS + a sprinkle of JS, **static hosting is exactly what we need**.
-
-### 3. GitHub Pages
-
-GitHub Pages is a free service built into every GitHub account. It takes the contents of one of your repositories and publishes it as a public website at `https://<your-username>.github.io/<repository-name>/`.
-
-You get:
-
-* A public URL you can share.
-* Automatic redeployment every time you push a commit to GitHub.
-* Free HTTPS (the little padlock icon next to the URL).
-* Optional support for a custom domain (e.g. `myportfolio.com`) if you own one.
-
-### 4. The "Final Project" Convention
-
-Every web server has a default file it serves when someone visits the root URL. That file is **`index.html`**. If you visit `https://example.com/`, the server is really sending you `https://example.com/index.html`—you just don't see it in the address bar.
-
-This means your main page **must be named exactly `index.html`** (all lowercase, no spaces, no `.htm`). Anything else and the deployment will show a blank "404 Not Found" page.
-
-### 5. Absolute vs. Relative Paths
-
-This is the single most common cause of "it worked on my machine but the live site is broken." When you reference an image, a stylesheet, or another page, use **relative paths**:
-
-```html
-<!-- BAD: absolute path to your hard drive — will never work on the live site -->
-<img src="C:\Users\Alex\Desktop\photos\hero.jpg">
-
-<!-- BAD: absolute file URL -->
-<img src="file:///D:/projects/site/hero.jpg">
-
-<!-- GOOD: relative path — works locally AND on the live server -->
-<img src="./images/hero.jpg">
-<img src="images/hero.jpg">
+```
+https://<username>.github.io/<repository-name>/
 ```
 
-Relative paths describe **where the file is in relation to the HTML file**, which stays the same no matter what computer is hosting it.
+It is a **static** host — it serves files exactly as they are. It cannot run server-side code (Python, Node.js, PHP), process form submissions, or connect to a database. For this course, that is not a limitation — every file you have built is static.
+
+---
+
+### The `index.html` Requirement
+
+When a browser visits a URL without a filename (e.g., `https://you.github.io/my-site/`), the server looks for `index.html` in that directory. If it exists, it is served automatically. If it does not exist, the server returns a 404.
+
+**Your main page must be named `index.html`.**
+
+This applies to the root of your project and to any subdirectory that should have its own default page.
+
+---
+
+### Deploying to GitHub Pages
+
+**Step 1 — Create a repository on GitHub**
+
+1. Go to [github.com](https://github.com) and sign in
+2. Click **New repository**
+3. Name it (e.g., `my-portfolio`)
+4. Set it to **Public** (required for free GitHub Pages)
+5. Click **Create repository**
+
+**Step 2 — Push your project**
+
+If you have not set up Git locally:
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git push -u origin main
+```
+
+If you already have a Git repo (as in this course):
+```bash
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git push -u origin main
+```
+
+**Step 3 — Enable GitHub Pages**
+
+1. Go to your repository on GitHub
+2. Click **Settings** → **Pages** (in the left sidebar)
+3. Under **Source**, select **Deploy from a branch**
+4. Select branch: `main`, folder: `/ (root)`
+5. Click **Save**
+
+**Step 4 — Visit your URL**
+
+After 30–60 seconds, your site is live at:
+```
+https://YOUR_USERNAME.github.io/YOUR_REPO/
+```
+
+GitHub sends an email when the first deployment completes.
+
+---
+
+### Updating Your Site
+
+Every `git push` to the `main` branch triggers a new deployment automatically. There is no separate deploy step after setup.
+
+```bash
+# Edit your files, then:
+git add .
+git commit -m "Update hero section"
+git push
+# Site updates in ~30 seconds
+```
+
+---
+
+### Custom Domains
+
+GitHub Pages supports custom domains — instead of `username.github.io/repo`, your site can be at `yourdomain.com`.
+
+**Step 1 — Buy a domain**
+
+Purchase a domain from a registrar (e.g., Namecheap, Cloudflare, Google Domains).
+
+**Step 2 — Add a CNAME file**
+
+In your repository root, create a file named `CNAME` (no extension) containing only your domain:
+
+```
+yourdomain.com
+```
+
+Or add it through GitHub Settings → Pages → Custom domain.
+
+**Step 3 — Configure DNS**
+
+In your domain registrar's DNS settings, add:
+
+For an **apex domain** (`yourdomain.com`):
+```
+Type: A
+Name: @
+Values:
+  185.199.108.153
+  185.199.109.153
+  185.199.110.153
+  185.199.111.153
+```
+
+For a **subdomain** (`www.yourdomain.com`):
+```
+Type: CNAME
+Name: www
+Value: YOUR_USERNAME.github.io
+```
+
+DNS changes propagate in minutes to hours. GitHub Pages also provides a free HTTPS certificate once the custom domain is connected.
+
+---
+
+### How DNS Works (Overview)
+
+When someone types `yourdomain.com` in a browser:
+
+```mermaid
+graph LR
+    B["Browser"]
+    R["DNS Resolver\n(usually your ISP)"]
+    A["Authoritative DNS\n(your registrar)"]
+    S["GitHub Pages server\n185.199.108.153"]
+    B -->|"1. What is yourdomain.com?"| R
+    R -->|"2. Ask authoritative DNS"| A
+    A -->|"3. Return IP address"| R
+    R -->|"4. 185.199.108.153"| B
+    B -->|"5. HTTP request"| S
+    S -->|"6. HTML response"| B
+```
+
+1. Browser asks a DNS resolver for the IP address of `yourdomain.com`
+2. The resolver asks your domain's authoritative DNS server (your registrar)
+3. Your registrar returns the A record IP address you configured
+4. The resolver passes it back to the browser
+5. The browser sends an HTTP request to that IP
+6. GitHub's server finds your repository and serves `index.html`
+
+**TTL (Time to Live)** — DNS records are cached for a period set in the record (often 3600 seconds / 1 hour). Changes take up to TTL seconds to propagate globally.
+
+---
+
+## Going Further
+
+<details>
+<summary>🌐 GitHub Pages vs other static hosts</summary>
+
+GitHub Pages is the simplest option but has limits:
+- Repository must be **public** (free plan) or use GitHub Pro/Team
+- No server-side processing
+- 1GB repository size limit, 100GB monthly bandwidth
+
+Alternatives worth knowing:
+
+| Host | Free tier | Notes |
+|------|-----------|-------|
+| **Netlify** | Yes | Drag-and-drop deploy, form handling, serverless functions |
+| **Vercel** | Yes | Fast CDN, easy GitHub integration, great for JS frameworks |
+| **Cloudflare Pages** | Yes | Extremely fast CDN, CI/CD from GitHub |
+| **GitHub Pages** | Yes (public repos) | Simplest setup, integrated with this course's workflow |
+
+For pure HTML/CSS projects, any of these work identically. Netlify's drag-and-drop is the fastest option for a one-off deploy.
+
+</details>
+
+<details>
+<summary>🔒 HTTPS — why it matters and how Pages handles it</summary>
+
+HTTPS encrypts traffic between the server and the browser. Without it:
+- Browsers show a "Not secure" warning
+- Search engines rank HTTPS sites higher
+- Modern browser features (geolocation, service workers, camera access) are disabled
+
+GitHub Pages provides free HTTPS automatically for `github.io` URLs and for custom domains (via Let's Encrypt, after DNS is configured). You do not need to do anything — check the **Enforce HTTPS** checkbox in Settings → Pages.
+
+</details>
+
+<details>
+<summary>📁 Project structure for deployment</summary>
+
+A well-structured project for deployment:
+
+```
+my-portfolio/
+├── index.html          ← must be named this — the entry point
+├── about.html
+├── projects.html
+├── css/
+│   └── styles.css      ← if you extracted CSS to a file
+├── images/
+│   ├── hero.jpg
+│   └── avatar.png
+└── CNAME               ← only if using a custom domain
+```
+
+Relative paths (`../images/hero.jpg`, `./css/styles.css`) work correctly on GitHub Pages. Never use absolute paths starting with `/` unless you know your repo is at the root of the domain.
+
+</details>
+
+<details>
+<summary>🤖 AI and deployment</summary>
+
+Deployment is one area where AI is genuinely useful for troubleshooting, but verify anything it suggests with the current documentation:
+
+- **404 on custom domain** — AI can walk through DNS A record configuration, but registrar UIs change. Cross-reference with your registrar's documentation.
+- **Broken relative paths** — If your site works locally but images or CSS are missing on Pages, AI can help diagnose path issues: ask it to review your `<link>` and `<img>` src values against your directory structure.
+- **CNAME file conflicts** — AI correctly identifies that having a CNAME in the repo and setting a custom domain in GitHub Settings can conflict; ask it to clarify the canonical setup.
+
+Useful AI prompt:
+- *"My GitHub Pages site is live but images are not loading. My repo is at github.com/user/site and my images folder is /images. Here is my img src: [paste]. What is wrong?"*
+
+</details>
+
+---
 
 ## Guided Practice
 
-In this practice, we will treat the portfolio site you built at the end of M15 like a **real product launch**. Putting files on GitHub Pages is only the first step — a *production-quality* deployment also makes the site shareable on social media, handles broken URLs gracefully, and passes a basic performance audit. By the end of this walkthrough you will have a live, polished site you can actually put on your résumé.
+This module has no example HTML file — the practice is deploying your own project.
 
-* Step 1: Audit the Project Locally Before Pushing
+---
 
-  The single fastest way to ship a broken site is to deploy first and audit later. Five minutes of local checks save hours of "why is it 404ing only on the live URL" debugging.
-  * Open your portfolio folder in WebStorm. Verify:
-    * Your main page is named exactly `index.html` (all lowercase, no spaces, no `.htm`).
-    * Every asset lives in a sensible subfolder, e.g. `images/`, `css/`, `js/`.
-    * Every `src` and `href` attribute uses a **relative** path (`images/profile.jpg`), never an absolute one (`C:\Users\...` or `file:///D:/...`).
-  * In WebStorm's built-in terminal, run:
-  ```bash
-  ls
-  ```
-  * **Observation:** Confirm `index.html` is visible at the root of the folder. If it's inside a `src/` or `dist/` subfolder, GitHub Pages won't find it without extra configuration.
+### Step 1: Choose your project
 
-* Step 2: Add Open Graph Meta Tags (so the site looks good when shared)
+Pick the page you are most proud of from this course — your M15 Summit page, an M08 Solstice cards page, or anything you have built. Alternatively, build a simple personal portfolio for this exercise.
 
-  When someone pastes your portfolio URL into Slack, Twitter, WhatsApp, or LinkedIn, the platform fetches your `<head>` and looks for **Open Graph (OG)** meta tags. Without them, your link shows up as a sad gray rectangle. With them, it shows a polished preview card with your name, tagline, and a hero image — and that is what every recruiter sees first.
-  * Inside the `<head>` of `index.html`, add:
-  ```html
-  <!-- Page metadata -->
-  <title>Alex Chen — Frontend Developer Portfolio</title>
-  <meta name="description" content="I build fast, accessible web interfaces. Portfolio, projects, and contact.">
+---
 
-  <!-- Open Graph (Facebook, LinkedIn, Slack, WhatsApp) -->
-  <meta property="og:title" content="Alex Chen — Frontend Developer">
-  <meta property="og:description" content="I build fast, accessible web interfaces.">
-  <meta property="og:image" content="https://alexchen.github.io/my-portfolio/images/og-cover.jpg">
-  <meta property="og:url" content="https://alexchen.github.io/my-portfolio/">
-  <meta property="og:type" content="website">
+### Step 2: Ensure the entry file is named `index.html`
 
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Alex Chen — Frontend Developer">
-  <meta name="twitter:description" content="I build fast, accessible web interfaces.">
-  <meta name="twitter:image" content="https://alexchen.github.io/my-portfolio/images/og-cover.jpg">
+Rename your main HTML file to `index.html` if it is not already. This is required for GitHub Pages to serve it at the root URL.
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
-  ```
-  * Place a `1200×630px` image at `images/og-cover.jpg` (Pixabay, unDraw, or a screenshot of your hero section all work fine).
-  * **Observation:** The `og:image` URL must be **absolute** (start with `https://...`), not relative. Social platforms fetch the image from the open internet — they can't resolve a relative path. This is the one exception to the "relative paths everywhere" rule.
+If your project references other files (CSS, images), verify all paths are relative and working locally before deploying.
 
-* Step 3: Add a Custom 404 Page
+---
 
-  Sooner or later, someone will visit a broken URL on your site (a stale tweet, a typo, an outdated bookmark). By default they'll see GitHub's generic "404 — File not found" page. A custom `404.html` lets you control that experience — show a witty message, link them back to the homepage, and keep them on your site.
-  * Create a new file at the root of your project: `404.html`.
-  * Add minimal content:
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>404 — That page wandered off</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  </head>
-  <body class="bg-dark text-light d-flex align-items-center" style="min-height:100vh;">
-    <div class="container text-center">
-      <div class="display-1 fw-bold text-warning">404</div>
-      <h1 class="display-5 mb-3">That page wandered off.</h1>
-      <p class="lead opacity-75 mb-4">Either the URL is wrong, or something on the site is broken and I should know about it.</p>
-      <a href="/" class="btn btn-warning btn-lg">← Back to the homepage</a>
-    </div>
-  </body>
-  </html>
-  ```
-  * **Observation:** GitHub Pages has a special rule — if a file named `404.html` exists at the root of your repository, it gets served automatically for any URL that doesn't match an existing file. No configuration needed.
+### Step 3: Create a GitHub repository
 
-* Step 4: Push to GitHub and Enable Pages
+1. Go to [github.com](https://github.com) → **New repository**
+2. Name it descriptively (e.g., `summit-outdoor`, `my-portfolio`)
+3. Set visibility to **Public**
+4. Do **not** add a README or .gitignore — your project already has its own files
+5. Click **Create repository**
 
-  Now we ship.
-  * On [github.com](https://github.com), click the green **New** button and create a public repository named `my-portfolio` (or whatever you like — but lowercase and hyphenated is conventional). Do **not** check "Add a README".
-  * In WebStorm's terminal, from inside your project folder, run these commands one at a time, replacing the URL on the third line with the one shown on your new repo's page:
-  ```bash
-  git init
-  git add .
-  git commit -m "Initial portfolio launch"
-  git branch -M main
-  git remote add origin https://github.com/<your-username>/my-portfolio.git
-  git push -u origin main
-  ```
-  * In your repository on GitHub, click **Settings → Pages** in the left sidebar.
-  * Under **Build and deployment**, set **Source** to **Deploy from a branch**, then choose `main` and `/ (root)`. Click **Save**.
-  * **Observation:** Within 1–2 minutes, the Pages settings page shows a green banner with your live URL: `https://<your-username>.github.io/my-portfolio/`. If you refresh and the link returns 404, wait another minute — the very first deployment can take a while to propagate.
+---
 
-* Step 5: Verify the Live Site With DevTools (the production checklist)
+### Step 4: Push your project
 
-  Local works ≠ production works. Always verify on the actual deployed URL.
-  * Open the live URL in Chrome.
-  * Press **F12** to open Developer Tools.
-  * Switch to the **Network** tab and reload the page (`Ctrl + R`). Scan the request list:
-    * Every row should show a green status (200) — **no red 404s**.
-    * Especially watch for case-mismatched paths: `Images/Photo.JPG` works on Windows locally but **fails on GitHub Pages**, whose Linux servers are case-sensitive.
-  * Switch to the **Console** tab. There should be **no red error messages**.
-  * Press `Ctrl + Shift + M` to open the Device Toggle. Test at 375px, 768px, and 1280px — confirm no horizontal overflow, all images load, and the hamburger menu still works.
-  * **Observation:** This 60-second pass catches 90% of "but it worked locally" deploy bugs. Get in the habit of doing it after every push.
+Copy the commands GitHub shows on the "Quick setup" page. In your project folder:
 
-* Step 6: Verify the Social Preview Card
+```bash
+git init
+git add .
+git commit -m "Initial deploy"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git push -u origin main
+```
 
-  Now confirm the OG tags you wrote in Step 2 actually render the way you intended on other platforms.
-  * Visit Meta's [Sharing Debugger](https://developers.facebook.com/tools/debug/) (it works for any OG tags, not just Facebook).
-  * Paste your live URL into the input field and click **Debug**.
-  * Inspect the preview card it generates. Verify the title, description, and image are all correct.
-  * If anything looks wrong, click **Scrape Again** after fixing it on your site — social platforms aggressively cache OG data, so this button is essential.
-  * **Observation:** Many platforms (LinkedIn especially) cache OG previews for *days*. The Sharing Debugger is the way to force a re-scrape so your changes show up immediately when you share.
+---
 
-* Step 7: Run a Lighthouse Performance Audit
+### Step 5: Enable GitHub Pages
 
-  Lighthouse is a free, built-in Chrome tool that rates your site on Performance, Accessibility, Best Practices, and SEO — the same scores Google uses when ranking pages.
-  * On your live URL, open DevTools (F12) and click the **Lighthouse** tab.
-  * Select **Mobile**, check all four categories, and click **Analyze page load**.
-  * **Observation:** Aim for **90+ in every category**. Anything red (Performance under 50, Accessibility under 90) is worth fixing before you put the URL on your résumé. Common quick wins:
-    * Add `alt` text to every `<img>` (huge Accessibility bump).
-    * Specify `width` and `height` attributes on images (Performance — prevents layout shift).
-    * Convert oversized hero images from JPG to WebP.
-    * Add a `lang` attribute on `<html>`.
+1. In your repository → **Settings** → **Pages**
+2. Source: **Deploy from a branch**
+3. Branch: `main`, Folder: `/ (root)`
+4. Click **Save**
 
-* Step 8: Ship an Update and Watch It Redeploy
+---
 
-  GitHub Pages auto-redeploys on every push to `main`. Get one cycle under your belt so the workflow feels routine.
-  * Change a piece of text in `index.html` — a tagline, a section heading, anything visible.
-  * In the terminal, run:
-  ```bash
-  git add .
-  git commit -m "Update homepage tagline"
-  git push
-  ```
-  * **Observation:** Wait ~30 seconds, refresh your live URL, and see the change appear. This — `edit → commit → push → live` — is the deployment workflow you'll use for the rest of your career, from your portfolio to a billion-dollar product.
+### Step 6: Visit your live URL
+
+After 30–60 seconds, open:
+```
+https://YOUR_USERNAME.github.io/YOUR_REPO/
+```
+
+Share this URL — it is your first real website on the internet.
+
+---
+
+### Step 7: Make a change and redeploy
+
+Edit something in `index.html` — change a heading, update a colour. Then:
+
+```bash
+git add index.html
+git commit -m "Update heading text"
+git push
+```
+
+Wait ~30 seconds and refresh your GitHub Pages URL. The change is live.
+
+---
+
+### Step 8: (Optional) Add a custom domain
+
+If you own or purchase a domain, follow the DNS steps in Core Concepts above. Add a `CNAME` file containing your domain name, commit and push it, then configure your registrar's DNS settings.
+
+---
+
+### Step 9: Ask AI to enhance
+
+Share your GitHub Pages URL with Gemini and prompt:
+
+> *"Here is my live website: [your URL]. Review the HTML and CSS visible on the page and give me three specific improvements I should make before sharing this as part of a portfolio. Focus on: correct use of semantic HTML, any obvious accessibility issues, and one visual improvement to the design."*
+
+---
 
 ## Checkpoints
 
-* [ ] Production-Launch Your Portfolio Site  
-      Take the portfolio you built at the end of M15 and deploy it to the public internet at a quality you'd be comfortable putting on a résumé or LinkedIn. Every requirement below must be verified on the **live URL** — not on your local machine:
-      * **Correct File Layout**: Your main page is named exactly `index.html` at the root of the repository. Every asset path is **relative** and **case-correct** (verify on the deployed URL, not just locally — GitHub Pages servers are case-sensitive even if your laptop is not).
-      * **Live on GitHub Pages**: The site is publicly reachable at `https://<your-username>.github.io/<repo-name>/`. Open it from a different browser or from your phone over mobile data to confirm it really is public.
-      * **Clean Network Panel**: Open the live site in Chrome, press F12, and reload with the Network tab open. There must be **zero 404 (red) entries** and **zero red Console errors**.
-      * **OG / Social Preview Card**: Add Open Graph + Twitter Card meta tags to your `<head>`, including a `1200×630` cover image stored in the repository. Paste your live URL into Meta's [Sharing Debugger](https://developers.facebook.com/tools/debug/) and screenshot the rendered preview card — the title, description, and image must all be the ones you wrote.
-      * **Custom 404 Page**: Create a `404.html` file at the root of the repository. Visit any non-existent URL on your live site (e.g. `https://<your-user>.github.io/<repo>/this-does-not-exist`) and confirm your custom 404 page renders, with a link back to the homepage.
-      * **Lighthouse Score**: Run a Chrome DevTools Lighthouse audit on the live URL in **Mobile** mode. Score **at least 90** in **Accessibility**, **Best Practices**, and **SEO**. (Performance can be harder if you use a lot of large images — aim for at least 75 there.) Fix any easy wins Lighthouse flags before considering the checkpoint complete.
-      * **Continuous Deployment Drill**: Make one visible change locally (a color, a tagline, a project description), commit it with a clear message, and push to `main`. Refresh the live URL one minute later and confirm the change is live. This proves your auto-deploy pipeline works end-to-end.
-      * **Share It (this is the actual point of deployment)**: Send the live URL to **at least two** other people — a friend, a classmate, a recruiter, a community Discord. The whole reason we deploy is to give the work an audience. A site that no one visits is just a folder on a hard drive with a fancier address.
+* [ ] **Live Deployment**  
+  Deploy a project to GitHub Pages. Requirements:
+  - The repository is public on GitHub
+  - `index.html` exists at the root
+  - The live URL (`https://username.github.io/repo/`) opens correctly in a browser with no 404
+  - All images, CSS, and links work on the live URL (not just locally)
+  - GitHub Pages **Enforce HTTPS** is enabled in Settings → Pages
+  - Share the URL as proof of completion
+
+* [ ] **Production Checklist**  
+  Before calling a site production-ready, verify all of the following on your deployed page:
+  - [ ] `<title>` is set and descriptive (not "Untitled Document")
+  - [ ] `<meta name="viewport">` is present
+  - [ ] `<meta name="description">` is present with a 1–2 sentence site description
+  - [ ] All `<img>` tags have `alt` attributes
+  - [ ] All internal links resolve (no 404s) — click every link
+  - [ ] No JavaScript console errors (open DevTools → Console)
+  - [ ] Site is readable at 375px width (mobile) with no horizontal scrolling
+  - [ ] `color-contrast` checker passes for body text (use [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/))
+  - [ ] Page loads in under 3 seconds on a simulated slow 3G connection (DevTools → Network → throttle to "Slow 3G")

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solstice Wellness Spa</title>
+
+    <style>
+      /* ── Reset — border-box applied globally ───────────────── */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* ── Base ───────────────────────────────────────────────── */
+      body {
+        font-family: system-ui, sans-serif;
+        background-color: #f8f5f0;
+        color: #2d2d2d;
+        padding: 3rem 1.5rem;
+      }
+
+      /* ── Page header ────────────────────────────────────────── */
+      .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #9a7d5a;
+        margin-bottom: 0.5rem;
+      }
+
+      .page-header h1 {
+        font-size: 2.5rem;
+        font-weight: 300;
+        letter-spacing: -0.5px;
+        margin-bottom: 0.5rem;
+      }
+
+      .subtitle {
+        color: rgba(45, 45, 45, 0.55);
+        font-size: 1rem;
+      }
+
+      /* ── Card grid — flex row, centred, capped width ────────── */
+      .card-grid {
+        display: flex;
+        gap: 1.5rem;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      /* ── Service card base ──────────────────────────────────── */
+      .service-card {
+        flex: 1;
+        background-color: white;
+        border: 1px solid #e8e0d5;
+        border-radius: 12px;
+        overflow: hidden;        /* clips accent bar to border-radius */
+      }
+
+      /* ── Accent bar ─────────────────────────────────────────── */
+      .card-accent {
+        height: 4px;
+        background-color: #c9a87a;
+      }
+
+      /* ── Card body — padding shorthand: all four sides equal ── */
+      .card-body {
+        padding: 1.75rem;
+      }
+
+      .service-card h2 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+
+      /* duration: class selector, gold accent colour */
+      .duration {
+        font-size: 0.82rem;
+        color: #9a7d5a;
+        font-weight: 600;
+        margin-bottom: 0.9rem;
+      }
+
+      /* :not() excludes .duration from the general <p> rule */
+      .service-card p:not(.duration) {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: rgba(45, 45, 45, 0.7);
+        margin-bottom: 1.5rem;
+      }
+
+      /* card-link: display: inline-block so padding-bottom works */
+      .card-link {
+        display: inline-block;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #9a7d5a;
+        text-decoration: none;
+        border-bottom: 1px solid #9a7d5a;
+        padding-bottom: 2px;
+      }
+
+      /* ── Featured card — thicker border, taller accent bar ──── */
+      /* border-width overrides the 1px set on .service-card */
+      .featured-card {
+        border-color: #c9a87a;
+        border-width: 2px;
+      }
+
+      .featured-card .card-accent {
+        height: 6px;
+        background-color: #9a7d5a;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Page header — centred with text-align and margin-bottom -->
+    <header class="page-header">
+      <p class="label">Wellness &amp; Recovery</p>
+      <h1>Our Services</h1>
+      <p class="subtitle">Each treatment is tailored to restore balance.</p>
+    </header>
+
+    <!-- Card grid — flex container, gap separates the three cards -->
+    <div class="card-grid">
+
+      <!-- Service card 1: standard -->
+      <article class="service-card">
+        <!-- accent bar: height + background-color, clipped by overflow:hidden -->
+        <div class="card-accent"></div>
+        <!-- card body: padding: 1.75rem on all four sides (border-box keeps outer size) -->
+        <div class="card-body">
+          <h2>Deep Tissue Massage</h2>
+          <p class="duration">75 min · $120</p>
+          <p>Sustained pressure targeting the deepest layers of muscle tissue to release chronic tension patterns.</p>
+          <a href="#" class="card-link">Book now</a>
+        </div>
+      </article>
+
+      <!-- Service card 2: featured — border-color + border-width override -->
+      <article class="service-card featured-card">
+        <div class="card-accent"></div>
+        <div class="card-body">
+          <h2>Himalayan Salt Stone</h2>
+          <p class="duration">90 min · $155</p>
+          <p>Warm salt stones melt tension while trace minerals absorb through the skin, deeply replenishing the body.</p>
+          <a href="#" class="card-link">Book now</a>
+        </div>
+      </article>
+
+      <!-- Service card 3: standard -->
+      <article class="service-card">
+        <div class="card-accent"></div>
+        <div class="card-body">
+          <h2>Restorative Facial</h2>
+          <p class="duration">60 min · $95</p>
+          <p>A gentle, science-backed treatment addressing hydration, tone, and radiance using botanical actives.</p>
+          <a href="#" class="card-link">Book now</a>
+        </div>
+      </article>
+
+    </div>
+
+  </body>
+</html>

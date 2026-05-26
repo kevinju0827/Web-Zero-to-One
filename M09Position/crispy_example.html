@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crispy — Food Delivery</title>
+
+    <style>
+      /* ── Reset ─────────────────────────────────────────────── */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, sans-serif;
+        background-color: #fafaf8;
+        color: #1a1a1a;
+      }
+
+      /* ── Sticky navbar — locks to top of viewport on scroll ── */
+      .site-nav {
+        position: sticky;
+        top: 0;
+        background-color: white;
+        border-bottom: 1px solid #e5e5e5;
+        z-index: 100;
+      }
+
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: #e85d2f;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #555;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      /* ── Hero ───────────────────────────────────────────────── */
+      .hero {
+        max-width: 700px;
+        margin: 5rem auto;
+        padding: 0 2rem;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+        color: #666;
+        line-height: 1.7;
+      }
+
+      /* ── Menu section ───────────────────────────────────────── */
+      .menu-section {
+        max-width: 1100px;
+        margin: 0 auto 6rem;
+        padding: 0 2rem;
+      }
+
+      .section-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+
+      .card-grid {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      /* position: relative — establishes positioning context for the badge */
+      .menu-card {
+        flex: 1;
+        background-color: white;
+        border: 1px solid #ebebeb;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* card-image: coloured placeholder, contains the absolute badge */
+      .card-image {
+        height: 160px;
+        background-color: #ffe8dd;
+        position: relative;
+      }
+
+      /* position: absolute — overlays the top-right corner of card-image */
+      .card-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background-color: #e85d2f;
+        color: white;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 0.25rem 0.6rem;
+        border-radius: 99px;
+      }
+
+      .card-info {
+        padding: 1.25rem;
+      }
+
+      .card-info h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .card-info p {
+        font-size: 0.85rem;
+        color: #888;
+        line-height: 1.5;
+        margin-bottom: 0.75rem;
+      }
+
+      .price {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #e85d2f;
+      }
+
+      /* ── Fixed floating button — viewport-anchored, stays on scroll */
+      .float-btn {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background-color: #e85d2f;
+        color: white;
+        border: none;
+        border-radius: 99px;
+        padding: 0.85rem 1.75rem;
+        font-size: 0.95rem;
+        font-weight: 700;
+        cursor: pointer;
+        z-index: 50;
+        box-shadow: 0 4px 16px rgba(232, 93, 47, 0.35);
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- sticky nav — stays at top on scroll (position: sticky, top: 0) -->
+    <nav class="site-nav">
+      <div class="nav-inner">
+        <span class="nav-logo">Crispy</span>
+        <ul class="nav-links">
+          <li><a href="#">Menu</a></li>
+          <li><a href="#">How it works</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- hero — static in flow, no position set -->
+    <section class="hero">
+      <h1>Food that reaches you fast.</h1>
+      <p>Hot meals from 200+ local restaurants — delivered in under 30 minutes.</p>
+    </section>
+
+    <!-- menu section — cards with absolute badges inside relative containers -->
+    <section class="menu-section">
+      <h2 class="section-title">Popular right now</h2>
+      <div class="card-grid">
+
+        <article class="menu-card">
+          <!-- .card-image (position: relative) contains the badge -->
+          <div class="card-image">
+            <!-- position: absolute — top-right corner of .card-image -->
+            <div class="card-badge">20 min</div>
+          </div>
+          <div class="card-info">
+            <h3>Spicy Ramen</h3>
+            <p>Rich tonkotsu broth, chashu pork, soft egg.</p>
+            <span class="price">$14.90</span>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="card-image">
+            <div class="card-badge">15 min</div>
+          </div>
+          <div class="card-info">
+            <h3>Crispy Chicken Burger</h3>
+            <p>Double-fried thigh, pickled slaw, sriracha mayo.</p>
+            <span class="price">$12.50</span>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="card-image">
+            <div class="card-badge">25 min</div>
+          </div>
+          <div class="card-info">
+            <h3>Margherita Pizza</h3>
+            <p>San Marzano tomato, fresh mozzarella, basil.</p>
+            <span class="price">$16.00</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- fixed button — position: fixed keeps it in viewport bottom-right -->
+    <button class="float-btn">Order now</button>
+
+  </body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vela Magazine</title>
+
+    <!-- Google Fonts: Playfair Display (serif) + Lato (sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+      /* ── Reset ─────────────────────────────────────────────── */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* ── Global defaults — element selectors ───────────────── */
+      body {
+        font-family: 'Lato', system-ui, sans-serif;
+        background-color: #f8f7f4;     /* warm off-white */
+        color: #1c1c2e;
+        max-width: 800px;
+        margin: 0 auto;                /* centres the column */
+      }
+
+      /* Serif headings for editorial hierarchy */
+      h1 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 4.5rem;
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -2px;
+      }
+
+      h2 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 0.5rem;
+      }
+
+      /* h3 as uppercase label — small sans-serif + letter-spacing */
+      h3 {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #1d6fa4;
+        margin: 2rem 0 0.75rem;
+      }
+
+      /* Body text: rem unit + line-height + rgba for softness */
+      p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: rgba(28, 28, 46, 0.82);
+        margin-bottom: 1.25rem;
+      }
+
+      /* ── ID selector — masthead ─────────────────────────────── */
+      #masthead {
+        background-color: #0d2137;   /* deep ocean navy */
+        color: #f0ece4;
+        padding: 4rem 2rem;
+        text-align: center;
+        margin-bottom: 0;
+      }
+
+      #masthead h1 {
+        color: #f0ece4;
+      }
+
+      /* Descendant: only <p class="tagline"> inside #masthead */
+      #masthead .tagline {
+        font-size: 1rem;
+        color: rgba(240, 236, 228, 0.6);
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+      }
+
+      #masthead .site-label {
+        color: rgba(240, 236, 228, 0.5);
+      }
+
+      /* ── Nav — descendant + pseudo-class ───────────────────── */
+      .main-nav {
+        background-color: #0d2137;
+        padding: 0.75rem 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .main-nav a {
+        color: rgba(240, 236, 228, 0.7);
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-right: 2rem;
+      }
+
+      .main-nav a:hover {
+        color: #f0ece4;
+      }
+
+      /* ── Content padding ────────────────────────────────────── */
+      .content {
+        padding: 0 2rem 4rem;
+      }
+
+      /* ── Class selectors — labels and metadata ──────────────── */
+
+      /* Grouping selector: both label classes share the same style */
+      .site-label,
+      .article-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: #1d6fa4;
+        margin-bottom: 0.6rem;
+      }
+
+      .byline {
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: rgba(28, 28, 46, 0.45);
+        margin-bottom: 2rem;
+      }
+
+      /* ── Pull quote — blockquote with border-left ───────────── */
+      .pull-quote {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 1.35rem;
+        line-height: 1.6;
+        color: #1d6fa4;
+        border-left: 4px solid #1d6fa4;
+        padding: 0.5rem 0 0.5rem 1.5rem;
+        margin: 2.5rem 0;
+      }
+
+      /* ── Inline highlight — <span class="name-highlight"> ───── */
+      .name-highlight {
+        font-weight: 700;
+        color: #0d2137;
+      }
+
+      /* ── Footer ─────────────────────────────────────────────── */
+      #site-footer {
+        background-color: #0d2137;
+        color: rgba(240, 236, 228, 0.5);
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Dark masthead — ID selector target -->
+    <header id="masthead">
+      <p class="site-label">Adventure &middot; July 2026</p>
+      <h1>Vela</h1>
+      <p class="tagline">Stories from the open ocean.</p>
+    </header>
+
+    <!-- Nav — descendant selector: .main-nav a -->
+    <nav class="main-nav">
+      <a href="#">Voyages</a>
+      <a href="#">Gear</a>
+      <a href="#">Destinations</a>
+      <a href="#">Community</a>
+    </nav>
+
+    <main class="content">
+      <article>
+
+        <!-- article-label: class selector demo -->
+        <p class="article-label">Feature</p>
+
+        <h2>Crossing the Atlantic: 28 Days Between Wind and Water</h2>
+
+        <!-- byline: rgba color demo -->
+        <p class="byline">By Serena Marchetti &middot; 12 min read</p>
+
+        <p>The first thing you lose is your sense of time. Within a week at sea, the familiar rhythm of hours dissolves into something older and more honest: the arc of the sun, the shift of the stars, the watch schedule that divides your crew into sleeping halves.</p>
+
+        <!-- Pull quote: italic serif, border-left, color -->
+        <blockquote class="pull-quote">"There is nothing between you and the horizon. That is not emptiness &mdash; it is space enough for every thought you have been avoiding."</blockquote>
+
+        <p>By day four we had left the shipping lanes. The AIS display, which had shown a constellation of nearby vessels, cleared to a single blinking dot: ours. We were, for the first time in our lives, genuinely alone on open water.</p>
+
+        <!-- h3 as uppercase section label — text-transform + letter-spacing -->
+        <h3>The Crew</h3>
+
+        <!-- name-highlight: font-weight + color on inline <span> -->
+        <p>Four people share this 42-foot sloop. <span class="name-highlight">Serena</span> handles navigation; <span class="name-highlight">Diego</span> manages the sails with a quiet competence that borders on art; <span class="name-highlight">Yuki</span> and <span class="name-highlight">Tom&aacute;s</span> split the cooking and the overnight watches. Each brings a different temperament to the confined space of a 42-foot hull, which turns out to be exactly enough.</p>
+
+      </article>
+    </main>
+
+    <footer id="site-footer">
+      <p>&copy; 2026 Vela Magazine &middot; All rights reserved.</p>
+    </footer>
+
+  </body>
+</html>

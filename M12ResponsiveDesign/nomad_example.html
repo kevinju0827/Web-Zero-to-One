@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nomad — Travel Agency</title>
+
+    <style>
+      /* ── Reset ─────────────────────────────────────────────── */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      body {
+        font-family: system-ui, sans-serif;
+        background-color: #f8f8f5;
+        color: #1a1a1a;
+        line-height: 1.6;
+      }
+
+      /* ── Header — mobile: stacked; tablet+: row ─────────────── */
+      .site-header {
+        background-color: white;
+        border-bottom: 1px solid #e5e5e5;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        display: flex;
+        flex-direction: column;   /* mobile: logo above nav */
+        gap: 0.75rem;
+      }
+
+      /* Tablet: side-by-side */
+      @media (min-width: 768px) {
+        .header-inner {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      .site-logo {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: #1a3a2a;
+      }
+
+      .site-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.25rem;
+      }
+
+      .site-nav a {
+        text-decoration: none;
+        color: #555;
+        font-size: 0.88rem;
+        font-weight: 500;
+      }
+
+      .nav-cta {
+        color: #1a3a2a !important;
+        font-weight: 700 !important;
+      }
+
+      /* ── Hero — clamp() for fluid font sizes ────────────────── */
+      .hero {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 1.5rem;
+      }
+
+      .hero-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #4a7a5a;
+        margin-bottom: 1rem;
+      }
+
+      /* clamp: minimum 2rem, preferred 5vw, maximum 3.5rem */
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        color: #1a3a2a;
+        margin-bottom: 1rem;
+      }
+
+      .hero-sub {
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        color: #666;
+        max-width: 560px;
+      }
+
+      /* ── Destination cards — mobile-first grid ──────────────── */
+      .destinations {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 5rem;
+      }
+
+      .section-title {
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+        font-weight: 700;
+        color: #1a3a2a;
+        margin-bottom: 2rem;
+      }
+
+      /* Mobile: single column — base style, no query */
+      .card-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      /* Tablet: two columns */
+      @media (min-width: 768px) {
+        .card-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Desktop: three columns */
+      @media (min-width: 1024px) {
+        .card-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .dest-card {
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #e8e8e0;
+      }
+
+      .card-img {
+        height: 200px;
+      }
+
+      .img-1 { background-color: #c4a882; }
+      .img-2 { background-color: #82aec4; }
+      .img-3 { background-color: #a0b8c8; }
+      .img-4 { background-color: #b8a082; }
+      .img-5 { background-color: #c8a0b0; }
+      .img-6 { background-color: #a8c4a0; }
+
+      .card-body {
+        padding: 1.25rem;
+      }
+
+      .card-body h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1a3a2a;
+        margin-bottom: 0.35rem;
+      }
+
+      .card-body p {
+        font-size: 0.85rem;
+        color: #777;
+        line-height: 1.5;
+        margin-bottom: 0.75rem;
+      }
+
+      .duration {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: #4a7a5a;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      /* ── About section — mobile: stacked; tablet+: two columns ─ */
+      .about-section {
+        background-color: #1a3a2a;
+        color: #e8efe8;
+        padding: 5rem 1.5rem;
+      }
+
+      .about-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;   /* mobile: single column */
+        gap: 2.5rem;
+      }
+
+      /* Tablet+: two equal columns */
+      @media (min-width: 768px) {
+        .about-inner {
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+        }
+      }
+
+      .about-text h2 {
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        font-weight: 700;
+        margin-bottom: 1.25rem;
+        line-height: 1.2;
+      }
+
+      .about-text p {
+        font-size: 0.95rem;
+        color: rgba(232, 239, 232, 0.75);
+        line-height: 1.75;
+        margin-bottom: 1rem;
+      }
+
+      .about-visual {
+        height: 260px;
+        background-color: #2a5a3a;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Header: stacks vertically on mobile, row on tablet+ -->
+    <header class="site-header">
+      <div class="header-inner">
+        <span class="site-logo">Nomad</span>
+        <nav class="site-nav">
+          <a href="#">Destinations</a>
+          <a href="#">Trips</a>
+          <a href="#">About</a>
+          <a href="#" class="nav-cta">Get in touch</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero: clamp() scales heading and subtitle fluidly -->
+    <section class="hero">
+      <p class="hero-label">Curated · Small Group · Sustainable</p>
+      <h1>Travel farther.<br>Tread lightly.</h1>
+      <p class="hero-sub">Handcrafted itineraries for curious travellers. From the Atlas Mountains to the Mekong Delta.</p>
+    </section>
+
+    <!-- Card grid: 1 col → 2 col → 3 col with min-width breakpoints -->
+    <section class="destinations">
+      <h2 class="section-title">Where do you want to go?</h2>
+      <div class="card-grid">
+
+        <article class="dest-card">
+          <div class="card-img img-1"></div>
+          <div class="card-body">
+            <h3>Morocco</h3>
+            <p>Medinas, mountains, and desert silence.</p>
+            <span class="duration">12 days</span>
+          </div>
+        </article>
+
+        <article class="dest-card">
+          <div class="card-img img-2"></div>
+          <div class="card-body">
+            <h3>Vietnam</h3>
+            <p>Street food, ancient towns, and karst peaks.</p>
+            <span class="duration">14 days</span>
+          </div>
+        </article>
+
+        <article class="dest-card">
+          <div class="card-img img-3"></div>
+          <div class="card-body">
+            <h3>Iceland</h3>
+            <p>Geysers, glaciers, and the midnight sun.</p>
+            <span class="duration">10 days</span>
+          </div>
+        </article>
+
+        <article class="dest-card">
+          <div class="card-img img-4"></div>
+          <div class="card-body">
+            <h3>Peru</h3>
+            <p>Inca trails, cloud forests, and lost cities.</p>
+            <span class="duration">15 days</span>
+          </div>
+        </article>
+
+        <article class="dest-card">
+          <div class="card-img img-5"></div>
+          <div class="card-body">
+            <h3>Japan</h3>
+            <p>Cherry blossoms, ryokans, and mountain shrines.</p>
+            <span class="duration">13 days</span>
+          </div>
+        </article>
+
+        <article class="dest-card">
+          <div class="card-img img-6"></div>
+          <div class="card-body">
+            <h3>Kenya</h3>
+            <p>Safari, savanna, and the Great Rift Valley.</p>
+            <span class="duration">11 days</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- About: single column mobile, two-column tablet+ -->
+    <section class="about-section">
+      <div class="about-inner">
+        <div class="about-text">
+          <h2>Travel that means something.</h2>
+          <p>Every Nomad itinerary is designed with local guides, low group sizes, and a commitment to leaving places better than we find them.</p>
+          <p>We work directly with communities — not tour aggregators — so your trip supports the people who make the destination worth visiting.</p>
+        </div>
+        <div class="about-visual"></div>
+      </div>
+    </section>
+
+  </body>
+</html>

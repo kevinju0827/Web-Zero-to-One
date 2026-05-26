@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wavelength — Podcast Discovery</title>
+
+    <style>
+      /* ── Reset ─────────────────────────────────────────────── */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, sans-serif;
+        background-color: #0f0f13;
+        color: #e8e8f0;
+      }
+
+      /* ── Site header — justify-content: space-between ───────── */
+      .site-header {
+        background-color: #18181f;
+        border-bottom: 1px solid #2a2a35;
+      }
+
+      .header-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 1.25rem 2rem;
+        display: flex;
+        justify-content: space-between;   /* logo left, nav right */
+        align-items: center;
+      }
+
+      .site-logo {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: #a78bfa;
+      }
+
+      /* nav links: nested flex row */
+      .header-nav {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .header-nav a {
+        text-decoration: none;
+        color: #94a3b8;
+        font-size: 0.88rem;
+        font-weight: 500;
+      }
+
+      /* ── Hero ───────────────────────────────────────────────── */
+      .hero {
+        max-width: 1100px;
+        margin: 4rem auto 3rem;
+        padding: 0 2rem;
+      }
+
+      .hero-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #a78bfa;
+        margin-bottom: 0.75rem;
+      }
+
+      .hero h1 {
+        font-size: 2.6rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color: #f0f0fa;
+      }
+
+      /* ── Section label ──────────────────────────────────────── */
+      .section-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #64748b;
+        margin-bottom: 1.25rem;
+      }
+
+      /* ── Podcast card row — all cards equal width ───────────── */
+      .episodes-section {
+        max-width: 1100px;
+        margin: 0 auto 5rem;
+        padding: 0 2rem;
+      }
+
+      /* flex container: items in a row, evenly gapped */
+      .card-row {
+        display: flex;
+        gap: 1.25rem;
+      }
+
+      /* flex: 1 — each card gets equal share of row width */
+      .podcast-card {
+        flex: 1;
+        background-color: #18181f;
+        border: 1px solid #2a2a35;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;   /* column layout inside each card */
+      }
+
+      .card-cover {
+        height: 140px;
+      }
+
+      .cover-1 { background-color: #2d1b4e; }
+      .cover-2 { background-color: #0d2b3e; }
+      .cover-3 { background-color: #1a2e1a; }
+      .cover-4 { background-color: #2e1a1a; }
+
+      /* flex: 1 fills remaining height — ensures equal-height cards */
+      .card-meta {
+        padding: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .category-tag {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #a78bfa;
+        background-color: rgba(167, 139, 250, 0.12);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        margin-bottom: 0.6rem;
+        align-self: flex-start;
+      }
+
+      .card-meta h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+        color: #f0f0fa;
+      }
+
+      /* flex: 1 pushes .ep-info to the bottom of the card */
+      .card-meta p {
+        font-size: 0.82rem;
+        color: #64748b;
+        line-height: 1.55;
+        flex: 1;
+      }
+
+      .ep-info {
+        font-size: 0.75rem;
+        color: #475569;
+        margin-top: 0.75rem;
+      }
+
+      /* ── Featured row — flex: 3 / flex: 1 proportions ──────── */
+      .featured-section {
+        max-width: 1100px;
+        margin: 0 auto 5rem;
+        padding: 0 2rem;
+      }
+
+      .featured-row {
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+      }
+
+      /* flex: 3 — main card takes 3x the space of the aside */
+      .featured-main {
+        flex: 3;
+        background-color: #18181f;
+        border: 1px solid #2a2a35;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .featured-cover {
+        height: 220px;
+        background-color: #1e1030;
+      }
+
+      .featured-body {
+        padding: 1.5rem;
+      }
+
+      .featured-body h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #f0f0fa;
+        margin: 0.5rem 0 0.75rem;
+      }
+
+      .featured-body p {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        line-height: 1.7;
+        margin-bottom: 0.75rem;
+      }
+
+      /* flex: 1 — aside takes 1/4 of the row */
+      .featured-aside {
+        flex: 1;
+        background-color: #18181f;
+        border: 1px solid #2a2a35;
+        border-radius: 12px;
+        padding: 1.5rem;
+      }
+
+      .aside-heading {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #64748b;
+        margin-bottom: 1rem;
+      }
+
+      /* flex-direction: column inside the list */
+      .queue-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+
+      .queue-list li {
+        font-size: 0.85rem;
+        color: #94a3b8;
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid #2a2a35;
+        line-height: 1.4;
+      }
+
+      .queue-list li:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Header — justify-content: space-between pushes logo and nav apart -->
+    <header class="site-header">
+      <div class="header-inner">
+        <span class="site-logo">Wavelength</span>
+        <nav class="header-nav">
+          <a href="#">Trending</a>
+          <a href="#">Categories</a>
+          <a href="#">New</a>
+          <a href="#">Sign in</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <p class="hero-label">Discover · Listen · Follow</p>
+      <h1>Your next favourite podcast<br>is one play away.</h1>
+    </section>
+
+    <!-- Card row — flex: 1 makes all cards equal width, equal height -->
+    <section class="episodes-section">
+      <h2 class="section-label">Trending now</h2>
+      <div class="card-row">
+
+        <article class="podcast-card">
+          <div class="card-cover cover-1"></div>
+          <div class="card-meta">
+            <span class="category-tag">Technology</span>
+            <h3>The Algorithm</h3>
+            <p>Why your feed is showing you exactly what you did not know you wanted.</p>
+            <span class="ep-info">Ep. 42 · 38 min</span>
+          </div>
+        </article>
+
+        <article class="podcast-card">
+          <div class="card-cover cover-2"></div>
+          <div class="card-meta">
+            <span class="category-tag">Science</span>
+            <h3>Deep Time</h3>
+            <p>A geologist explains what 4.5 billion years actually means for human perspective.</p>
+            <span class="ep-info">Ep. 11 · 52 min</span>
+          </div>
+        </article>
+
+        <article class="podcast-card">
+          <div class="card-cover cover-3"></div>
+          <div class="card-meta">
+            <span class="category-tag">Design</span>
+            <h3>Invisible Work</h3>
+            <p>The decisions behind great products that users never notice — until they are missing.</p>
+            <span class="ep-info">Ep. 7 · 44 min</span>
+          </div>
+        </article>
+
+        <article class="podcast-card">
+          <div class="card-cover cover-4"></div>
+          <div class="card-meta">
+            <span class="category-tag">Business</span>
+            <h3>The Cold Start</h3>
+            <p>What actually happens in the first 90 days of a startup that survives year one.</p>
+            <span class="ep-info">Ep. 3 · 61 min</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Featured row — flex: 3 + flex: 1 for 3:1 proportional layout -->
+    <section class="featured-section">
+      <h2 class="section-label">Editor&apos;s pick</h2>
+      <div class="featured-row">
+
+        <!-- flex: 3 — main card takes 3/4 of the row -->
+        <article class="featured-main">
+          <div class="featured-cover"></div>
+          <div class="featured-body">
+            <span class="category-tag">History</span>
+            <h2>The Last Broadcast</h2>
+            <p>An oral history of the radio era — told by the engineers, DJs, and listeners who lived it. Six episodes. No filler.</p>
+            <span class="ep-info">6 episodes · avg 55 min</span>
+          </div>
+        </article>
+
+        <!-- flex: 1 — aside takes 1/4 of the row -->
+        <aside class="featured-aside">
+          <h3 class="aside-heading">Up next</h3>
+          <ul class="queue-list">
+            <li>The Telephone Exchange — Nostalgia Radio</li>
+            <li>Signal Lost — True Stories</li>
+            <li>Frequency — Music &amp; Memory</li>
+            <li>Static — Inside the Industry</li>
+          </ul>
+        </aside>
+
+      </div>
+    </section>
+
+  </body>
+</html>

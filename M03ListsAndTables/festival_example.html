@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunset Reel — Programme</title>
+  </head>
+  <body>
+
+    <!-- ── Header ─────────────────────────────────────────── -->
+    <h1>Sunset Reel Film Festival</h1>
+    <p><i>Independent cinema, three days, one city.</i></p>
+
+    <!-- ── Venues — unordered list with nested sub-list ───── -->
+    <h2>Venues</h2>
+    <ul>
+      <li>The Grand Pavilion
+        <ul>
+          <li>Main Screen — 450 seats</li>
+          <li>Studio Screen — 120 seats</li>
+        </ul>
+      </li>
+      <li>The Warehouse Cinema — 200 seats</li>
+      <li>The Rooftop Garden — 80 seats (weather permitting)</li>
+    </ul>
+
+    <!-- ── Daily order — ordered list ────────────────────── -->
+    <h2>Daily Programme Order</h2>
+    <ol>
+      <li>Morning shorts block (60 min)</li>
+      <li>Feature film screening</li>
+      <li>Director Q&amp;A session</li>
+      <li>Lunch break</li>
+      <li>Afternoon feature + panel discussion</li>
+      <li>Evening gala screening</li>
+    </ol>
+
+    <!-- ── Award categories — definition list ─────────────── -->
+    <h2>Award Categories</h2>
+    <dl>
+      <dt>Best Feature Film</dt>
+      <dd>Awarded to the most outstanding film of 90 minutes or longer.</dd>
+
+      <dt>Best Short Film</dt>
+      <dd>Awarded to films under 40 minutes. Animated and live-action eligible.</dd>
+
+      <dt>Audience Choice</dt>
+      <dd>Voted by festival attendees via ballot at each screening.</dd>
+
+      <dt>Best Emerging Director</dt>
+      <dd>Open to directors releasing their first or second feature.</dd>
+    </dl>
+
+    <!-- ── Schedule — full semantic table with spans ──────── -->
+    <h2>Saturday Screening Schedule</h2>
+    <table>
+      <!-- caption: visible title attached to the table for screen readers and print -->
+      <caption>All times are local. Doors open 15 minutes before each screening.</caption>
+
+      <thead>
+        <tr>
+          <th scope="col">Time</th>
+          <th scope="col">Main Screen</th>
+          <th scope="col">Studio Screen</th>
+          <th scope="col">Rooftop Garden</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>10:00</td>
+          <td>Shorts Block A (60 min)</td>
+          <td>Shorts Block B (60 min)</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>12:00</td>
+          <!-- colspan="3": one cell spans Main Screen, Studio Screen, Rooftop Garden -->
+          <td colspan="3"><strong>Opening Ceremony</strong> — all screens dark</td>
+        </tr>
+        <tr>
+          <td>14:00</td>
+          <td>The Salt Flats (112 min)</td>
+          <td>Ordinary Machines (88 min)</td>
+          <!-- rowspan="2": this cell covers both the 14:00 and 16:30 rows -->
+          <td rowspan="2">Open-air shorts marathon (3 hrs)</td>
+        </tr>
+        <tr>
+          <td>16:30</td>
+          <td>Director Q&amp;A — The Salt Flats</td>
+          <td>Panel: Documentary Ethics</td>
+          <!-- no 4th <td> here — the rowspan above already fills this cell -->
+        </tr>
+        <tr>
+          <td>19:00</td>
+          <td colspan="3"><strong>Gala Screening:</strong> Between the Lines (World Premiere)</td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <!-- tfoot spans all 4 columns -->
+        <tr>
+          <td colspan="4">All screenings include English subtitles. Programme subject to change.</td>
+        </tr>
+      </tfoot>
+    </table>
+
+  </body>
+</html>

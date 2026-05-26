@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivid — UI Component Showcase</title>
+
+    <style>
+      /* ── Reset ─────────────────────────────────────────────── */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, sans-serif;
+        background-color: #f4f4f8;
+        color: #1a1a2e;
+        padding: 3rem 2rem;
+      }
+
+      .showcase {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+      }
+
+      .demo-block {
+        background-color: white;
+        border: 1px solid #e5e5ef;
+        border-radius: 16px;
+        padding: 2rem;
+      }
+
+      .demo-title {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #8888aa;
+        margin-bottom: 1.5rem;
+      }
+
+      /* ── Buttons — transition: background, border, transform, shadow ─ */
+      .btn-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 0.6rem 1.5rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: background-color 0.15s ease, border-color 0.15s ease,
+                    transform 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      .btn-primary { background-color: #4f46e5; color: white; }
+      .btn-primary:hover {
+        background-color: #4338ca;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(79,70,229,0.35);
+      }
+
+      .btn-outline { background-color: transparent; color: #4f46e5; border-color: #4f46e5; }
+      .btn-outline:hover { background-color: #4f46e5; color: white; }
+
+      .btn-danger { background-color: #ef4444; color: white; }
+      .btn-danger:hover { background-color: #dc2626; transform: translateY(-1px); }
+
+      /* ── Cards — transition: transform + shadow (lift effect) ── */
+      .card-row {
+        display: flex;
+        gap: 1.25rem;
+      }
+
+      .lift-card {
+        flex: 1;
+        background-color: #fafafd;
+        border: 1px solid #e5e5ef;
+        border-radius: 12px;
+        padding: 1.5rem;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .lift-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+      }
+
+      .card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+
+      .lift-card h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+
+      .lift-card p { font-size: 0.82rem; color: #777; line-height: 1.5; }
+
+      /* ── Spinner — @keyframes spin, linear infinite ──────────── */
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+      }
+
+      .spinner-row {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .spinner {
+        border-radius: 50%;
+        border: 3px solid #e5e5ef;
+        border-top-color: #4f46e5;
+        animation: spin 0.8s linear infinite;
+      }
+
+      .spinner-sm { width: 24px; height: 24px; }
+      .spinner-md { width: 40px; height: 40px; }
+      .spinner-lg { width: 56px; height: 56px; border-width: 5px; }
+
+      /* ── Entrance animation — @keyframes slideUp with stagger ── */
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      .enter-cards {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .enter-card {
+        flex: 1;
+        background-color: #4f46e5;
+        color: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+        font-weight: 700;
+        /* fill-mode: both — invisible before animation, holds end state after */
+        animation: slideUp 0.4s ease-out both;
+      }
+
+      /* Staggered delays: 80ms increments */
+      .enter-card:nth-child(1) { animation-delay: 0ms; }
+      .enter-card:nth-child(2) { animation-delay: 100ms; }
+      .enter-card:nth-child(3) { animation-delay: 200ms; }
+
+      /* ── Pulsing badge — @keyframes pulse-ring ──────────────── */
+      @keyframes pulse-ring {
+        0%   { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5); }
+        70%  { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+      }
+
+      .icon-group {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .icon-wrap {
+        position: relative;
+        display: inline-block;
+      }
+
+      .icon-bell { font-size: 2rem; }
+
+      .pulse-badge {
+        position: absolute;
+        top: -6px;
+        right: -8px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #ef4444;
+        color: white;
+        font-size: 0.65rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pulse-ring 1.5s ease-out infinite;
+      }
+
+      /* ── Accessibility — disable all animation for reduced-motion preference ─ */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="showcase">
+
+      <!-- Button transitions -->
+      <div class="demo-block">
+        <p class="demo-title">Button transitions</p>
+        <div class="btn-row">
+          <button class="btn btn-primary">Save changes</button>
+          <button class="btn btn-outline">Cancel</button>
+          <button class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+
+      <!-- Card lift effect -->
+      <div class="demo-block">
+        <p class="demo-title">Card hover effect</p>
+        <div class="card-row">
+          <div class="lift-card">
+            <div class="card-icon">🎨</div>
+            <h3>Design tokens</h3>
+            <p>Colours, spacing, and typography as reusable variables.</p>
+          </div>
+          <div class="lift-card">
+            <div class="card-icon">🧩</div>
+            <h3>Components</h3>
+            <p>Buttons, inputs, cards, and modals ready to use.</p>
+          </div>
+          <div class="lift-card">
+            <div class="card-icon">📐</div>
+            <h3>Layout system</h3>
+            <p>Flex and grid utilities for consistent spacing.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading spinners -->
+      <div class="demo-block">
+        <p class="demo-title">Loading states</p>
+        <div class="spinner-row">
+          <div class="spinner spinner-sm"></div>
+          <div class="spinner spinner-md"></div>
+          <div class="spinner spinner-lg"></div>
+        </div>
+      </div>
+
+      <!-- Entrance animation with stagger -->
+      <div class="demo-block">
+        <p class="demo-title">Entrance animation</p>
+        <div class="enter-cards">
+          <div class="enter-card">First</div>
+          <div class="enter-card">Second</div>
+          <div class="enter-card">Third</div>
+        </div>
+      </div>
+
+      <!-- Pulsing notification badge -->
+      <div class="demo-block">
+        <p class="demo-title">Pulsing badge</p>
+        <div class="icon-group">
+          <div class="icon-wrap">
+            <span class="icon-bell">🔔</span>
+            <span class="pulse-badge">3</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
