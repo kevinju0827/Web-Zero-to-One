@@ -467,10 +467,10 @@ body {
   height: 140px;
 }
 
-.cover-1 { background-color: #2d1b4e; }
-.cover-2 { background-color: #0d2b3e; }
-.cover-3 { background-color: #1a2e1a; }
-.cover-4 { background-color: #2e1a1a; }
+.cover-1 { background-color: #2d1b4e; background-image: url('https://picsum.photos/seed/podcast-tech/560/280'); background-size: cover; background-position: center; }
+.cover-2 { background-color: #0d2b3e; background-image: url('https://picsum.photos/seed/podcast-science/560/280'); background-size: cover; background-position: center; }
+.cover-3 { background-color: #1a2e1a; background-image: url('https://picsum.photos/seed/podcast-design/560/280'); background-size: cover; background-position: center; }
+.cover-4 { background-color: #2e1a1a; background-image: url('https://picsum.photos/seed/podcast-business/560/280'); background-size: cover; background-position: center; }
 
 /* flex: 1 on .card-meta fills remaining height — makes all cards equal */
 .card-meta {
@@ -573,6 +573,9 @@ body {
 .featured-cover {
   height: 220px;
   background-color: #1e1030;
+  background-image: url('https://picsum.photos/seed/podcast-history/900/440');
+  background-size: cover;
+  background-position: center;
 }
 
 .featured-body {

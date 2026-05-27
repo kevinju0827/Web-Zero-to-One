@@ -274,15 +274,15 @@ Useful AI prompts:
 
 ## Guided Practice
 
-**Scenario:** You are building the service cards section for **Solstice** — a fictional wellness spa. Each card needs precise padding, a styled border, radius, and spacing from its neighbours.
+**Scenario:** You are building the menu page for **Verona** — a fictional Italian restaurant. The layout demonstrates every box model layer: `padding` creates breathing room inside menu items, `border` draws visible dividers and the tasting-menu callout, `border-radius` rounds containers, and `margin` spaces sections apart.
 
-See `solstice_example.html` in this folder for the finished result.
+See `solstice_example.html` in this folder for the finished result. (The file is named `solstice_example.html` for historical reasons — it contains the Verona restaurant layout.)
 
 ---
 
 ### Step 1: Create the file
 
-In `M08BoxModel`, create `solstice.html` with the standard document skeleton. Title: `Solstice Wellness Spa`. Add an empty `<style>` block.
+In `M08BoxModel`, create `verona.html` with the standard document skeleton. Title: `Verona — Italian Kitchen`. Add an empty `<style>` block.
 
 ---
 
@@ -297,57 +297,91 @@ In `M08BoxModel`, create `solstice.html` with the standard document skeleton. Ti
 
 body {
   font-family: system-ui, sans-serif;
-  background-color: #f8f5f0;
-  color: #2d2d2d;
+  background-color: #fdf8f2;
+  color: #1a0a00;
   padding: 3rem 1.5rem;
 }
 ```
 
+`box-sizing: border-box` on `*` means every element's `width` includes its padding and border — no arithmetic needed later.
+
 ---
 
-### Step 3: Add the HTML
+### Step 3: Add the HTML structure
 
 ```html
 <header class="page-header">
-  <p class="label">Wellness &amp; Recovery</p>
-  <h1>Our Services</h1>
-  <p class="subtitle">Each treatment is tailored to restore balance.</p>
+  <p class="label">Ristorante &amp; Bar</p>
+  <h1>Verona</h1>
+  <p class="subtitle">Contemporary Italian kitchen. Open from 5 PM.</p>
 </header>
 
-<div class="card-grid">
+<div class="menu">
 
-  <article class="service-card">
-    <div class="card-accent"></div>
-    <div class="card-body">
-      <h2>Deep Tissue Massage</h2>
-      <p class="duration">75 min · $120</p>
-      <p>Sustained pressure targeting the deepest layers of muscle tissue to release chronic tension patterns.</p>
-      <a href="#" class="card-link">Book now</a>
-    </div>
-  </article>
+  <div class="tasting-menu">
+    <h2>Chef's Tasting Menu</h2>
+    <p class="meta">7 courses &middot; $110 per person &middot; Seasonal, changes weekly</p>
+    <ul class="tasting-courses">
+      <li>Amuse-bouche &mdash; burrata, roasted tomato, basil oil</li>
+      <li>Crudo &mdash; scallop, yuzu, cucumber, dill</li>
+      <li>Soup &mdash; white bean, rosemary, fried sage</li>
+      <li>Pasta &mdash; hand-rolled pappardelle, wild boar ragù</li>
+      <li>Fish &mdash; line-caught sea bass, saffron, fennel</li>
+      <li>Meat &mdash; 45-day dry-aged beef, Barolo reduction</li>
+      <li>Dolce &mdash; affogato, hazelnut praline</li>
+    </ul>
+  </div>
 
-  <article class="service-card featured-card">
-    <div class="card-accent"></div>
-    <div class="card-body">
-      <h2>Himalayan Salt Stone</h2>
-      <p class="duration">90 min · $155</p>
-      <p>Warm salt stones melt tension while trace minerals absorb through the skin, deeply replenishing the body.</p>
-      <a href="#" class="card-link">Book now</a>
-    </div>
-  </article>
+  <section class="menu-section">
+    <h2>Antipasti</h2>
 
-  <article class="service-card">
-    <div class="card-accent"></div>
-    <div class="card-body">
-      <h2>Restorative Facial</h2>
-      <p class="duration">60 min · $95</p>
-      <p>A gentle, science-backed treatment addressing hydration, tone, and radiance using botanical actives.</p>
-      <a href="#" class="card-link">Book now</a>
+    <div class="menu-item">
+      <div>
+        <div class="item-name">Bruschetta al Pomodoro</div>
+        <p class="item-desc">Wood-fired bread, slow-roasted tomato, basil, aged balsamic.</p>
+      </div>
+      <span class="item-price">$14</span>
     </div>
-  </article>
+
+    <div class="menu-item">
+      <div>
+        <div class="item-name">Burrata e Prosciutto</div>
+        <p class="item-desc">Imported burrata, 24-month prosciutto di Parma, truffle honey, walnuts.</p>
+      </div>
+      <span class="item-price">$22</span>
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <h2>Pasta</h2>
+
+    <div class="menu-item">
+      <div>
+        <div class="item-name">Tagliatelle al Ragù</div>
+        <p class="item-desc">Egg pasta, slow-cooked beef and pork ragù, Parmigiano, fresh basil.</p>
+      </div>
+      <span class="item-price">$32</span>
+    </div>
+
+    <div class="menu-item">
+      <div>
+        <div class="item-name">Cacio e Pepe</div>
+        <p class="item-desc">Tonnarelli, Pecorino Romano, Parmigiano, hand-cracked black pepper.</p>
+      </div>
+      <span class="item-price">$28</span>
+    </div>
+  </section>
+
+  <div class="reservation-box">
+    <h2>Reserve a Table</h2>
+    <p>Dinner service Tuesday – Saturday from 5 PM.<br>Tasting menu available by reservation only.</p>
+    <a href="#" class="reserve-btn">Book a Table</a>
+  </div>
 
 </div>
 ```
+
+Open in Chrome. Unstyled content — ready for CSS.
 
 ---
 
@@ -356,132 +390,200 @@ body {
 ```css
 .page-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;  /* margin: space OUTSIDE the element */
 }
 
 .label {
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #9a7d5a;
-  margin-bottom: 0.5rem;
+  letter-spacing: 0.18em;
+  color: #8b2635;
+  margin-bottom: 0.4rem;
 }
 
 .page-header h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 300;
   letter-spacing: -0.5px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .subtitle {
-  color: rgba(45, 45, 45, 0.55);
+  color: rgba(26, 10, 0, 0.5);
   font-size: 1rem;
 }
-```
 
----
-
-### Step 5: Style the card grid and card base
-
-```css
-.card-grid {
-  display: flex;
-  gap: 1.5rem;
-  max-width: 1000px;
+.menu {
+  max-width: 740px;
   margin: 0 auto;
 }
-
-.service-card {
-  flex: 1;
-  background-color: white;
-  border: 1px solid #e8e0d5;
-  border-radius: 12px;
-  overflow: hidden;        /* clips the accent bar to the border-radius */
-}
 ```
 
 ---
 
-### Step 6: Add the accent bar and card body
+### Step 5: Style the tasting menu callout
+
+This is the key box model demo — `border` + `border-radius` + `padding` together create a contained callout box:
 
 ```css
-.card-accent {
-  height: 4px;
-  background-color: #c9a87a;
+.tasting-menu {
+  border: 2px solid #8b2635;     /* border: visible edge */
+  border-radius: 10px;           /* rounds all four corners */
+  padding: 2rem;                 /* space between border and content */
+  margin-bottom: 3rem;           /* space outside the box */
+  background-color: #fff9f5;
 }
 
-.card-body {
-  padding: 1.75rem;        /* all four sides equal */
-}
-
-.service-card h2 {
+.tasting-menu h2 {
   font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-}
-
-.duration {
-  font-size: 0.82rem;
-  color: #9a7d5a;
-  font-weight: 600;
-  margin-bottom: 0.9rem;
-}
-
-.service-card p:not(.duration) {
-  font-size: 0.9rem;
-  line-height: 1.7;
-  color: rgba(45, 45, 45, 0.7);
-  margin-bottom: 1.5rem;
-}
-
-.card-link {
-  display: inline-block;
-  font-size: 0.82rem;
   font-weight: 700;
-  color: #9a7d5a;
-  text-decoration: none;
-  border-bottom: 1px solid #9a7d5a;
-  padding-bottom: 2px;
+  color: #8b2635;
+  margin-bottom: 0.25rem;
+}
+
+.tasting-menu .meta {
+  font-size: 0.8rem;
+  color: rgba(26, 10, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.tasting-courses {
+  list-style: none;
+  border-top: 1px solid #ddc9b8;
+  padding-top: 0.75rem;          /* padding between border-top and items */
+}
+
+.tasting-courses li {
+  padding: 0.45rem 0;            /* vertical padding separates items */
+  border-bottom: 1px solid #f0e4d8;
+  font-size: 0.9rem;
+  color: rgba(26, 10, 0, 0.8);
+}
+
+.tasting-courses li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 ```
+
+Open DevTools and click the `.tasting-menu` element. In the Styles panel, scroll to the **box model diagram** (nested rectangles). You will see the `2rem` padding, the `2px` border, and the `3rem` margin illustrated as separate coloured layers.
 
 ---
 
-### Step 7: Style the featured card
+### Step 6: Style the menu sections and items
 
 ```css
-.featured-card {
-  border-color: #c9a87a;
-  border-width: 2px;
+.menu-section {
+  margin-bottom: 3rem;           /* margin separates sections */
 }
 
-.featured-card .card-accent {
-  height: 6px;
-  background-color: #9a7d5a;
+/* border-bottom as a visual divider — no border-radius needed */
+.menu-section h2 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #8b2635;
+  border-bottom: 1px solid #ddc9b8;
+  padding-bottom: 0.6rem;        /* padding above the border-bottom line */
+  margin-bottom: 1.25rem;
+}
+
+.menu-item {
+  padding: 0.9rem 0;             /* vertical padding separates rows */
+  border-bottom: 1px solid #f0e4d8;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.item-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a0a00;
+  margin-bottom: 0.25rem;
+}
+
+.item-desc {
+  font-size: 0.88rem;
+  color: rgba(26, 10, 0, 0.6);
+  line-height: 1.6;
+}
+
+.item-price {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #8b2635;
+  white-space: nowrap;
+  padding-top: 0.1rem;
 }
 ```
 
-Open DevTools, click on `.card-body`, and inspect the box model panel. Confirm the padding shows `1.75rem` (~28px) on all sides. Check that the border on `.featured-card` is `2px` versus `1px` on the others.
+Notice the contrast with the tasting menu: menu items use `padding: 0.9rem 0` (vertical only, no left/right), while the tasting callout uses `padding: 2rem` (all sides). Both are padding — the difference is how much and where.
+
+---
+
+### Step 7: Style the reservation callout
+
+```css
+.reservation-box {
+  background-color: #8b2635;
+  color: white;
+  padding: 2rem 2.5rem;          /* padding: content far from edges */
+  border-radius: 10px;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.reservation-box h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.reservation-box p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.25rem;
+}
+
+.reserve-btn {
+  display: inline-block;
+  background-color: white;
+  color: #8b2635;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.65rem 2rem;         /* padding makes the button larger */
+  border-radius: 99px;
+  text-decoration: none;
+}
+```
+
+Compare the two callout boxes: `.tasting-menu` uses `border` with a transparent interior, `.reservation-box` uses a filled `background-color` with no border. Both use `border-radius` and `padding` — the same box model properties produce very different visual results.
 
 ---
 
 ### Step 8: Experiment with `box-sizing`
 
-Temporarily remove the `box-sizing: border-box` from the `*` reset. Notice how elements shift — the `.card-body` padding now adds to the card's total width. Re-add it.
+Temporarily remove `box-sizing: border-box` from the `*` reset. The `.tasting-menu`'s `padding: 2rem` now adds to its width, making it wider than `.menu`'s `max-width: 740px`. Restore it.
 
-Then add a wide padding to `.service-card` and observe how under `border-box` the card stays the same outer size while the content area shrinks.
+Then hover a `.menu-item` in DevTools and change its `padding` to `2rem` — watch how the box model diagram updates in real time.
 
 ---
 
 ### Step 9: Ask AI to enhance
 
-Paste your `solstice.html` into Gemini and prompt:
+Paste your `verona.html` into Gemini and prompt:
 
-> *"Here is a spa service cards page. Add CSS to: add a subtle `box-shadow` to each card that lifts slightly on hover, add a horizontal divider line inside `.card-body` between the duration and the description using a `border-top`, and style the Book Now link as a full-width pill button with padding and border-radius. Keep all existing CSS intact."*
+> *"Here is a restaurant menu page. Add CSS to: add a subtle box-shadow to the tasting menu callout, add a smooth background-color transition on menu items so they tint slightly on hover, and style the Book a Table button to scale up slightly on hover. Keep all existing CSS and HTML intact — only add new rules."*
 
-Save as `solstice_styled.html`.
+Save as `verona_styled.html`.
 
 ---
 

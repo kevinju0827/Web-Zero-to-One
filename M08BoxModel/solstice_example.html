@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solstice Wellness Spa</title>
+    <title>Verona — Italian Kitchen</title>
 
     <style>
       /* ── Reset — border-box applied globally ───────────────── */
@@ -16,158 +16,286 @@
       /* ── Base ───────────────────────────────────────────────── */
       body {
         font-family: system-ui, sans-serif;
-        background-color: #f8f5f0;
-        color: #2d2d2d;
+        background-color: #fdf8f2;
+        color: #1a0a00;
         padding: 3rem 1.5rem;
       }
 
       /* ── Page header ────────────────────────────────────────── */
       .page-header {
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: 3.5rem;  /* margin: space OUTSIDE the element */
       }
 
       .label {
         font-size: 0.7rem;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: #9a7d5a;
-        margin-bottom: 0.5rem;
+        letter-spacing: 0.18em;
+        color: #8b2635;
+        margin-bottom: 0.4rem;
       }
 
       .page-header h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: 300;
         letter-spacing: -0.5px;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
       }
 
       .subtitle {
-        color: rgba(45, 45, 45, 0.55);
+        color: rgba(26, 10, 0, 0.5);
         font-size: 1rem;
       }
 
-      /* ── Card grid — flex row, centred, capped width ────────── */
-      .card-grid {
-        display: flex;
-        gap: 1.5rem;
-        max-width: 1000px;
+      /* ── Menu wrapper ────────────────────────────────────────── */
+      .menu {
+        max-width: 740px;
         margin: 0 auto;
       }
 
-      /* ── Service card base ──────────────────────────────────── */
-      .service-card {
-        flex: 1;
-        background-color: white;
-        border: 1px solid #e8e0d5;
-        border-radius: 12px;
-        overflow: hidden;        /* clips accent bar to border-radius */
+      /* ── Tasting menu callout — border + border-radius + padding ─ */
+      .tasting-menu {
+        border: 2px solid #8b2635;     /* border: visible edge of the box  */
+        border-radius: 10px;           /* rounds all four corners           */
+        padding: 2rem;                 /* space between border and content  */
+        margin-bottom: 3rem;           /* space outside the box             */
+        background-color: #fff9f5;
       }
 
-      /* ── Accent bar ─────────────────────────────────────────── */
-      .card-accent {
-        height: 4px;
-        background-color: #c9a87a;
-      }
-
-      /* ── Card body — padding shorthand: all four sides equal ── */
-      .card-body {
-        padding: 1.75rem;
-      }
-
-      .service-card h2 {
+      .tasting-menu h2 {
         font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 0.3rem;
-      }
-
-      /* duration: class selector, gold accent colour */
-      .duration {
-        font-size: 0.82rem;
-        color: #9a7d5a;
-        font-weight: 600;
-        margin-bottom: 0.9rem;
-      }
-
-      /* :not() excludes .duration from the general <p> rule */
-      .service-card p:not(.duration) {
-        font-size: 0.9rem;
-        line-height: 1.7;
-        color: rgba(45, 45, 45, 0.7);
-        margin-bottom: 1.5rem;
-      }
-
-      /* card-link: display: inline-block so padding-bottom works */
-      .card-link {
-        display: inline-block;
-        font-size: 0.82rem;
         font-weight: 700;
-        color: #9a7d5a;
+        color: #8b2635;
+        margin-bottom: 0.25rem;
+      }
+
+      .tasting-menu .meta {
+        font-size: 0.8rem;
+        color: rgba(26, 10, 0, 0.5);
+        margin-bottom: 1rem;
+      }
+
+      .tasting-courses {
+        list-style: none;
+        border-top: 1px solid #ddc9b8;
+        padding-top: 0.75rem;      /* padding between border-top and items */
+      }
+
+      .tasting-courses li {
+        padding: 0.45rem 0;            /* vertical padding separates items */
+        border-bottom: 1px solid #f0e4d8;
+        font-size: 0.9rem;
+        color: rgba(26, 10, 0, 0.8);
+      }
+
+      .tasting-courses li:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      /* ── Menu section ────────────────────────────────────────── */
+      .menu-section {
+        margin-bottom: 3rem;           /* margin separates sections */
+      }
+
+      /* Section title — border-bottom as visual divider */
+      .menu-section h2 {
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #8b2635;
+        border-bottom: 1px solid #ddc9b8;
+        padding-bottom: 0.6rem;        /* padding above the border-bottom */
+        margin-bottom: 1.25rem;
+      }
+
+      /* ── Menu item — padding creates breathing room inside ──── */
+      .menu-item {
+        padding: 0.9rem 0;             /* vertical padding separates items */
+        border-bottom: 1px solid #f0e4d8;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .menu-item:last-child {
+        border-bottom: none;
+      }
+
+      .item-name {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1a0a00;
+        margin-bottom: 0.25rem;
+      }
+
+      .item-desc {
+        font-size: 0.88rem;
+        color: rgba(26, 10, 0, 0.6);
+        line-height: 1.6;
+      }
+
+      .item-price {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #8b2635;
+        white-space: nowrap;
+        padding-top: 0.1rem;
+      }
+
+      /* ── Reservation callout — generous padding + border-radius ─ */
+      .reservation-box {
+        background-color: #8b2635;
+        color: white;
+        padding: 2rem 2.5rem;          /* padding: content far from edges  */
+        border-radius: 10px;           /* border-radius on a filled box    */
+        margin-top: 3rem;
+        text-align: center;
+      }
+
+      .reservation-box h2 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .reservation-box p {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 1.25rem;
+      }
+
+      .reserve-btn {
+        display: inline-block;
+        background-color: white;
+        color: #8b2635;
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 0.65rem 2rem;         /* padding makes the button larger  */
+        border-radius: 99px;
         text-decoration: none;
-        border-bottom: 1px solid #9a7d5a;
-        padding-bottom: 2px;
-      }
-
-      /* ── Featured card — thicker border, taller accent bar ──── */
-      /* border-width overrides the 1px set on .service-card */
-      .featured-card {
-        border-color: #c9a87a;
-        border-width: 2px;
-      }
-
-      .featured-card .card-accent {
-        height: 6px;
-        background-color: #9a7d5a;
       }
     </style>
   </head>
   <body>
 
-    <!-- Page header — centred with text-align and margin-bottom -->
+    <!-- Page header — centred, margin-bottom separates it from the menu -->
     <header class="page-header">
-      <p class="label">Wellness &amp; Recovery</p>
-      <h1>Our Services</h1>
-      <p class="subtitle">Each treatment is tailored to restore balance.</p>
+      <p class="label">Ristorante &amp; Bar</p>
+      <h1>Verona</h1>
+      <p class="subtitle">Contemporary Italian kitchen. Open from 5 PM.</p>
     </header>
 
-    <!-- Card grid — flex container, gap separates the three cards -->
-    <div class="card-grid">
+    <div class="menu">
 
-      <!-- Service card 1: standard -->
-      <article class="service-card">
-        <!-- accent bar: height + background-color, clipped by overflow:hidden -->
-        <div class="card-accent"></div>
-        <!-- card body: padding: 1.75rem on all four sides (border-box keeps outer size) -->
-        <div class="card-body">
-          <h2>Deep Tissue Massage</h2>
-          <p class="duration">75 min · $120</p>
-          <p>Sustained pressure targeting the deepest layers of muscle tissue to release chronic tension patterns.</p>
-          <a href="#" class="card-link">Book now</a>
-        </div>
-      </article>
+      <!-- ── Chef's Tasting Menu ────────────────────────────────── -->
+      <!-- border + border-radius + padding: the three box model     -->
+      <!-- properties that together create a contained callout box   -->
+      <div class="tasting-menu">
+        <h2>Chef's Tasting Menu</h2>
+        <p class="meta">7 courses &middot; $110 per person &middot; Seasonal, changes weekly</p>
+        <ul class="tasting-courses">
+          <li>Amuse-bouche &mdash; burrata, roasted tomato, basil oil</li>
+          <li>Crudo &mdash; scallop, yuzu, cucumber, dill</li>
+          <li>Soup &mdash; white bean, rosemary, fried sage</li>
+          <li>Pasta &mdash; hand-rolled pappardelle, wild boar ragù</li>
+          <li>Fish &mdash; line-caught sea bass, saffron, fennel</li>
+          <li>Meat &mdash; 45-day dry-aged beef, Barolo reduction</li>
+          <li>Dolce &mdash; affogato, hazelnut praline</li>
+        </ul>
+      </div>
 
-      <!-- Service card 2: featured — border-color + border-width override -->
-      <article class="service-card featured-card">
-        <div class="card-accent"></div>
-        <div class="card-body">
-          <h2>Himalayan Salt Stone</h2>
-          <p class="duration">90 min · $155</p>
-          <p>Warm salt stones melt tension while trace minerals absorb through the skin, deeply replenishing the body.</p>
-          <a href="#" class="card-link">Book now</a>
-        </div>
-      </article>
+      <!-- ── Antipasti section ───────────────────────────────────── -->
+      <!-- padding on .menu-item creates space inside each row       -->
+      <!-- border-bottom on .menu-item separates rows visually       -->
+      <!-- margin-bottom on .menu-section separates the section block-->
+      <section class="menu-section">
+        <h2>Antipasti</h2>
 
-      <!-- Service card 3: standard -->
-      <article class="service-card">
-        <div class="card-accent"></div>
-        <div class="card-body">
-          <h2>Restorative Facial</h2>
-          <p class="duration">60 min · $95</p>
-          <p>A gentle, science-backed treatment addressing hydration, tone, and radiance using botanical actives.</p>
-          <a href="#" class="card-link">Book now</a>
+        <div class="menu-item">
+          <div>
+            <div class="item-name">Bruschetta al Pomodoro</div>
+            <p class="item-desc">Wood-fired bread, slow-roasted tomato, basil, aged balsamic.</p>
+          </div>
+          <span class="item-price">$14</span>
         </div>
-      </article>
+
+        <div class="menu-item">
+          <div>
+            <div class="item-name">Burrata e Prosciutto</div>
+            <p class="item-desc">Imported burrata, 24-month prosciutto di Parma, truffle honey, walnuts.</p>
+          </div>
+          <span class="item-price">$22</span>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="item-name">Carpaccio di Manzo</div>
+            <p class="item-desc">Thinly sliced beef, rocket, Parmigiano shavings, lemon, olive oil.</p>
+          </div>
+          <span class="item-price">$24</span>
+        </div>
+      </section>
+
+      <!-- ── Pasta section ──────────────────────────────────────── -->
+      <section class="menu-section">
+        <h2>Pasta</h2>
+
+        <div class="menu-item">
+          <div>
+            <div class="item-name">Tagliatelle al Ragù</div>
+            <p class="item-desc">Egg pasta, slow-cooked beef and pork ragù, Parmigiano, fresh basil.</p>
+          </div>
+          <span class="item-price">$32</span>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="item-name">Cacio e Pepe</div>
+            <p class="item-desc">Tonnarelli, Pecorino Romano, Parmigiano, hand-cracked black pepper.</p>
+          </div>
+          <span class="item-price">$28</span>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="item-name">Risotto ai Funghi</div>
+            <p class="item-desc">Carnaroli rice, mixed wild mushrooms, white wine, Parmigiano.</p>
+          </div>
+          <span class="item-price">$34</span>
+        </div>
+      </section>
+
+      <!-- ── Secondi section ────────────────────────────────────── -->
+      <section class="menu-section">
+        <h2>Secondi</h2>
+
+        <div class="menu-item">
+          <div>
+            <div class="item-name">Branzino al Forno</div>
+            <p class="item-desc">Whole-roasted sea bass, capers, olives, cherry tomatoes, white wine.</p>
+          </div>
+          <span class="item-price">$44</span>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="item-name">Bistecca alla Fiorentina</div>
+            <p class="item-desc">600g T-bone, 45-day aged, grilled over oak. Served with roasted rosemary potatoes.</p>
+          </div>
+          <span class="item-price">$68</span>
+        </div>
+      </section>
+
+      <!-- ── Reservation callout — padding + border-radius demo ─── -->
+      <div class="reservation-box">
+        <h2>Reserve a Table</h2>
+        <p>Dinner service Tuesday – Saturday from 5 PM.<br>Tasting menu available by reservation only.</p>
+        <a href="#" class="reserve-btn">Book a Table</a>
+      </div>
 
     </div>
 

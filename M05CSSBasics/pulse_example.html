@@ -3,177 +3,220 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pulse — Music Magazine</title>
+    <title>Bloom — Indoor Plants &amp; Flowers</title>
 
     <style>
       /* ── Reset ──────────────────────────────────────────────── */
       * {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
       }
 
-      /* ── Element selectors — global defaults ────────────────── */
+      /* ── Element selector — <body> ───────────────────────────── */
       body {
         font-family: system-ui, sans-serif;
-        background-color: #f8fafc;
-        color: #0f172a;
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 2rem 1rem;
+        background-color: #f9f6f0;
+        color: #2c1a0e;
       }
 
+      /* ── Element selectors — headings ────────────────────────── */
       h1 {
-        font-size: 3rem;
-        letter-spacing: -1px;
+        font-size: 2.4rem;
+        font-weight: 300;
+        color: #d8f3dc;
       }
 
       h2 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        color: #1b4332;
         margin-bottom: 0.5rem;
       }
 
+      /* Grouping selector: h1 and h2 share letter-spacing */
+      h1, h2 {
+        letter-spacing: -0.3px;
+      }
+
+      /* ── Element selector — all <p> paragraphs ──────────────── */
       p {
         line-height: 1.7;
-        color: #475569;
+        color: #5a4030;
       }
 
-      /* ── ID selector — site header ──────────────────────────── */
+      /* ── ID selector — site header (one unique element) ─────── */
       #site-header {
-        background-color: #0f172a;
-        color: #f8fafc;
-        padding: 3rem 2rem;
-        margin-bottom: 0;
+        background-color: #1b4332;
+        color: #d8f3dc;
+        padding: 2.5rem 2rem 2rem;
       }
 
-      /* Descendant selector: <p> inside #site-header only */
+      /* Descendant selector: only <p> elements inside #site-header */
       #site-header p {
-        color: #94a3b8;
-        font-size: 1.05rem;
+        color: #95d5b2;
+        font-size: 1rem;
         margin-top: 0.5rem;
       }
 
-      /* ── Descendant + pseudo-class — nav links ──────────────── */
+      /* ── Element selector — <nav> ────────────────────────────── */
       nav {
-        background-color: #1e293b;
-        padding: 1rem 2rem;
-        margin-bottom: 2rem;
+        background-color: #2d6a4f;
+        padding: 0.75rem 2rem;
       }
 
+      /* Descendant selector: <a> inside <nav> only */
+      /* These rules do NOT apply to other <a> tags on the page  */
       nav a {
-        color: #94a3b8;
+        color: #b7e4c7;
         text-decoration: none;
         margin-right: 2rem;
         font-size: 0.9rem;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
       }
 
-      /* Pseudo-class: hover state */
+      /* Pseudo-class: applies only when the mouse hovers over nav links */
       nav a:hover {
-        color: #f8fafc;
-      }
-
-      /* ── Class selector — all article cards ─────────────────── */
-      .article-card {
-        background-color: white;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .article-card a {
-        color: #2563eb;
-        text-decoration: none;
-        font-size: 0.9rem;
-      }
-
-      .article-card a:hover {
+        color: #ffffff;
         text-decoration: underline;
       }
 
-      /* ── Class selector — genre tags ────────────────────────── */
-      .genre-tag {
-        display: inline-block;
-        background-color: #f1f5f9;
-        color: #475569;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        padding: 0.2rem 0.6rem;
-        border-radius: 4px;
-        margin-bottom: 0.75rem;
+      /* ── Content wrapper ────────────────────────────────────── */
+      .content {
+        padding: 2rem;
+        max-width: 860px;
+        margin: 0 auto;
       }
 
-      /* ── Class selector — byline ────────────────────────────── */
-      .byline {
-        font-size: 0.85rem;
-        color: #94a3b8;
-        margin-bottom: 0.75rem;
+      /* ── Class selector — all .product blocks ─────────────────── */
+      .product {
+        background-color: #ffffff;
+        border-left: 4px solid #95d5b2;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
       }
 
-      /* ── ID selector — featured article ─────────────────────── */
-      /* ID overrides .article-card (higher specificity) */
+      /* Descendant + class: <h3> inside any .product block */
+      .product h3 {
+        color: #1b4332;
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+      }
+
+      /* Pseudo-class: background changes when hovering any .product */
+      .product:hover {
+        background-color: #f0fdf4;
+      }
+
+      /* ── Class selector — .price label ───────────────────────── */
+      .price {
+        font-weight: 700;
+        color: #2d6a4f;
+        font-size: 0.95rem;
+      }
+
+      /* ── Class selector — .sale badge on a <span> ─────────────── */
+      .sale {
+        background-color: #e76f51;
+        color: white;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 0.1rem 0.5rem;
+        margin-right: 0.4rem;
+      }
+
+      /* ── ID selector — #featured overrides .product ──────────── */
+      /* ID specificity (0-1-0) beats class specificity (0-0-1),    */
+      /* so #featured wins the border-left colour conflict           */
       #featured {
-        border-color: #2563eb;
-        border-width: 2px;
-        background-color: #eff6ff;
+        border-left-color: #e76f51;
+        border-left-width: 6px;
       }
 
-      /* Descendant + class: .genre-tag only inside #featured */
-      #featured .genre-tag {
-        background-color: #dbeafe;
-        color: #1d4ed8;
+      /* ── Element selector — <footer> ─────────────────────────── */
+      footer {
+        background-color: #1b4332;
+        color: #95d5b2;
+        padding: 1.5rem 2rem;
+        margin-top: 3rem;
+        font-size: 0.88rem;
       }
     </style>
   </head>
   <body>
 
-    <!-- ID selector target -->
+    <!-- ID selector target: #site-header                           -->
+    <!-- Descendant selector target: #site-header p                 -->
     <header id="site-header">
-      <h1>Pulse</h1>
-      <p>Your weekly guide to music worth hearing.</p>
+      <h1>Bloom</h1>
+      <p>Indoor plants and seasonal flowers, delivered.</p>
     </header>
 
-    <!-- Descendant selector: nav a {} -->
+    <!-- Element selector target: nav                               -->
+    <!-- Descendant selector target: nav a                          -->
+    <!-- Pseudo-class target: nav a:hover                           -->
     <nav>
-      <a href="#">Reviews</a>
-      <a href="#">Charts</a>
-      <a href="#">Artists</a>
-      <a href="#">Interviews</a>
+      <a href="#">Plants</a>
+      <a href="#">Flowers</a>
+      <a href="#">Care Guides</a>
+      <a href="#">About</a>
     </nav>
 
-    <main>
+    <div class="content">
 
-      <!-- Both id="featured" and class="article-card" — ID wins conflicts -->
-      <article id="featured" class="article-card">
-        <span class="genre-tag">Album Review</span>
-        <h2>A Cathedral of Sound: The Album That Redefines Ambient Music</h2>
-        <p class="byline">By Jordan Lee &middot; 4 min read</p>
-        <p>Every decade or so, an album arrives that doesn't just contribute to a genre — it reshapes it. This is that album.</p>
-        <a href="#">Read full review &rarr;</a>
+      <!-- Element + grouping selector target: h2 -->
+      <h2>Popular This Week</h2>
+
+      <!-- #featured (ID) overrides .product (class) — specificity demo -->
+      <!-- Both selectors target this element; ID wins the conflict      -->
+      <article class="product" id="featured">
+        <span class="sale">SALE</span>
+        <h3>Monstera Deliciosa</h3>
+        <p>
+          The iconic split-leaf plant. Thrives in indirect light.
+          Ships in a 6-inch nursery pot.
+        </p>
+        <p><span class="price">$24.00</span> &nbsp; <s>$32.00</s></p>
+        <a href="#">Add to cart</a>
       </article>
 
-      <!-- class="article-card" — shares styles with all other cards -->
-      <article class="article-card">
-        <span class="genre-tag">Live Report</span>
-        <h2>Tokyo in Three Nights: A World Tour Like No Other</h2>
-        <p class="byline">By Sam Park &middot; 3 min read</p>
-        <p>The lights went dark at exactly 9pm, and 18,000 people held their breath in the Budokan.</p>
-        <a href="#">Read full report &rarr;</a>
+      <!-- .product class selector targets this too (.product:hover active) -->
+      <article class="product">
+        <h3>Pothos (Golden)</h3>
+        <p>
+          Near-indestructible trailing vine. Perfect for beginners.
+          Survives low light and irregular watering.
+        </p>
+        <p class="price">$12.00</p>
+        <a href="#">Add to cart</a>
       </article>
 
-      <article class="article-card">
-        <span class="genre-tag">Interview</span>
-        <h2>Talking Craft: A Producer Who Built a Studio in a Shipping Container</h2>
-        <p class="byline">By Maya Chen &middot; 5 min read</p>
-        <p>The studio is not what you would expect. There is no soundproofed vocal booth, no mixing desk the size of a car.</p>
-        <a href="#">Read full interview &rarr;</a>
+      <article class="product">
+        <h3>Snake Plant</h3>
+        <p>
+          Architectural, upright leaves with dark-green and yellow variegation.
+          Tolerates drought. Ships in a 4-inch pot.
+        </p>
+        <p class="price">$18.00</p>
+        <a href="#">Add to cart</a>
       </article>
 
-    </main>
+      <h2>Seasonal Flowers</h2>
+
+      <article class="product">
+        <span class="sale">SALE</span>
+        <h3>Garden Roses — Summer Mix</h3>
+        <p>
+          Six stems, mixed pastel hues. Fragrant and long-lasting.
+          Arrives in water-sealed packaging.
+        </p>
+        <p><span class="price">$22.00</span> &nbsp; <s>$28.00</s></p>
+        <a href="#">Add to cart</a>
+      </article>
+
+    </div>
+
+    <!-- Element selector target: footer -->
+    <footer>
+      <p>&copy; 2026 Bloom Plants &middot; Free delivery on orders over $40</p>
+    </footer>
 
   </body>
 </html>

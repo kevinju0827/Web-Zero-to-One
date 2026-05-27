@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Morning Roast Bakery</title>
+    <style>
+        /* --- Base Reset & Theme --- */
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #3e332e;
+            background-color: #fbf9f6;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 {
+            font-family: 'Georgia', Georgia, Cambria, Times, serif;
+            color: #1a110b;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.25rem;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        /* Subtitle paragraph right after H1 */
+        h1 + p {
+            text-align: center;
+            font-size: 1.15rem;
+            color: #705e52;
+            margin-bottom: 3.5rem;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            border-bottom: 2px solid #eaddd3;
+            padding-bottom: 0.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: #a0522d; /* Warm terracotta brown */
+            margin-top: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        strong {
+            color: #1a110b;
+        }
+
+        /* --- Call to Action Button --- */
+        button {
+            display: block;
+            width: 100%;
+            max-width: 280px;
+            margin: 3.5rem auto 2rem auto;
+            background-color: #a0522d;
+            color: #ffffff;
+            border: none;
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 6px rgba(160, 82, 45, 0.15);
+        }
+
+        button:hover {
+            background-color: #834020;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* --- Footnote Styling --- */
+        /* Targets the final paragraph serving as the shared kitchen notice */
+        body > p:last-of-type {
+            font-size: 0.875rem;
+            color: #8c7669;
+            border-top: 1px solid #eaddd3;
+            padding-top: 1.25rem;
+            margin-top: 3.5rem;
+        }
+
+        sup {
+            color: #a0522d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>The Morning Roast</h1>
+<p>
+    <i>Fresh from the oven since 2018.</i><br>
+    A neighbourhood bakery in the heart of the city.
+</p>
+
+<h2>Today's Menu</h2>
+
+<h3>Breads</h3>
+<p>
+    Our <strong>signature sourdough</strong> uses a starter that has been
+    fed daily since the bakery opened. Each loaf takes <em>48 hours</em>
+    to make — patience is the secret ingredient.
+</p>
+
+<h3>Pastries</h3>
+<p>
+    Try our croissants — rated <b>4.9 / 5</b> on local review sites three
+    years running. Gluten-free options available.<sup>*</sup>
+</p>
+
+<h3>Drinks</h3>
+<p>
+    We roast our own single-origin beans. The signature blend is a 60/40
+    mix of Arabica and Robusta — roughly 80 mg of caffeine per 250 ml
+    serving (about 8 oz). That works out to roughly 0.32 mg per ml,
+    or 3.2×10<sup>-1</sup> mg/ml if you prefer scientific notation.
+</p>
+
+<h2>Our Hours</h2>
+<p>
+    Monday – Friday: 7:00 AM – 6:00 PM<br>
+    Saturday: 8:00 AM – 4:00 PM<br>
+    Sunday: <strong>Closed</strong>
+</p>
+<p>
+    Find us at 42 Baker Street.<br>
+    Phone: (555) 012-3456
+</p>
+
+<button type="button">Join Our Mailing List</button>
+
+<p>
+    <sup>*</sup> Gluten-free items are baked in a shared kitchen.
+    Not suitable for celiac disease.
+</p>
+
+</body>
+</html>

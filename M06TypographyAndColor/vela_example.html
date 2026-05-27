@@ -51,7 +51,7 @@
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.15em;
-        color: #1d6fa4;
+        color: #b45309;
         margin: 2rem 0 0.75rem;
       }
 
@@ -65,7 +65,7 @@
 
       /* ── ID selector — masthead ─────────────────────────────── */
       #masthead {
-        background-color: #0d2137;   /* deep ocean navy */
+        background-color: #4a1a00;   /* deep ocean navy */
         color: #f0ece4;
         padding: 4rem 2rem;
         text-align: center;
@@ -90,7 +90,7 @@
 
       /* ── Nav — descendant + pseudo-class ───────────────────── */
       .main-nav {
-        background-color: #0d2137;
+        background-color: #4a1a00;
         padding: 0.75rem 2rem;
         margin-bottom: 3rem;
       }
@@ -123,7 +123,7 @@
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.18em;
-        color: #1d6fa4;
+        color: #b45309;
         margin-bottom: 0.6rem;
       }
 
@@ -140,8 +140,8 @@
         font-style: italic;
         font-size: 1.35rem;
         line-height: 1.6;
-        color: #1d6fa4;
-        border-left: 4px solid #1d6fa4;
+        color: #b45309;
+        border-left: 4px solid #b45309;
         padding: 0.5rem 0 0.5rem 1.5rem;
         margin: 2.5rem 0;
       }
@@ -149,12 +149,28 @@
       /* ── Inline highlight — <span class="name-highlight"> ───── */
       .name-highlight {
         font-weight: 700;
-        color: #0d2137;
+        color: #4a1a00;
+      }
+
+      /* ── Article hero image ─────────────────────────────────── */
+      .article-image {
+        margin: 0 0 2rem;
+      }
+
+      .article-image img {
+        width: 100%;
+        display: block;
+      }
+
+      .article-image figcaption {
+        font-size: 0.8rem;
+        color: rgba(28, 28, 46, 0.45);
+        margin-top: 0.4rem;
       }
 
       /* ── Footer ─────────────────────────────────────────────── */
       #site-footer {
-        background-color: #0d2137;
+        background-color: #4a1a00;
         color: rgba(240, 236, 228, 0.5);
         font-size: 0.8rem;
         text-align: center;
@@ -189,6 +205,12 @@
 
         <!-- byline: rgba color demo -->
         <p class="byline">By Serena Marchetti &middot; 12 min read</p>
+
+        <!-- article hero image — demonstrates images alongside editorial typography -->
+        <figure class="article-image">
+          <img src="https://picsum.photos/seed/vela-atlantic/800/450" alt="Open ocean at golden hour, the horizon stretching to infinity" width="800">
+          <figcaption>Day 14. Somewhere between the Canary Islands and Barbados.</figcaption>
+        </figure>
 
         <p>The first thing you lose is your sense of time. Within a week at sea, the familiar rhythm of hours dissolves into something older and more honest: the arc of the sun, the shift of the stars, the watch schedule that divides your crew into sleeping halves.</p>
 

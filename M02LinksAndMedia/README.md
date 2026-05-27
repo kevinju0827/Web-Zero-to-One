@@ -237,7 +237,7 @@ When you open a link with `target="_blank"`, the newly opened page receives a re
 
 ## Guided Practice
 
-**Scenario:** You are building a two-page micro-site for **"Frame & Wander"** — a fictional travel photography blog. The home page introduces the blog; the destination page shows a photo essay with an embedded video.
+**Scenario:** You are building a two-page portfolio site for **"Arclight Studio"** — a fictional documentary photography practice. The home page presents the photographer and their work; the series page shows a project in depth with an embedded video.
 
 See `index_example.html` and `destination_example.html` in this folder for the finished result.
 
@@ -245,103 +245,159 @@ See `index_example.html` and `destination_example.html` in this folder for the f
 
 ### Step 1: Set up the file structure
 
-Inside `M02LinksAndMedia`, create:
+Inside `M02LinksAndMedia`, create two files:
 
 ```
 M02LinksAndMedia/
-├── index.html            ← home page (you create)
-├── destination.html      ← destination page (you create)
-└── images/               ← create this folder
-    └── cover.jpg         ← download any free travel photo from unsplash.com
+├── index.html        ← portfolio homepage (you create)
+└── destination.html  ← series detail page (you create)
 ```
 
-Both HTML files need the full M01 document skeleton (`<!DOCTYPE html>`, `<head>` with `<meta charset>` and `<meta viewport>`, `<title>`, `<body>`).
+Both files need the full M01 document skeleton (`<!DOCTYPE html>`, `<head>` with `<meta charset>` and `<meta viewport>`, `<title>`, `<body>`).
 
 ---
 
-### Step 2: Build the home page
+### Step 2: Build the homepage
 
 Add to `index.html`:
 
 ```html
-<h1>Frame & Wander</h1>
-<p><i>Travel photography from the road less photographed.</i></p>
+<h1>Arclight Studio</h1>
+<p><i>Documentary and portrait photography. Vancouver, BC.</i></p>
 
-<img src="images/cover.jpg" alt="A scenic travel landscape" width="800">
-
-<h2>Latest Journey</h2>
+<!-- Same-page anchor links -->
 <p>
-  We spent three weeks in rural Japan, trading bullet trains for local buses
-  and finding landscapes that <strong>no travel guide had mapped.</strong>
+  <a href="#work">Work</a> ·
+  <a href="#about">About</a> ·
+  <a href="#contact">Contact</a>
 </p>
 
-<a href="destination.html">Read the full photo essay →</a>
+<!-- External image via URL -->
+<img
+  src="https://picsum.photos/seed/arclight-hero/900/480"
+  alt="A lone figure silhouetted against a misty mountain range at dawn"
+  width="900"
+>
+
+<h2 id="work">Featured Project</h2>
+
+<figure>
+  <img
+    src="https://picsum.photos/seed/arclight-coastal/820/460"
+    alt="Weathered fishing boats moored at low tide under a pale morning sky"
+    width="820"
+  >
+  <figcaption>
+    From <em>Coastal Lives</em> — a 34-photograph documentary series.
+    County Clare, Ireland, 2025.
+  </figcaption>
+</figure>
+
+<p>A three-week residency documenting the fishing villages of County Clare.</p>
+<p><a href="destination.html">View the full series →</a></p>
+
+<h2 id="about">About</h2>
+<p>
+  Arclight Studio is the practice of Jordan Vasquez, a
+  <a href="https://en.wikipedia.org/wiki/Documentary_photography"
+     target="_blank" rel="noopener noreferrer">documentary photographer</a>
+  based in Vancouver.
+</p>
+
+<h2 id="contact">Contact</h2>
+<p><a href="mailto:studio@arclightstudio.ca">studio@arclightstudio.ca</a></p>
+<p>
+  Follow on
+  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+  or
+  <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer">Behance</a>.
+</p>
 ```
 
-Open `index.html` in Chrome. Confirm the image appears and the link text is visible.
+Open `index.html` in Chrome. Click the navigation links — the page should scroll to each `id`. Confirm the hero image loads from picsum.
 
 ---
 
-### Step 3: Build the destination page
+### Step 3: Build the series page
 
 Add to `destination.html`:
 
 ```html
-<p><a href="index.html">← Back to home</a></p>
+<p><a href="index.html">← Back to portfolio</a></p>
 
-<h1>Rural Japan: Off the Map</h1>
+<h1>Coastal Lives</h1>
+<p><i>County Clare, Ireland · Spring 2025 · 34 photographs</i></p>
 
 <figure>
-  <img src="images/cover.jpg" alt="A misty mountain village in rural Japan" width="800">
-  <figcaption>Somewhere in Yamagata Prefecture. Early morning, late October.</figcaption>
+  <img
+    src="https://picsum.photos/seed/arclight-coast-hero/900/500"
+    alt="Fishing boats at low tide, pale morning sky behind them"
+    width="900"
+  >
+  <figcaption>The harbour at Liscannor before dawn. The fleet leaves by 5 AM.</figcaption>
 </figure>
 
-<h2>The Journey</h2>
+<h2>About the Series</h2>
 <p>
-  Most visitors to Japan follow a well-worn path: Tokyo, Kyoto, Osaka.
-  We went north into Yamagata, where rice paddies meet cedar forests
-  and mornings smell like woodsmoke.
+  The original plan was three days. Three days became three weeks.
+  What started as documentation of a harbour became something else —
+  <strong>a portrait of a way of life the rest of the world had stopped noticing.</strong>
 </p>
+
+<figure>
+  <img
+    src="https://picsum.photos/seed/arclight-coast-portrait/820/420"
+    alt="An elderly fisherman repairing nets by hand in fading afternoon light"
+    width="820"
+  >
+  <figcaption>Seamus, 71. He has worked the same stretch of water for forty-three years.</figcaption>
+</figure>
 ```
 
-Click the "Read the full photo essay" link on the home page. It should load `destination.html`. Click "← Back to home" — you should return to `index.html`.
+Click "View the full series →" on the homepage. It should load `destination.html`. Click "← Back to portfolio" — you should return to `index.html`.
 
 ---
 
 ### Step 4: Embed a YouTube video
 
-1. Go to YouTube, find any travel or nature video.
-2. Click **Share → Embed**, copy the `<iframe>` code.
-3. Paste it into `destination.html` below the journey paragraph.
+In `destination.html`, add below the last paragraph:
+
+```html
+<h2>Behind the Lens</h2>
+<p>A short documentary on the making of <em>Coastal Lives</em>:</p>
+```
+
+Then go to YouTube, find any video, click **Share → Embed**, and paste the generated `<iframe>` code below the paragraph.
 
 ---
 
-### Step 5: Add external links with `target="_blank"`
+### Step 5: Add an external link
 
-In `index.html`, add a line with two external links:
+In `destination.html`, add after the iframe:
 
 ```html
 <p>
-  Shot on a
-  <a href="https://www.fujifilm.com" target="_blank" rel="noopener noreferrer">Fujifilm X-T5</a>.
-  Edited in
-  <a href="https://www.adobe.com/products/lightroom.html" target="_blank" rel="noopener noreferrer">Lightroom</a>.
+  <a
+    href="https://www.nationalgeographic.com/photography"
+    target="_blank"
+    rel="noopener noreferrer"
+  >Published in National Geographic →</a>
 </p>
 ```
 
-Click both links. Confirm they open in new tabs without leaving your current page.
+Confirm it opens in a new tab. Note that `rel="noopener noreferrer"` is always required alongside `target="_blank"` on external links.
 
 ---
 
 ### Step 6: Intentionally break a path
 
-Temporarily change the image `src` to a bad path:
+In `index.html`, change the hero image `src` to a bad value:
 
 ```html
-<img src="images/doesnotexist.jpg" alt="A scenic travel landscape" width="800">
+<img src="https://picsum.photos/seed/DOESNOTEXIST/900/480" ...>
 ```
 
-Reload the browser. The broken image icon appears and the `alt` text is displayed. Open DevTools → **Network** tab → filter by **Img** — the failed request appears in red with status 404. This is the diagnostic workflow for tracking down broken assets. Fix the path back to `cover.jpg`.
+Reload Chrome. The broken image icon and the `alt` text appear. Open DevTools → **Network** tab → filter by **Img** — the failed request appears in red. This is how you diagnose broken assets. Restore the correct URL.
 
 ---
 
@@ -349,7 +405,7 @@ Reload the browser. The broken image icon appears and the `alt` text is displaye
 
 Paste your `index.html` into Gemini and prompt:
 
-> *"Here is my travel blog home page. Add a `<style>` block to give it an editorial magazine look — full-width hero image, clean sans-serif typography, generous whitespace, and a warm color palette. Keep all existing HTML content and structure intact."*
+> *"Here is my photography portfolio homepage. Add a `<style>` block to give it a clean, editorial look — dark header, full-width hero image, clean sans-serif typography, and generous white space. Keep all existing HTML content and structure intact."*
 
 Save the result as `index_styled.html` and compare it with your original.
 

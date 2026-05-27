@@ -431,7 +431,7 @@ Paste both the conflicting HTML and the conflicting CSS rules. Ask: *"Which of t
 
 ## Guided Practice
 
-**Scenario:** You are building the homepage for **Pulse** — a fictional music magazine. The page has a masthead, a navigation bar, three article cards, and a featured article that needs to stand out from the rest.
+**Scenario:** You are building the homepage for **Bloom** — a fictional indoor plant and flower shop. The page has a branded header, a navigation bar, a product listing, and one featured product that needs to stand out from the rest using the cascade.
 
 See `pulse_example.html` in this folder for the finished result.
 
@@ -439,7 +439,7 @@ See `pulse_example.html` in this folder for the finished result.
 
 ### Step 1: Create the file
 
-In `M05CSSBasics`, create `pulse.html` with the standard document skeleton. Set the title to `Pulse — Music Magazine`. Add an empty `<style>` block inside `<head>` — all CSS for this exercise goes there.
+In `M05CSSBasics`, create `bloom.html` with the standard document skeleton. Set the title to `Bloom — Indoor Plants & Flowers`. Add an empty `<style>` block inside `<head>` — all CSS for this exercise goes there.
 
 ---
 
@@ -449,87 +449,98 @@ Inside `<body>`, add:
 
 ```html
 <header id="site-header">
-  <h1>Pulse</h1>
-  <p>Your weekly guide to music worth hearing.</p>
+  <h1>Bloom</h1>
+  <p>Indoor plants and seasonal flowers, delivered.</p>
 </header>
 
 <nav>
-  <a href="#">Reviews</a>
-  <a href="#">Charts</a>
-  <a href="#">Artists</a>
-  <a href="#">Interviews</a>
+  <a href="#">Plants</a>
+  <a href="#">Flowers</a>
+  <a href="#">Care Guides</a>
+  <a href="#">About</a>
 </nav>
 
-<main>
+<div class="content">
 
-  <article id="featured" class="article-card">
-    <span class="genre-tag">Album Review</span>
-    <h2>A Cathedral of Sound: The Album That Redefines Ambient Music</h2>
-    <p class="byline">By Jordan Lee &middot; 4 min read</p>
-    <p>Every decade or so, an album arrives that doesn't just contribute to a genre — it reshapes it.</p>
-    <a href="#">Read full review &rarr;</a>
+  <h2>Popular This Week</h2>
+
+  <article class="product" id="featured">
+    <span class="sale">SALE</span>
+    <h3>Monstera Deliciosa</h3>
+    <p>The iconic split-leaf plant. Thrives in indirect light. Ships in a 6-inch nursery pot.</p>
+    <p><span class="price">$24.00</span> &nbsp; <s>$32.00</s></p>
+    <a href="#">Add to cart</a>
   </article>
 
-  <article class="article-card">
-    <span class="genre-tag">Live Report</span>
-    <h2>Tokyo in Three Nights: A World Tour Like No Other</h2>
-    <p class="byline">By Sam Park &middot; 3 min read</p>
-    <p>The lights went dark at exactly 9pm, and 18,000 people held their breath.</p>
-    <a href="#">Read full report &rarr;</a>
+  <article class="product">
+    <h3>Pothos (Golden)</h3>
+    <p>Near-indestructible trailing vine. Perfect for beginners. Survives low light and irregular watering.</p>
+    <p class="price">$12.00</p>
+    <a href="#">Add to cart</a>
   </article>
 
-  <article class="article-card">
-    <span class="genre-tag">Interview</span>
-    <h2>Talking Craft: A Producer Who Built a Studio in a Shipping Container</h2>
-    <p class="byline">By Maya Chen &middot; 5 min read</p>
-    <p>The studio is not what you would expect. There is no soundproofed vocal booth, no mixing desk the size of a car.</p>
-    <a href="#">Read full interview &rarr;</a>
+  <article class="product">
+    <h3>Snake Plant</h3>
+    <p>Architectural, upright leaves. Tolerates drought. Ships in a 4-inch pot.</p>
+    <p class="price">$18.00</p>
+    <a href="#">Add to cart</a>
   </article>
 
-</main>
+  <h2>Seasonal Flowers</h2>
+
+  <article class="product">
+    <span class="sale">SALE</span>
+    <h3>Garden Roses — Summer Mix</h3>
+    <p>Six stems, mixed pastel hues. Fragrant and long-lasting. Arrives in water-sealed packaging.</p>
+    <p><span class="price">$22.00</span> &nbsp; <s>$28.00</s></p>
+    <a href="#">Add to cart</a>
+  </article>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Bloom Plants &middot; Free delivery on orders over $40</p>
+</footer>
 ```
 
-Open `pulse.html` in Chrome. You should see unstyled content. Everything works — it just has no visual design yet.
+Open `bloom.html` in Chrome. Unstyled content — ready for CSS.
 
 ---
 
-### Step 3: Style with element selectors
+### Step 3: Apply element selectors and a grouping selector
 
-Add these rules to your `<style>` block. Element selectors establish the baseline for every matching tag:
+Element selectors target every instance of a tag — they establish global defaults. Add these rules:
 
 ```css
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
   font-family: system-ui, sans-serif;
-  background-color: #f8fafc;
-  color: #0f172a;
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
-
-h1 {
-  font-size: 3rem;
-  letter-spacing: -1px;
+  background-color: #f9f6f0;
+  color: #2c1a0e;
 }
 
 h2 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  color: #1b4332;
   margin-bottom: 0.5rem;
 }
 
 p {
   line-height: 1.7;
-  color: #475569;
+  color: #5a4030;
+}
+
+/* Grouping selector: h1 and h2 share the same letter-spacing */
+h1, h2 {
+  letter-spacing: -0.3px;
 }
 ```
 
-Refresh the page. Notice how every `<p>` and `<h2>` updates at once — you wrote one rule for each.
+Refresh. Every `<p>` and `<h2>` updates at once. The comma in `h1, h2` applies one rule to two selectors simultaneously.
 
 ---
 
@@ -537,122 +548,143 @@ Refresh the page. Notice how every `<p>` and `<h2>` updates at once — you wrot
 
 ```css
 #site-header {
-  background-color: #0f172a;
-  color: #f8fafc;
-  padding: 3rem 2rem;
-  margin-bottom: 0;
+  background-color: #1b4332;
+  color: #d8f3dc;
+  padding: 2.5rem 2rem 2rem;
 }
 
+/* Descendant selector: only <p> tags inside #site-header */
 #site-header p {
-  color: #94a3b8;
-  font-size: 1.05rem;
+  color: #95d5b2;
+  font-size: 1rem;
+  margin-top: 0.5rem;
 }
 ```
 
-`#site-header p` is a **descendant selector** — it targets `<p>` tags *inside* `#site-header` only, without affecting the `<p>` tags in your article cards.
+`#site-header p` is a **descendant selector** — it targets `<p>` tags inside `#site-header` only, leaving the product `<p>` tags unchanged.
+
+`#site-header` uses an **ID selector** because only one element on the page is the site header. IDs are for unique, one-of-a-kind elements.
 
 ---
 
-### Step 5: Style the nav and add a hover effect
+### Step 5: Style the nav with a pseudo-class
 
 ```css
 nav {
-  background-color: #1e293b;
-  padding: 1rem 2rem;
-  margin-bottom: 2rem;
+  background-color: #2d6a4f;
+  padding: 0.75rem 2rem;
 }
 
+/* Descendant selector: <a> inside <nav> only */
 nav a {
-  color: #94a3b8;
+  color: #b7e4c7;
   text-decoration: none;
   margin-right: 2rem;
   font-size: 0.9rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
+/* Pseudo-class: applies only when the mouse hovers */
 nav a:hover {
-  color: #f8fafc;
-}
-```
-
-Hover over the navigation links in Chrome. The `:hover` pseudo-class applies only when the cursor is over the element — no JavaScript needed.
-
----
-
-### Step 6: Style article cards with a class selector
-
-```css
-.article-card {
-  background-color: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.article-card a {
-  color: #2563eb;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.article-card a:hover {
+  color: #ffffff;
   text-decoration: underline;
 }
-
-.genre-tag {
-  display: inline-block;
-  background-color: #f1f5f9;
-  color: #475569;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  margin-bottom: 0.75rem;
-}
-
-.byline {
-  font-size: 0.85rem;
-  color: #94a3b8;
-  margin-bottom: 0.75rem;
-}
 ```
 
-All three article cards now share the same card style — because all three carry `class="article-card"`.
+Hover over the navigation links. The `:hover` pseudo-class fires on interaction — no JavaScript needed.
 
 ---
 
-### Step 7: Make the featured article stand out with an ID selector
+### Step 6: Style product listings with a class selector
 
 ```css
-#featured {
-  border-color: #2563eb;
-  border-width: 2px;
-  background-color: #eff6ff;
+.content {
+  padding: 2rem;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
-#featured .genre-tag {
-  background-color: #dbeafe;
-  color: #1d4ed8;
+/* Class selector: targets every element with class="product" */
+.product {
+  background-color: #ffffff;
+  border-left: 4px solid #95d5b2;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Descendant + class: <h3> inside any .product */
+.product h3 {
+  color: #1b4332;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Pseudo-class on a class selector */
+.product:hover {
+  background-color: #f0fdf4;
 }
 ```
 
-`#featured .genre-tag` is a descendant + class combination. It targets `.genre-tag` *inside* `#featured` only — the other two genre tags keep their original grey style.
-
-Observe the **specificity** at work: `#featured` (ID) has a higher score than `.article-card` (Class), so the blue border overrides the grey one set by `.article-card`.
+All four product entries now share the same style because all four carry `class="product"`.
 
 ---
 
-### Step 8: Ask AI to extend the design
+### Step 7: Add the price and sale badge classes
 
-Paste your `pulse.html` into Gemini and prompt:
+```css
+.price {
+  font-weight: 700;
+  color: #2d6a4f;
+  font-size: 0.95rem;
+}
 
-> *"Here is a music magazine homepage. Add styles inside the existing `<style>` block to improve the design: add a sticky navigation bar, style the `<h1>` with a serif font, add a subtle drop shadow to each article card, and use a CSS hover effect that lifts each card slightly. Keep all existing CSS and HTML intact — only add new rules."*
+.sale {
+  background-color: #e76f51;
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.1rem 0.5rem;
+  margin-right: 0.4rem;
+}
+```
 
-Save the result as `pulse_styled.html` and compare.
+---
+
+### Step 8: Use an ID override to demonstrate specificity
+
+The featured Monstera carries both `class="product"` and `id="featured"`. Add a rule targeting only `#featured`:
+
+```css
+/* ID specificity (0-1-0) beats class specificity (0-0-1)     */
+/* so #featured wins the border-left conflict with .product   */
+#featured {
+  border-left-color: #e76f51;
+  border-left-width: 6px;
+}
+```
+
+`.product` sets `border-left: 4px solid #95d5b2`. The `#featured` rule overrides only the colour and width — the border style (`solid`) is inherited from `.product` because `#featured` does not set it.
+
+Open Chrome DevTools (F12 → Elements → select the Monstera article → Styles panel). You will see `.product`'s `border-left-color` crossed out with a strikethrough, and `#featured`'s value winning. That crossed-out rule is the cascade in action.
+
+---
+
+### Step 9: Style the footer and ask AI to enhance
+
+```css
+footer {
+  background-color: #1b4332;
+  color: #95d5b2;
+  padding: 1.5rem 2rem;
+  margin-top: 3rem;
+  font-size: 0.88rem;
+}
+```
+
+Now paste your `bloom.html` into Gemini and prompt:
+
+> *"Here is a plant shop homepage. Add styles inside the existing `<style>` block to: load a Google Font for the headings, add a subtle background image or gradient to the header, make each product card display its content side by side (product info on the left, price on the right), and add a smooth colour transition on the hover effect. Keep all existing CSS and HTML intact — only add new rules."*
+
+Save the result as `bloom_styled.html` and compare.
 
 ---
 

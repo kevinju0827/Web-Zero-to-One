@@ -81,7 +81,7 @@ HSL is **Hue–Saturation–Lightness**. Want a lighter version of a color? Incr
 
 ```css
 h1 {
-  color: #0d2137;               /* text color */
+  color: #4a1a00;               /* text color */
   background-color: #f8f7f4;    /* element background */
 }
 ```
@@ -427,6 +427,11 @@ Then add an empty `<style>` block. All CSS goes there.
     <h2>Crossing the Atlantic: 28 Days Between Wind and Water</h2>
     <p class="byline">By Serena Marchetti &middot; 12 min read</p>
 
+    <figure class="article-image">
+      <img src="https://picsum.photos/seed/vela-atlantic/800/450" alt="Open ocean at golden hour, the horizon stretching to infinity" width="800">
+      <figcaption>Day 14. Somewhere between the Canary Islands and Barbados.</figcaption>
+    </figure>
+
     <p>The first thing you lose is your sense of time. Within a week at sea, the familiar rhythm of hours dissolves into something older: the arc of the sun, the shift of the stars, the watch schedule that divides your crew into sleeping halves.</p>
 
     <blockquote class="pull-quote">"There is nothing between you and the horizon. That is not emptiness &mdash; it is space enough for every thought you have been avoiding."</blockquote>
@@ -497,7 +502,7 @@ h3 {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #1d6fa4;
+  color: #b45309;
   margin: 2rem 0 0.75rem;
 }
 ```
@@ -529,8 +534,8 @@ p {
   font-style: italic;
   font-size: 1.35rem;
   line-height: 1.6;
-  color: #1d6fa4;
-  border-left: 4px solid #1d6fa4;
+  color: #b45309;
+  border-left: 4px solid #b45309;
   padding: 0.5rem 0 0.5rem 1.5rem;
   margin: 2.5rem 0;
 }
@@ -540,7 +545,7 @@ The `border-left` + `padding-left` combination is a classic typographic device f
 
 ---
 
-### Step 7: Style labels and metadata
+### Step 7: Style labels, metadata, and article image
 
 ```css
 .site-label,
@@ -549,7 +554,7 @@ The `border-left` + `padding-left` combination is a classic typographic device f
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: #1d6fa4;
+  color: #b45309;
   margin-bottom: 0.6rem;
 }
 
@@ -560,9 +565,24 @@ The `border-left` + `padding-left` combination is a classic typographic device f
   margin-bottom: 2rem;
 }
 
+.article-image {
+  margin: 0 0 2rem;
+}
+
+.article-image img {
+  width: 100%;
+  display: block;
+}
+
+.article-image figcaption {
+  font-size: 0.8rem;
+  color: rgba(28, 28, 46, 0.45);
+  margin-top: 0.4rem;
+}
+
 .name-highlight {
   font-weight: 700;
-  color: #0d2137;
+  color: #4a1a00;
 }
 ```
 
@@ -572,7 +592,7 @@ The `border-left` + `padding-left` combination is a classic typographic device f
 
 ```css
 #masthead {
-  background-color: #0d2137;
+  background-color: #4a1a00;
   color: #f0ece4;
   padding: 4rem 2rem;
   text-align: center;
@@ -594,7 +614,7 @@ The `border-left` + `padding-left` combination is a classic typographic device f
 }
 
 .main-nav {
-  background-color: #0d2137;
+  background-color: #4a1a00;
   padding: 0.75rem 2rem;
   margin-bottom: 3rem;
 }
@@ -618,7 +638,7 @@ The `border-left` + `padding-left` combination is a classic typographic device f
 }
 
 #site-footer {
-  background-color: #0d2137;
+  background-color: #4a1a00;
   color: rgba(240, 236, 228, 0.5);
   font-size: 0.8rem;
   text-align: center;

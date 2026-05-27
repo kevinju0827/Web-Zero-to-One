@@ -3,51 +3,87 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frame & Wander — Travel Photography</title>
+    <title>Arclight Studio — Photography Portfolio</title>
   </head>
   <body>
 
-    <!-- ── Site header ───────────────────────────────────── -->
-    <h1>Frame &amp; Wander</h1>
-    <p><i>Travel photography from the road less photographed.</i></p>
+    <!-- ── Site identity ─────────────────────────────────────── -->
+    <h1>Arclight Studio</h1>
+    <p><i>Documentary and portrait photography. Vancouver, BC.</i></p>
 
-    <!-- Navigation to sections on this page using anchor links -->
+    <!-- ── Navigation — same-page anchor links ───────────────── -->
+    <!-- href="#work" scrolls to the element with id="work" on this page -->
     <p>
-      <a href="#latest">Latest Journey</a> ·
-      <a href="#gear">Gear</a> ·
+      <a href="#work">Work</a> ·
+      <a href="#about">About</a> ·
       <a href="#contact">Contact</a>
     </p>
 
-    <!-- Hero image — relative path: images/ subfolder -->
-    <img src="https://picsum.photos/seed/japan-coast/800/500" alt="A small tropical island surrounded by turquoise water" width="800">
+    <!-- ── Hero image ────────────────────────────────────────── -->
+    <!-- src: external URL — no local file needed                -->
+    <!-- alt: describes the image for screen readers and         -->
+    <!--      displays when the image fails to load              -->
+    <!-- width: prevents layout shift while the image loads      -->
+    <img
+      src="https://picsum.photos/seed/arclight-hero/900/480"
+      alt="A lone figure silhouetted against a misty mountain range at dawn"
+      width="900"
+    >
 
-    <!-- ── Latest journey section ────────────────────────── -->
-    <h2 id="latest">Latest Journey</h2>
+    <!-- ── Featured project ──────────────────────────────────── -->
+    <!-- id="work" is the anchor target for href="#work" above   -->
+    <h2 id="work">Featured Project</h2>
+
+    <!-- <figure> groups an image and its caption as one unit    -->
+    <figure>
+      <img
+        src="https://picsum.photos/seed/arclight-coastal/820/460"
+        alt="Weathered fishing boats moored at low tide under a pale morning sky"
+        width="820"
+      >
+      <!-- <figcaption> belongs to the <figure> that wraps it   -->
+      <figcaption>
+        From <em>Coastal Lives</em> — a 34-photograph documentary series.
+        County Clare, Ireland, 2025.
+      </figcaption>
+    </figure>
+
     <p>
-      We spent three weeks in rural Japan, trading bullet trains for local buses
-      and finding landscapes that <strong>no travel guide had mapped.</strong>
-      Every turn revealed something unexpected — fog-covered rice paddies,
-      villages unchanged since the Edo period, and a silence you can actually hear.
+      A three-week residency documenting the fishing villages of County Clare —
+      communities shaped by the sea for generations, quietly disappearing.
     </p>
 
-    <!-- Link to a separate page — relative path, same folder -->
-    <p><a href="destination_example.html">Read the full photo essay →</a></p>
+    <!-- Relative path: destination_example.html is in the same folder -->
+    <p><a href="destination_example.html">View the full series →</a></p>
 
-    <!-- ── Gear section ──────────────────────────────────── -->
-    <h2 id="gear">Gear</h2>
+    <!-- ── About ──────────────────────────────────────────────── -->
+    <!-- id="about" is the anchor target for href="#about" above -->
+    <h2 id="about">About</h2>
     <p>
-      Shot on a
-      <!-- External link — opens in new tab, rel="noopener noreferrer" for security -->
-      <a href="https://www.fujifilm.com" target="_blank" rel="noopener noreferrer">Fujifilm X-T5</a>.
-      Edited in
-      <a href="https://www.adobe.com/products/lightroom.html" target="_blank" rel="noopener noreferrer">Lightroom Classic</a>.
+      Arclight Studio is the practice of Jordan Vasquez, a
+      <!-- External link — full https:// URL, opens in a new tab    -->
+      <!-- rel="noopener noreferrer" is a security measure required  -->
+      <!-- whenever you use target="_blank" on external links        -->
+      <a
+        href="https://en.wikipedia.org/wiki/Documentary_photography"
+        target="_blank"
+        rel="noopener noreferrer"
+      >documentary photographer</a>
+      based in Vancouver. Work has appeared in <i>National Geographic</i>,
+      <i>TIME</i>, and <i>The Guardian</i>.
     </p>
 
-    <!-- ── Contact section ───────────────────────────────── -->
+    <!-- ── Contact ────────────────────────────────────────────── -->
+    <!-- id="contact" is the anchor target for href="#contact"   -->
     <h2 id="contact">Contact</h2>
+    <p>For commissions and print licensing:</p>
+    <!-- mailto: opens the visitor's default email client         -->
+    <p><a href="mailto:studio@arclightstudio.ca">studio@arclightstudio.ca</a></p>
     <p>
-      Questions or collaboration requests:<br>
-      <a href="mailto:hello@frameandwander.com">hello@frameandwander.com</a>
+      Follow the work on
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+      or
+      <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer">Behance</a>.
     </p>
 
   </body>

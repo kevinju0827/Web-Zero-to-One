@@ -335,15 +335,15 @@ Review AI output carefully: AI frequently overuses `<section>` (wrapping everyth
 
 ## Guided Practice
 
-**Scenario:** You are building the homepage for **Helix** — a fictional developer-focused tech news site. The page needs a clear semantic structure, a horizontal navigation bar using `display: inline-block`, article cards, a sidebar, and a demonstration of `display: none`.
+**Scenario:** You are building the homepage for **Terrain** — a fictional outdoor adventure and gear review site. The page needs a clear semantic structure, a horizontal navigation bar using `display: inline-block`, article cards, a sidebar, and a demonstration of `display: none`.
 
-See `helix_example.html` in this folder for the finished result.
+See `helix_example.html` in this folder for the finished result. (The file is named `helix_example.html` for historical reasons — it contains the Terrain outdoor site layout.)
 
 ---
 
 ### Step 1: Create the file
 
-In `M07StructureAndDisplay`, create `helix.html` with the standard document skeleton. Set the title to `Helix — Tech News`. Add an empty `<style>` block.
+In `M07StructureAndDisplay`, create `terrain.html` with the standard document skeleton. Set the title to `Terrain — Outdoor & Adventure`. Add an empty `<style>` block.
 
 ---
 
@@ -353,17 +353,17 @@ Add this full page skeleton inside `<body>`. Read through it and identify each s
 
 ```html
 <header id="site-header">
-  <p class="site-label">Developer News</p>
-  <h1>Helix</h1>
-  <p class="tagline">Built by engineers. For engineers.</p>
+  <p class="site-label">Outdoor &amp; Adventure</p>
+  <h1>Terrain</h1>
+  <p class="tagline">Gear tested. Trails reviewed. Routes shared.</p>
 </header>
 
 <nav class="main-nav">
-  <a href="#">AI</a>
-  <a href="#">Open Source</a>
-  <a href="#">Design</a>
-  <a href="#">Security</a>
-  <a href="#">Interviews</a>
+  <a href="#">Trails</a>
+  <a href="#">Gear</a>
+  <a href="#">Routes</a>
+  <a href="#">Community</a>
+  <a href="#">Events</a>
 </nav>
 
 <div class="page-layout">
@@ -372,12 +372,12 @@ Add this full page skeleton inside `<body>`. Read through it and identify each s
     <section class="featured-section">
       <h2 class="section-heading">Featured</h2>
 
-      <article class="post-card featured-card">
-        <span class="category-tag">AI</span>
-        <h3>The Model That Learned to Forget: Why Selective Memory Changes Everything</h3>
-        <p class="byline">By Priya Nair &middot; <time datetime="2026-07-14">July 14</time> &middot; 8 min read</p>
-        <p>Researchers at a small Edinburgh lab have published a technique that could resolve one of the most persistent problems in large language models.</p>
-        <a href="#" class="read-link">Read article &rarr;</a>
+      <article class="post-card">
+        <span class="category-tag">Gear Review</span>
+        <h3>The Boot That Lasted 2,000 km Without a Single Blister</h3>
+        <p class="byline">By Nadia Okonkwo &middot; <time datetime="2026-07-14">July 14</time> &middot; 6 min read</p>
+        <p>After four months on the Pacific Crest Trail, one boot emerged as the clear favourite among long-distance hikers.</p>
+        <a href="#" class="read-link">Read review &rarr;</a>
       </article>
     </section>
 
@@ -385,26 +385,26 @@ Add this full page skeleton inside `<body>`. Read through it and identify each s
       <h2 class="section-heading">Recent</h2>
 
       <article class="post-card">
-        <span class="category-tag">Open Source</span>
-        <h3>Zed Editor Hits 1.0 With Multi-Agent Collaboration</h3>
+        <span class="category-tag">Trail Report</span>
+        <h3>Overnight on the Tongariro Circuit: What No Guide Tells You</h3>
         <p class="byline">By Marcus Webb &middot; <time datetime="2026-07-13">July 13</time></p>
-        <p>The Rust-built code editor has officially left early access with a landmark release.</p>
+        <p>The famous crossing is beautiful. The second day — when the crowds clear — is better.</p>
         <a href="#" class="read-link">Read &rarr;</a>
       </article>
 
       <article class="post-card">
-        <span class="category-tag">Security</span>
-        <h3>Inside the CVE That Took Down Three Cloud Providers in Six Hours</h3>
+        <span class="category-tag">Safety</span>
+        <h3>River Crossings: The Three Mistakes That Get People Killed</h3>
         <p class="byline">By Sofia Reyes &middot; <time datetime="2026-07-12">July 12</time></p>
-        <p>A supply chain vulnerability in a widely-used logging library cascaded further than anyone expected.</p>
+        <p>Most river crossing accidents happen on clear, calm days. Here is why — and how to stay safe.</p>
         <a href="#" class="read-link">Read &rarr;</a>
       </article>
 
       <article class="post-card">
-        <span class="category-tag">Design</span>
-        <h3>Why Dark Mode Is Harder Than It Looks — and How to Do It Right</h3>
+        <span class="category-tag">Nutrition</span>
+        <h3>12,000 Calories in 48 Hours: What Ultra Racers Actually Eat</h3>
         <p class="byline">By Leon Park &middot; <time datetime="2026-07-11">July 11</time></p>
-        <p>Most teams implement dark mode as an afterthought. Here is what systematic theming looks like in practice.</p>
+        <p>Elite ultra runners have abandoned the carb-loading playbook. Here is what replaced it.</p>
         <a href="#" class="read-link">Read &rarr;</a>
       </article>
     </section>
@@ -412,24 +412,24 @@ Add this full page skeleton inside `<body>`. Read through it and identify each s
 
   <aside class="sidebar">
     <section class="sidebar-section">
-      <h2 class="section-heading">Trending</h2>
-      <ol class="trending-list">
-        <li><a href="#">Rust 2026 Edition — what changed</a></li>
-        <li><a href="#">PostgreSQL 18 performance deep-dive</a></li>
-        <li><a href="#">The return of server-side rendering</a></li>
-        <li><a href="#">CSS anchor positioning, explained</a></li>
-        <li><a href="#">How Cloudflare rebuilt their edge runtime</a></li>
+      <h2 class="section-heading">Top Trails</h2>
+      <ol class="trail-list">
+        <li><a href="#">Overland Track, Tasmania</a></li>
+        <li><a href="#">Tour du Mont Blanc, Alps</a></li>
+        <li><a href="#">Laugavegur, Iceland</a></li>
+        <li><a href="#">GR20, Corsica</a></li>
+        <li><a href="#">Abel Tasman Coast Track, NZ</a></li>
       </ol>
     </section>
 
-    <section class="sidebar-section newsletter-section">
-      <h2 class="section-heading">Newsletter</h2>
-      <p>One email, every Friday. No noise.</p>
-      <p class="members-badge">
-        <span class="badge">12,400 readers</span>
+    <section class="sidebar-section gear-section">
+      <h2 class="section-heading">Gear Pick</h2>
+      <p>Osprey Atmos AG 65 — the pack most thru-hikers finish in.</p>
+      <p>
+        <span class="badge">Editor&rsquo;s Choice 2026</span>
       </p>
-      <!-- display: none demo — hidden "beta" label -->
-      <p class="beta-notice">Beta feature — coming soon</p>
+      <!-- display: none demo — hidden until JS enables this feature -->
+      <p class="beta-notice">Beta: AI gear matching coming soon</p>
     </section>
   </aside>
 
@@ -437,13 +437,13 @@ Add this full page skeleton inside `<body>`. Read through it and identify each s
 
 <footer id="site-footer">
   <address>
-    Contact: <a href="mailto:hello@helix.io">hello@helix.io</a>
+    Contact: <a href="mailto:editors@terrain.guide">editors@terrain.guide</a>
   </address>
-  <p>&copy; 2026 Helix &middot; Built with care.</p>
+  <p>&copy; 2026 Terrain &middot; Gear reviews and trail dispatches.</p>
 </footer>
 ```
 
-Open in Chrome. Observe: everything stacks vertically because all the semantic and `<div>` elements default to `display: block`. The `<a>` tags in the nav flow inline. The `<time>` elements sit inline within the byline text.
+Open in Chrome. Observe: everything stacks vertically because all semantic and `<div>` elements default to `display: block`. The `<a>` tags in the nav flow inline. The `<time>` elements sit inline within the byline text.
 
 ---
 
@@ -458,8 +458,8 @@ Open in Chrome. Observe: everything stacks vertically because all the semantic a
 
 body {
   font-family: system-ui, sans-serif;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #f5f7f4;
+  color: #1c2b1a;
   line-height: 1.6;
 }
 
@@ -475,14 +475,14 @@ a {
 
 ```css
 #site-header {
-  background-color: #0f172a;
-  color: #f8fafc;
-  padding: 3rem 2rem;
+  background-color: #1a3a2a;
+  color: #e8f5e4;
+  padding: 2.5rem 2rem;
   text-align: center;
 }
 
 #site-header h1 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 700;
   letter-spacing: -1px;
   margin: 0.25rem 0;
@@ -493,25 +493,25 @@ a {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #64748b;
+  color: #74b576;
 }
 
 .tagline {
-  color: rgba(248, 250, 252, 0.55);
+  color: rgba(232, 245, 228, 0.55);
   font-size: 0.95rem;
   margin-top: 0.25rem;
 }
 
 #site-footer {
-  background-color: #0f172a;
-  color: #475569;
+  background-color: #1a3a2a;
+  color: #4a6a4a;
   font-size: 0.85rem;
   text-align: center;
   padding: 2rem;
   margin-top: 3rem;
 }
 
-#site-footer a { color: #94a3b8; }
+#site-footer a { color: #a8d4a8; }
 #site-footer address { font-style: normal; margin-bottom: 0.25rem; }
 ```
 
@@ -519,11 +519,11 @@ a {
 
 ### Step 5: Style nav links with `display: inline-block`
 
-The `<a>` tags inside `<nav>` default to `display: inline` — they flow in a line but you cannot give them padding that works properly on all sides.
+The `<a>` tags inside `<nav>` default to `display: inline` — they flow in a line but cannot accept padding that works correctly on all sides.
 
 ```css
 .main-nav {
-  background-color: #1e293b;
+  background-color: #2d5a3d;
   padding: 0 2rem;
 }
 
@@ -533,30 +533,28 @@ The `<a>` tags inside `<nav>` default to `display: inline` — they flow in a li
   padding: 0.85rem 1rem;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #94a3b8;
+  color: #a8d4a8;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
-.main-nav a:hover {
-  color: #f8fafc;
-}
+.main-nav a:hover { color: #e8f5e4; }
 ```
 
-Try removing `display: inline-block` from `.main-nav a` — the vertical padding disappears. This demonstrates why `inline-block` matters for navigation.
+Try removing `display: inline-block` from `.main-nav a` — the vertical padding collapses. This demonstrates why `inline-block` matters for navigation links.
 
 ---
 
 ### Step 6: Build the two-column layout
 
-The `<main>` and `<aside>` are both `display: block` by default — they stack vertically. To place them side by side, wrap them in a `<div class="page-layout">` and use a layout technique. Until you learn Flexbox (M10), use an older but effective approach:
+`<main>` and `<aside>` default to `display: block` — they stack vertically. Wrap them in `<div class="page-layout">` and use Flexbox (a preview of M10) to place them side by side:
 
 ```css
 .page-layout {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem;
-  display: flex;         /* preview of Flexbox — covered in M10 */
+  display: flex;         /* preview of Flexbox — covered fully in M10 */
   gap: 2rem;
   align-items: flex-start;
 }
@@ -565,7 +563,7 @@ main  { flex: 1; }
 .sidebar { width: 280px; flex-shrink: 0; }
 ```
 
-> The `display: flex` here is a preview. If it feels unfamiliar, accept it as "makes children sit side by side" for now — M10 covers every detail.
+> Accept `display: flex` as "makes children sit side by side" for now — M10 covers every detail.
 
 ---
 
@@ -577,15 +575,15 @@ main  { flex: 1; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #94a3b8;
+  color: #6b8f6b;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #c8ddc8;
 }
 
 .post-card {
   padding: 1.25rem 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #c8ddc8;
 }
 
 .post-card h3 {
@@ -593,32 +591,34 @@ main  { flex: 1; }
   font-weight: 700;
   line-height: 1.4;
   margin-bottom: 0.4rem;
-  color: #0f172a;
+  color: #1a3a2a;
 }
 
 .post-card p {
   font-size: 0.9rem;
-  color: #475569;
+  color: #4a6a4a;
   margin-bottom: 0.4rem;
 }
 
-.byline { font-size: 0.8rem; color: #94a3b8; }
+.byline { font-size: 0.8rem; color: #6b8f6b; }
 
 .read-link {
+  display: inline-block;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #2563eb;
+  color: #2d5a3d;
+  margin-top: 0.25rem;
 }
 
-/* display: inline-block — tags need padding but must not break line */
+/* display: inline-block — tag needs padding but must flow inline */
 .category-tag {
   display: inline-block;
   font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background-color: #eff6ff;
-  color: #1d4ed8;
+  background-color: #e8f5e4;
+  color: #1a3a2a;
   padding: 0.15rem 0.55rem;
   border-radius: 3px;
   margin-bottom: 0.5rem;
@@ -630,35 +630,34 @@ main  { flex: 1; }
 ### Step 8: Demonstrate `display: none`
 
 ```css
-/* Hide the beta notice — remove from layout entirely */
+/* display: none — remove from layout entirely */
 .beta-notice { display: none; }
 
-/* Sidebar styling */
 .sidebar-section {
   background-color: white;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #c8ddc8;
   border-radius: 8px;
   padding: 1.25rem;
   margin-bottom: 1.25rem;
 }
 
-.trending-list {
+.trail-list {
   padding-left: 1.2rem;
   font-size: 0.88rem;
 }
 
-.trending-list li { margin-bottom: 0.6rem; }
-.trending-list a:hover { color: #2563eb; }
+.trail-list li { margin-bottom: 0.6rem; color: #4a6a4a; }
+.trail-list a:hover { color: #1a3a2a; }
 
-.newsletter-section p {
+.gear-section p {
   font-size: 0.88rem;
-  color: #64748b;
+  color: #4a6a4a;
   margin-bottom: 0.75rem;
 }
 
 .badge {
   display: inline-block;
-  background-color: #f0fdf4;
+  background-color: #dcfce7;
   color: #166534;
   font-size: 0.75rem;
   font-weight: 600;
@@ -667,17 +666,17 @@ main  { flex: 1; }
 }
 ```
 
-In DevTools (F12 → Elements), find `.beta-notice` and delete the `display: none` declaration. The paragraph reappears and reclaims its space. This is the exact toggle pattern JavaScript uses — adding/removing a CSS class that sets `display: none`.
+In DevTools (F12 → Elements), find `.beta-notice` and delete the `display: none` declaration. The paragraph reappears and reclaims its space. This is exactly how JavaScript toggles hidden elements — by adding or removing a CSS class.
 
 ---
 
 ### Step 9: Ask AI to enhance the layout
 
-Paste your `helix.html` into Gemini and prompt:
+Paste your `terrain.html` into Gemini and prompt:
 
-> *"Here is a tech news homepage. Add CSS to: make the featured article card visually distinct from the regular cards (larger heading, tinted background, left accent border), add a hover lift effect on all post cards, and make the category tags display different background colors based on their text content using attribute selectors. Keep all HTML intact."*
+> *"Here is an outdoor news homepage. Add CSS to: make the featured article card visually distinct (larger heading, tinted green background, left accent border), add a hover lift effect on all post cards, and highlight the category tag colour differently for Gear Review versus Trail Report versus Safety. Keep all HTML intact."*
 
-Save as `helix_styled.html`.
+Save as `terrain_styled.html`.
 
 ---
 
