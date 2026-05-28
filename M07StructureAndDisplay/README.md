@@ -3,7 +3,7 @@
 ![Module 7 of 16](https://img.shields.io/badge/Module-7_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![1-2 hours](https://img.shields.io/badge/Time-1--2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M06](https://img.shields.io/badge/Prerequisites-M01–M06-94a3b8?style=flat-square)
+![Prerequisites: M05](https://img.shields.io/badge/Prerequisites-M05-94a3b8?style=flat-square)
 
 **Topics covered:** Semantic HTML elements · `<div>` & `<span>` · `display: block` · `display: inline` · `display: inline-block` · `display: none` · default display values · block vs inline behaviour
 
@@ -662,16 +662,6 @@ main  { flex: 1; }
 ```
 
 In DevTools (F12 → Elements), find `.beta-notice` and delete the `display: none` declaration. The paragraph reappears and reclaims its space. This is exactly how JavaScript toggles hidden elements — by adding or removing a CSS class.
-
----
-
-### Step 9: Ask AI to enhance the layout
-
-Paste your `terrain.html` into Gemini and prompt:
-
-> *"Here is an outdoor news homepage. Add CSS to: make the featured article card visually distinct (larger heading, tinted green background, left accent border), add a hover lift effect on all post cards, and highlight the category tag colour differently for Gear Review versus Trail Report versus Safety. Keep all HTML intact."*
-
-Save as `terrain_styled.html`.
 
 ---
 

@@ -3,7 +3,7 @@
 ![Module 13 of 16](https://img.shields.io/badge/Module-13_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![1.5-2 hours](https://img.shields.io/badge/Time-1.5--2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M12](https://img.shields.io/badge/Prerequisites-M01–M12-94a3b8?style=flat-square)
+![Prerequisites: M05–M06](https://img.shields.io/badge/Prerequisites-M05–M06-94a3b8?style=flat-square)
 
 **Topics covered:** `transition` · timing functions · `transform` · `@keyframes` · `animation` · `animation-fill-mode` · `animation-iteration-count` · `prefers-reduced-motion`
 
@@ -620,16 +620,6 @@ At the bottom of your `<style>` block, add:
 ```
 
 This disables all animations for users who have requested reduced motion in their OS settings (Settings → Accessibility → Reduce Motion on macOS/iOS).
-
----
-
-### Step 9: Ask AI to enhance
-
-Paste your `vivid.html` into Gemini and prompt:
-
-> *"Here is a UI showcase page with CSS transitions and animations. Add CSS to: add a ripple effect to the buttons on click using a @keyframes animation with transform: scale and opacity, add a skeleton loading shimmer animation using a linear-gradient that moves across placeholder boxes, and add a progress bar at the top of the page that animates from 0% to 100% width over 3 seconds on page load. Include a prefers-reduced-motion override. Keep all existing CSS intact."*
-
-Save as `vivid_styled.html`.
 
 ---
 

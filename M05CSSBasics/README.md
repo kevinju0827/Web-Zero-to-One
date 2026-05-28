@@ -3,7 +3,7 @@
 ![Module 5 of 16](https://img.shields.io/badge/Module-5_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![1.5-2 hours](https://img.shields.io/badge/Time-1.5--2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M04](https://img.shields.io/badge/Prerequisites-M01–M04-94a3b8?style=flat-square)
+![Prerequisites: M01](https://img.shields.io/badge/Prerequisites-M01-94a3b8?style=flat-square)
 
 **Topics covered:** CSS syntax · `<style>` tag · element / class / ID selectors · descendant selector · grouping · universal selector · pseudo-classes · the cascade · specificity
 

@@ -3,7 +3,7 @@
 ![Module 11 of 16](https://img.shields.io/badge/Module-11_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![2 hours](https://img.shields.io/badge/Time-2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M10](https://img.shields.io/badge/Prerequisites-M01–M10-94a3b8?style=flat-square)
+![Prerequisites: M10](https://img.shields.io/badge/Prerequisites-M10-94a3b8?style=flat-square)
 
 **Topics covered:** grid container · tracks · `grid-template-columns` · `grid-template-rows` · `fr` unit · `gap` · `grid-column` / `grid-row` · `grid-area` · `grid-template-areas` · `repeat()` · `auto-fill` / `auto-fit` · `minmax()`
 
@@ -244,7 +244,7 @@ Useful AI prompts:
 
 ## Guided Practice
 
-**Scenario:** You are building the portfolio page for **Aperture** — a photography studio. The page needs a 2D photo grid where some images span multiple columns, a named-area page layout, and a responsive card section.
+**Scenario:** You are building the portfolio page for **Aperture** — a photography studio. The page needs a named-area page layout, a 2D photo mosaic where some images span multiple cells, and a responsive card section.
 
 See `aperture_example.html` in this folder for the finished result.
 
@@ -252,11 +252,85 @@ See `aperture_example.html` in this folder for the finished result.
 
 ### Step 1: Create the file
 
-In `M11CSSGrid`, create `aperture.html`. Title: `Aperture — Photography Studio`. Add an empty `<style>` block.
+In `M11CSSGrid`, create `aperture.html`. Title: `Aperture — Photography Studio`. Add an empty `<style>` block inside `<head>`.
 
 ---
 
-### Step 2: Add the box-sizing rule and base styles
+### Step 2: Build all the HTML
+
+Inside `<body>`, add the complete page structure. No CSS yet.
+
+```html
+<div class="page-layout">
+  <header class="site-header">
+    <span class="logo">Aperture</span>
+    <nav class="main-nav">
+      <a href="#">Portfolio</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+
+    <section class="gallery-section">
+      <div class="photo-grid">
+        <div class="photo p1"><span class="photo-label">Urban · Tokyo</span></div>
+        <div class="photo p2"><span class="photo-label">Portrait · Oslo</span></div>
+        <div class="photo p3"><span class="photo-label">Landscape · Patagonia</span></div>
+        <div class="photo p4"><span class="photo-label">Architecture · Chicago</span></div>
+        <div class="photo p5"><span class="photo-label">Abstract · Studio</span></div>
+        <div class="photo p6"><span class="photo-label">Street · Havana</span></div>
+      </div>
+    </section>
+
+    <section class="series-section">
+      <h2 class="section-heading">Recent series</h2>
+      <div class="series-grid">
+        <article class="series-card">
+          <div class="series-thumb t1"></div>
+          <div class="series-body">
+            <h3>Into the Grid</h3>
+            <p>18 photographs exploring urban geometry from New York to São Paulo.</p>
+          </div>
+        </article>
+        <article class="series-card">
+          <div class="series-thumb t2"></div>
+          <div class="series-body">
+            <h3>Slow Light</h3>
+            <p>Long-exposure landscapes shot at dusk across Nordic coastlines.</p>
+          </div>
+        </article>
+        <article class="series-card">
+          <div class="series-thumb t3"></div>
+          <div class="series-body">
+            <h3>Found Colour</h3>
+            <p>Colour field photography from markets, walls, and forgotten places.</p>
+          </div>
+        </article>
+        <article class="series-card">
+          <div class="series-thumb t4"></div>
+          <div class="series-body">
+            <h3>Still Life</h3>
+            <p>Object-based studio work exploring texture, shadow, and repetition.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Aperture Studio</p>
+  </footer>
+</div>
+```
+
+Open `aperture.html` in Chrome. All sections stack in a single column — header, six empty photo divs (collapsed flat because they have no size yet), card section, footer. This is the unstyled baseline.
+
+---
+
+### Step 3: Add base styles
 
 ```css
 *, *::before, *::after {
@@ -271,30 +345,11 @@ body {
 }
 ```
 
+Refresh. Page turns dark. Structure unchanged.
+
 ---
 
-### Step 3: Build the page layout with `grid-template-areas`
-
-```html
-<div class="page-layout">
-  <header class="site-header">
-    <span class="logo">Aperture</span>
-    <nav class="main-nav">
-      <a href="#">Portfolio</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
-
-  <main class="main-content">
-    <!-- content goes here in later steps -->
-  </main>
-
-  <footer class="site-footer">
-    <p>&copy; 2026 Aperture Studio</p>
-  </footer>
-</div>
-```
+### Step 4: Apply `display: grid` to the page layout
 
 ```css
 .page-layout {
@@ -307,10 +362,18 @@ body {
   min-height: 100vh;
 }
 
-.site-header { grid-area: header; }
+.site-header  { grid-area: header; }
 .main-content { grid-area: main; }
 .site-footer  { grid-area: footer; }
 ```
+
+Refresh. The page looks similar — one column still — but `grid-template-rows: auto 1fr auto` already takes effect: the main area (`1fr`) grows to push the footer to the bottom of the viewport. The power of named areas becomes obvious in Step 12 when you add a second column.
+
+---
+
+### Step 5: Style the header and footer
+
+The header uses Flexbox internally — `display: flex` on the header makes logo and nav sit side by side, while the page wrapper uses Grid. Mixing both on the same page is normal.
 
 ```css
 .site-header {
@@ -350,34 +413,7 @@ body {
 
 ---
 
-### Step 4: Add the photo mosaic grid
-
-Inside `.main-content`, add:
-
-```html
-<section class="gallery-section">
-  <div class="photo-grid">
-    <div class="photo p1">
-      <span class="photo-label">Urban · Tokyo</span>
-    </div>
-    <div class="photo p2">
-      <span class="photo-label">Portrait · Oslo</span>
-    </div>
-    <div class="photo p3">
-      <span class="photo-label">Landscape · Patagonia</span>
-    </div>
-    <div class="photo p4">
-      <span class="photo-label">Architecture · Chicago</span>
-    </div>
-    <div class="photo p5">
-      <span class="photo-label">Abstract · Studio</span>
-    </div>
-    <div class="photo p6">
-      <span class="photo-label">Street · Havana</span>
-    </div>
-  </div>
-</section>
-```
+### Step 6: Apply `display: grid` to the photo mosaic
 
 ```css
 .gallery-section {
@@ -386,12 +422,9 @@ Inside `.main-content`, add:
   margin: 0 auto;
 }
 
-/* 4-column grid — items span as needed */
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 180px);
-  gap: 0.75rem;
 }
 
 .photo {
@@ -402,14 +435,51 @@ Inside `.main-content`, add:
   align-items: flex-end;
 }
 
-/* Spanning items */
-.p1 { grid-column: span 2; grid-row: span 2; background-color: #1e2a1e; }
-.p2 { grid-column: span 2;                   background-color: #1e1e2a; }
-.p3 {                                         background-color: #2a1e1e; }
-.p4 {                       grid-row: span 2; background-color: #2a2a1e; }
-.p5 { grid-column: span 2;                   background-color: #1e2a2a; }
-.p6 {                                         background-color: #2a1e2a; }
+.p1 { background-color: #1e2a1e; }
+.p2 { background-color: #1e1e2a; }
+.p3 { background-color: #2a1e1e; }
+.p4 { background-color: #2a2a1e; }
+.p5 { background-color: #1e2a2a; }
+.p6 { background-color: #2a1e2a; }
+```
 
+Refresh. Six coloured cells appear in a 4-column row — but they have no height yet, collapsed to the height of their label text.
+
+---
+
+### Step 7: Add row heights and `gap`
+
+```css
+.photo-grid {
+  grid-template-rows: repeat(3, 180px);
+  gap: 0.75rem;
+}
+```
+
+Refresh. Three rows of 180px each appear. Six items fill the first two rows and part of the third — all cells the same size, no spanning yet.
+
+---
+
+### Step 8: Span cells across multiple tracks
+
+Add `grid-column` and `grid-row` to make specific photos span multiple cells:
+
+```css
+.p1 { grid-column: span 2; grid-row: span 2; }
+.p2 { grid-column: span 2; }
+.p4 { grid-row: span 2; }
+.p5 { grid-column: span 2; }
+```
+
+Refresh. The grid rearranges dramatically. `.p1` now occupies a 2×2 block in the top-left corner; `.p4` spans two rows; the browser automatically flows the remaining items into available cells.
+
+Open DevTools, click `.photo-grid`, and enable the CSS Grid overlay (the grid icon next to `display: grid` in the Styles panel). The overlay shows column lines, row lines, and how each item occupies its cells. This visualiser is your main debugging tool for Grid layouts.
+
+---
+
+### Step 9: Add the photo label styles
+
+```css
 .photo-label {
   background-color: rgba(0,0,0,0.55);
   color: rgba(255,255,255,0.8);
@@ -423,43 +493,7 @@ Inside `.main-content`, add:
 
 ---
 
-### Step 5: Add the responsive card section
-
-```html
-<section class="series-section">
-  <h2 class="section-heading">Recent series</h2>
-  <div class="series-grid">
-    <article class="series-card">
-      <div class="series-thumb t1"></div>
-      <div class="series-body">
-        <h3>Into the Grid</h3>
-        <p>18 photographs exploring urban geometry from New York to São Paulo.</p>
-      </div>
-    </article>
-    <article class="series-card">
-      <div class="series-thumb t2"></div>
-      <div class="series-body">
-        <h3>Slow Light</h3>
-        <p>Long-exposure landscapes shot at dusk across Nordic coastlines.</p>
-      </div>
-    </article>
-    <article class="series-card">
-      <div class="series-thumb t3"></div>
-      <div class="series-body">
-        <h3>Found Colour</h3>
-        <p>Colour field photography from markets, walls, and forgotten places.</p>
-      </div>
-    </article>
-    <article class="series-card">
-      <div class="series-thumb t4"></div>
-      <div class="series-body">
-        <h3>Still Life</h3>
-        <p>Object-based studio work exploring texture, shadow, and repetition.</p>
-      </div>
-    </article>
-  </div>
-</section>
-```
+### Step 10: Apply `auto-fill` + `minmax()` to the series grid
 
 ```css
 .series-section {
@@ -477,13 +511,20 @@ Inside `.main-content`, add:
   margin-bottom: 1.25rem;
 }
 
-/* auto-fill: reflows columns automatically as viewport narrows */
 .series-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 1.25rem;
 }
+```
 
+Refresh. The four cards arrange into columns automatically. Narrow the browser and watch them reflow: 4 columns → 3 → 2 → 1. No media queries needed — `minmax(230px, 1fr)` means each column is at least 230px wide, and `auto-fill` fits as many as possible.
+
+---
+
+### Step 11: Finish the series card styles
+
+```css
 .series-card {
   background-color: #1a1a1a;
   border: 1px solid #222;
@@ -491,18 +532,14 @@ Inside `.main-content`, add:
   overflow: hidden;
 }
 
-.series-thumb {
-  height: 150px;
-}
+.series-thumb { height: 150px; }
 
 .t1 { background-color: #1c2a1c; }
 .t2 { background-color: #1c1c2a; }
 .t3 { background-color: #2a1c1c; }
 .t4 { background-color: #1c2a2a; }
 
-.series-body {
-  padding: 1rem;
-}
+.series-body { padding: 1rem; }
 
 .series-body h3 {
   font-size: 0.95rem;
@@ -520,41 +557,44 @@ Inside `.main-content`, add:
 
 ---
 
-### Step 6: Observe spanning items
+### Step 12: Experiment — switch to a sidebar layout
 
-Resize the browser and notice `.p1` always spans 2 columns and 2 rows — the grid automatically fills remaining cells with `.p2`, `.p3` etc. Open DevTools, click the `.photo-grid`, and enable the CSS Grid overlay (the grid icon next to `display: grid` in the Styles panel). The overlay shows column lines, row lines, and cell boundaries.
-
----
-
-### Step 7: Observe auto-fill reflow
-
-Narrow the browser window until the `.series-grid` reflows from 4 columns → 3 → 2 → 1. No media queries needed — `minmax(230px, 1fr)` does the work.
-
----
-
-### Step 8: Experiment with `grid-template-areas`
-
-Add a second layout variant using named areas. In the `.page-layout`, switch `grid-template-areas` to a two-column layout:
+Update `.page-layout` to add a second column and rearrange the named areas:
 
 ```css
-grid-template-columns: 220px 1fr;
-grid-template-areas:
-  "header  header"
-  "sidebar main"
-  "footer  footer";
+.page-layout {
+  grid-template-columns: 220px 1fr;
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+}
 ```
 
-Add `.sidebar { grid-area: sidebar; background-color: #0a0a0a; padding: 2rem; }` and a `<aside class="sidebar">` in the HTML. Observe how the entire page layout shifts with two CSS rule changes.
+Add to HTML (inside `.page-layout`, before `<main>`):
 
----
+```html
+<aside class="sidebar">
+  <p>Series</p>
+  <p>Prints</p>
+  <p>Archive</p>
+</aside>
+```
 
-### Step 9: Ask AI to enhance
+Add to CSS:
 
-Paste your `aperture.html` into Gemini and prompt:
+```css
+.sidebar {
+  grid-area: sidebar;
+  background-color: #0a0a0a;
+  padding: 2rem;
+  border-right: 1px solid #222;
+}
+```
 
-> *"Here is a photography portfolio page. Add CSS to: add a dark semi-transparent overlay to each .photo that reveals a full-opacity version of the photo-label text on hover, add a thin coloured top border to each series-card that changes colour per card using :nth-child selectors, and add a smooth fade-in transition to the series cards using opacity and a CSS animation. Keep all existing CSS intact."*
+Refresh. The entire page layout shifts — header and footer still span the full width, but the main area now shares a row with a sidebar. Two CSS property changes restructured the whole page.
 
-Save as `aperture_styled.html`.
+Revert to the single-column layout (remove `grid-template-columns`, restore the original `grid-template-areas`, and remove the `<aside>` from the HTML) when done.
 
 ---
 

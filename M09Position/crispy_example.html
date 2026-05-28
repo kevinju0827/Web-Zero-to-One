@@ -30,23 +30,26 @@
         max-width: 1100px;
         margin: 0 auto;
         padding: 1rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        overflow: hidden;
       }
 
       .nav-logo {
         font-size: 1.3rem;
         font-weight: 800;
         color: #e85d2f;
+        line-height: 1;
       }
 
       .nav-links {
         list-style: none;
         padding: 0;
         margin: 0;
-        display: flex;
-        gap: 2rem;
+        float: right;
+      }
+
+      .nav-links li {
+        display: inline-block;
+        margin-left: 2rem;
       }
 
       .nav-links a {
@@ -91,18 +94,24 @@
       }
 
       .card-grid {
-        display: flex;
-        gap: 1.5rem;
+        overflow: hidden;
       }
 
       /* position: relative — establishes positioning context for the badge */
       .menu-card {
-        flex: 1;
+        box-sizing: border-box;
+        float: left;
+        width: 32%;
+        margin-right: 2%;
         background-color: white;
         border: 1px solid #ebebeb;
         border-radius: 12px;
         overflow: hidden;
         position: relative;
+      }
+
+      .menu-card:last-child {
+        margin-right: 0;
       }
 
       /* card-image: coloured placeholder, contains the absolute badge */
@@ -161,22 +170,26 @@
       }
 
       .how-grid {
-        display: flex;
-        gap: 2rem;
+        overflow: hidden;
         margin-top: 2rem;
       }
 
       .how-step {
-        flex: 1;
+        box-sizing: border-box;
+        float: left;
+        width: 32%;
+        margin-right: 2%;
         background-color: white;
         border-radius: 12px;
         padding: 2rem;
       }
 
+      .how-step:last-child {
+        margin-right: 0;
+      }
+
       .step-num {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+        display: block;
         width: 2rem;
         height: 2rem;
         background-color: #e85d2f;
@@ -185,6 +198,8 @@
         font-weight: 700;
         font-size: 0.9rem;
         margin-bottom: 1rem;
+        text-align: center;
+        line-height: 2rem;
       }
 
       .how-step h3 {

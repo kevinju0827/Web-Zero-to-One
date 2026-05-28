@@ -3,7 +3,7 @@
 ![Module 8 of 16](https://img.shields.io/badge/Module-8_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![1.5-2 hours](https://img.shields.io/badge/Time-1.5--2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M07](https://img.shields.io/badge/Prerequisites-M01–M07-94a3b8?style=flat-square)
+![Prerequisites: M07](https://img.shields.io/badge/Prerequisites-M07-94a3b8?style=flat-square)
 
 **Topics covered:** Box model layers · `width` / `height` · `padding` · `border` · `margin` · `box-sizing` · shorthand syntax · `outline` · DevTools box model panel
 
@@ -574,16 +574,6 @@ Compare the two callout boxes: `.tasting-menu` uses `border` with a transparent 
 In DevTools, find `.menu-item` and temporarily add `box-sizing: content-box` to override the global rule. Then set `width: 100%` and `padding: 2rem` — the item overflows its container because padding now adds to the declared width. Remove the override to restore `border-box` behaviour.
 
 Then change `padding` on any `.menu-item` in DevTools and watch the box model diagram update in real time.
-
----
-
-### Step 9: Ask AI to enhance
-
-Paste your `verona.html` into Gemini and prompt:
-
-> *"Here is a restaurant menu page. Add CSS to: add a subtle box-shadow to the tasting menu callout, add a smooth background-color transition on menu items so they tint slightly on hover, and style the Book a Table button to scale up slightly on hover. Keep all existing CSS and HTML intact — only add new rules."*
-
-Save as `verona_styled.html`.
 
 ---
 

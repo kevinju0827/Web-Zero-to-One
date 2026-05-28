@@ -3,7 +3,7 @@
 ![Module 15 of 16](https://img.shields.io/badge/Module-15_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![2 hours](https://img.shields.io/badge/Time-2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M14](https://img.shields.io/badge/Prerequisites-M01–M14-94a3b8?style=flat-square)
+![Prerequisites: M14](https://img.shields.io/badge/Prerequisites-M14-94a3b8?style=flat-square)
 
 **Topics covered:** Bootstrap navbar · card · button variants · badge · alert · form controls · modal · accordion · `data-bs-*` attributes · Bootstrap JS
 
@@ -573,22 +573,6 @@ Open the page and verify:
 - The promo alert dismisses when the × is clicked
 - The "Quick view" button opens the product modal; the modal closes with Cancel or ×
 - Accordion items open and close; opening one item closes the others
-
----
-
-### Step 8: Inspect Bootstrap JS in DevTools
-
-Open DevTools → Sources panel → look under the CDN domain for `bootstrap.bundle.min.js`. Open the Console and type `bootstrap.Modal.VERSION` — it should return the version string. This confirms Bootstrap JS is loaded and active.
-
----
-
-### Step 9: Ask AI to enhance
-
-Paste your `summit_components.html` into Gemini and prompt:
-
-> *"Here is a Bootstrap 5 page with a navbar, modal, accordion, and form. Add: a Bootstrap toast notification that appears in the bottom-right corner when the 'Add to cart' button in the modal is clicked (use data-bs-toggle='toast'), a Bootstrap dropdown in the navbar for a 'Gear' menu with three sub-items, and a Bootstrap progress bar set to 75% inside a card labelled 'Expedition fund'. Keep all Bootstrap 5 conventions and existing code intact."*
-
-Save as `summit_components_styled.html`.
 
 ---
 

@@ -3,7 +3,7 @@
 ![Module 9 of 16](https://img.shields.io/badge/Module-9_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![1.5-2 hours](https://img.shields.io/badge/Time-1.5--2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M08](https://img.shields.io/badge/Prerequisites-M01–M08-94a3b8?style=flat-square)
+![Prerequisites: M07–M08](https://img.shields.io/badge/Prerequisites-M07–M08-94a3b8?style=flat-square)
 
 **Topics covered:** `position` values · `static` · `relative` · `absolute` · `fixed` · `sticky` · offset properties · `z-index` · stacking context
 
@@ -387,22 +387,26 @@ body {
 }
 
 .how-grid {
-  display: flex;
-  gap: 2rem;
+  overflow: hidden;
   margin-top: 2rem;
 }
 
 .how-step {
-  flex: 1;
+  box-sizing: border-box;
+  float: left;
+  width: 32%;
+  margin-right: 2%;
   background-color: white;
   border-radius: 12px;
   padding: 2rem;
 }
 
+.how-step:last-child {
+  margin-right: 0;
+}
+
 .step-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   width: 2rem;
   height: 2rem;
   background-color: #e85d2f;
@@ -411,6 +415,8 @@ body {
   font-weight: 700;
   font-size: 0.9rem;
   margin-bottom: 1rem;
+  text-align: center;
+  line-height: 2rem;
 }
 
 .how-step h3 {
@@ -476,21 +482,26 @@ Refresh. The page now has enough content to scroll — which is essential for ob
   max-width: 1100px;
   margin: 0 auto;
   padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  overflow: hidden;
 }
 
 .nav-logo {
   font-size: 1.3rem;
   font-weight: 800;
   color: #e85d2f;
+  line-height: 1;
 }
 
 .nav-links {
   list-style: none;
-  display: flex;
-  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  float: right;
+}
+
+.nav-links li {
+  display: inline-block;
+  margin-left: 2rem;
 }
 
 .nav-links a {
@@ -547,17 +558,23 @@ Scroll down the page — the navbar locks at the top of the viewport.
 }
 
 .card-grid {
-  display: flex;
-  gap: 1.5rem;
+  overflow: hidden;
 }
 
 .menu-card {
-  flex: 1;
+  box-sizing: border-box;
+  float: left;
+  width: 32%;
+  margin-right: 2%;
   background-color: white;
   border: 1px solid #ebebeb;
   border-radius: 12px;
   overflow: hidden;
   position: relative;   /* context for the absolute badge */
+}
+
+.menu-card:last-child {
+  margin-right: 0;
 }
 
 .card-image {
@@ -627,27 +644,6 @@ Scroll down the page — the navbar locks at the top of the viewport.
 ```
 
 Scroll the page — the button stays pinned to the bottom-right corner.
-
----
-
-### Step 7: Inspect in DevTools
-
-Open DevTools (`F12`), click `.card-badge`, and observe:
-- `position: absolute` under Computed styles
-- `top: 12px`, `right: 12px` offset values
-- Containing block is `.card-image`, not the page
-
-Then click `.site-nav` and confirm `position: sticky` with `top: 0`.
-
----
-
-### Step 8: Ask AI to enhance
-
-Paste your `crispy.html` into Gemini and prompt:
-
-> *"Here is a food delivery landing page. Add CSS to: show a tooltip with the text 'Add to cart' above each card's price on hover — use position: absolute on the tooltip and position: relative on the card. Also give the floating button a subtle scale-up effect on hover. Keep all existing CSS intact."*
-
-Save as `crispy_styled.html`.
 
 ---
 

@@ -3,7 +3,7 @@
 ![Module 4 of 16](https://img.shields.io/badge/Module-4_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![1.5-2 hours](https://img.shields.io/badge/Time-1.5--2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M03](https://img.shields.io/badge/Prerequisites-M01–M03-94a3b8?style=flat-square)
+![Prerequisites: M01–M02](https://img.shields.io/badge/Prerequisites-M01–M02-94a3b8?style=flat-square)
 
 **Topics covered:** `<form>` · `<input>` types · `<label>` · `name` attribute · `<fieldset>` / `<legend>` · Radio buttons & checkboxes · `<select>` / `<optgroup>` · `<textarea>` · `<button>` · HTML5 built-in validation
 

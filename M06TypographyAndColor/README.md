@@ -3,7 +3,7 @@
 ![Module 6 of 16](https://img.shields.io/badge/Module-6_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![1.5-2 hours](https://img.shields.io/badge/Time-1.5--2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M05](https://img.shields.io/badge/Prerequisites-M01–M05-94a3b8?style=flat-square)
+![Prerequisites: M05](https://img.shields.io/badge/Prerequisites-M05-94a3b8?style=flat-square)
 
 **Topics covered:** Color formats (named · hex · rgb · rgba · hsl) · `color` · `background-color` · `font-family` · Google Fonts · `font-size` · `font-weight` · `font-style` · `line-height` · `letter-spacing` · `text-transform` · `text-decoration` · `text-align` · CSS units (`px` · `em` · `rem` · `%`)
 
@@ -648,16 +648,6 @@ The `border-left` + `padding-left` combination is a classic typographic device f
 ```
 
 Refresh. The dark masthead and footer frame the warm-white content area — a common editorial layout pattern.
-
----
-
-### Step 9: Ask AI to push the design further
-
-Paste your `vela.html` into Gemini and prompt:
-
-> *"Here is a sailing magazine article page. Extend the existing `<style>` block to: add a decorative drop cap on the first paragraph of the article, add a subtle text shadow to the main `<h1>`, create a horizontal rule style between sections, and add a background tint effect on the pull quote. Keep all existing CSS and HTML intact — only add new rules."*
-
-Save the result as `vela_styled.html` and compare.
 
 ---
 

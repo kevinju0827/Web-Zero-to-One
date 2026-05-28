@@ -3,7 +3,7 @@
 ![Module 3 of 16](https://img.shields.io/badge/Module-3_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![1-2 hours](https://img.shields.io/badge/Time-1--2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M02](https://img.shields.io/badge/Prerequisites-M01–M02-94a3b8?style=flat-square)
+![Prerequisites: M01](https://img.shields.io/badge/Prerequisites-M01-94a3b8?style=flat-square)
 
 **Topics covered:** Unordered & ordered lists · Nested lists · Definition lists · Table structure · `<thead>` / `<tbody>` / `<tfoot>` · `colspan` & `rowspan`
 
@@ -453,13 +453,7 @@ This is the centrepiece. Build the full table with semantic structure and spanni
 
 ---
 
-### Step 6: Inspect the table in DevTools
-
-Open `festival.html` in Chrome and press `F12`. In the **Elements** tab, hover over the `<td colspan="3">` cell for the Opening Ceremony row. Chrome highlights the cell and its neighbouring cells in the rendered page. Expand the `<table>` tree and confirm the row with `rowspan="2"` has one fewer `<td>` in the following row.
-
----
-
-### Step 7: Ask AI to style the page
+### Step 6: Ask AI to style the page
 
 Paste your `festival.html` into Gemini and prompt:
 

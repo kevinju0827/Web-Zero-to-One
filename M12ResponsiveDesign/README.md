@@ -3,7 +3,7 @@
 ![Module 12 of 16](https://img.shields.io/badge/Module-12_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![2 hours](https://img.shields.io/badge/Time-2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M11](https://img.shields.io/badge/Prerequisites-M01–M11-94a3b8?style=flat-square)
+![Prerequisites: M10–M11](https://img.shields.io/badge/Prerequisites-M10–M11-94a3b8?style=flat-square)
 
 **Topics covered:** viewport meta tag · media queries · mobile-first approach · `vw` / `vh` · `rem` vs `px` · fluid images · `clamp()` · responsive navigation · common breakpoints
 
@@ -629,16 +629,6 @@ In the DevTools device toolbar, test at:
 - 1280px (desktop)
 
 Confirm no horizontal scrolling at any width, and that all three layout breakpoints trigger correctly.
-
----
-
-### Step 9: Ask AI to enhance
-
-Paste your `nomad.html` into Gemini and prompt:
-
-> *"Here is a travel agency homepage. Add CSS to: add a hero background image placeholder using a gradient that goes from dark green to lighter green, add a media query at 1200px that increases the hero padding and font sizes slightly, and add a subtle hover effect on the destination cards (slight upward translate and shadow). Keep all existing CSS intact and maintain the mobile-first approach."*
-
-Save as `nomad_styled.html`.
 
 ---
 

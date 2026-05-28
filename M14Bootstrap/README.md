@@ -3,7 +3,7 @@
 ![Module 14 of 16](https://img.shields.io/badge/Module-14_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![2 hours](https://img.shields.io/badge/Time-2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M13](https://img.shields.io/badge/Prerequisites-M01–M13-94a3b8?style=flat-square)
+![Prerequisites: M06 + M12](https://img.shields.io/badge/Prerequisites-M06_+_M12-94a3b8?style=flat-square)
 
 **Topics covered:** Bootstrap 5 CDN setup · container system · 12-column grid · responsive breakpoints · spacing utilities · colour utilities · display utilities · typography utilities
 
@@ -475,16 +475,6 @@ Add a `<style>` block in `<head>` *after* the Bootstrap CDN link. Override the p
 ```
 
 Confirm your custom rule overrides Bootstrap's default green without touching the CDN file.
-
----
-
-### Step 9: Ask AI to enhance
-
-Paste your `summit.html` into Gemini and prompt:
-
-> *"Here is a Bootstrap 5 landing page for an outdoor gear brand. Add a responsive navigation bar using Bootstrap's navbar component with the Summit logo on the left, nav links in the centre, and a Cart icon on the right. Use Bootstrap 5 navbar classes only — no custom navigation CSS. Keep all existing code intact."*
-
-Save as `summit_styled.html`.
 
 ---
 

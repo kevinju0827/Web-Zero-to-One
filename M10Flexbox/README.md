@@ -3,7 +3,7 @@
 ![Module 10 of 16](https://img.shields.io/badge/Module-10_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![2 hours](https://img.shields.io/badge/Time-2_hours-60a5fa?style=flat-square)
-![Prerequisites: M01–M09](https://img.shields.io/badge/Prerequisites-M01–M09-94a3b8?style=flat-square)
+![Prerequisites: M07–M08](https://img.shields.io/badge/Prerequisites-M07–M08-94a3b8?style=flat-square)
 
 **Topics covered:** flex container · flex items · `flex-direction` · `justify-content` · `align-items` · `gap` · `flex-wrap` · `flex` shorthand · `align-self` · `order`
 
@@ -262,7 +262,7 @@ Useful AI prompts:
 
 ## Guided Practice
 
-**Scenario:** You are building the episode directory for **Wavelength** — a podcast discovery platform. The page needs a podcast card row with equal-height cards, a header with a logo and navigation pushed apart, and a featured section with a large card and a sidebar.
+**Scenario:** You are building the episode directory for **Wavelength** — a podcast discovery platform. The page needs a header with logo and navigation pushed apart, a card row with equal-height cards, and a featured section with a large card and a sidebar.
 
 See `wavelength_example.html` in this folder for the finished result.
 
@@ -270,28 +270,13 @@ See `wavelength_example.html` in this folder for the finished result.
 
 ### Step 1: Create the file
 
-In `M10Flexbox`, create `wavelength.html`. Title: `Wavelength — Podcast Discovery`. Add an empty `<style>` block.
+In `M10Flexbox`, create `wavelength.html`. Title: `Wavelength — Podcast Discovery`. Add an empty `<style>` block inside `<head>`.
 
 ---
 
-### Step 2: Add the box-sizing rule and base styles
+### Step 2: Build all the HTML
 
-```css
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: system-ui, sans-serif;
-  background-color: #0f0f13;
-  color: #e8e8f0;
-  margin: 0;
-}
-```
-
----
-
-### Step 3: Build the site header with `justify-content: space-between`
+Inside `<body>`, add the complete page structure. No CSS yet — you will add it one property at a time in the steps that follow.
 
 ```html
 <header class="site-header">
@@ -305,82 +290,12 @@ body {
     </nav>
   </div>
 </header>
-```
 
-```css
-.site-header {
-  background-color: #18181f;
-  border-bottom: 1px solid #2a2a35;
-}
-
-.header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1.25rem 2rem;
-  display: flex;
-  justify-content: space-between;   /* logo left, nav right */
-  align-items: center;
-}
-
-.site-logo {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: #a78bfa;
-}
-
-.header-nav {
-  display: flex;
-  gap: 2rem;
-}
-
-.header-nav a {
-  text-decoration: none;
-  color: #94a3b8;
-  font-size: 0.88rem;
-  font-weight: 500;
-}
-```
-
----
-
-### Step 4: Add the hero
-
-```html
 <section class="hero">
   <p class="hero-label">Discover · Listen · Follow</p>
   <h1>Your next favourite podcast<br>is one play away.</h1>
 </section>
-```
 
-```css
-.hero {
-  max-width: 1100px;
-  margin: 4rem auto 3rem;
-  padding: 0 2rem;
-}
-
-.hero-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #a78bfa;
-  margin-bottom: 0.75rem;
-}
-
-.hero h1 {
-  font-size: 2.6rem;
-  font-weight: 800;
-  line-height: 1.2;
-  color: #f0f0fa;
-}
-```
-
----
-
-### Step 5: Build the podcast card row with `flex: 1`
-
-```html
 <section class="episodes-section">
   <h2 class="section-label">Trending now</h2>
   <div class="card-row">
@@ -427,98 +342,7 @@ body {
 
   </div>
 </section>
-```
 
-```css
-.episodes-section {
-  max-width: 1100px;
-  margin: 0 auto 5rem;
-  padding: 0 2rem;
-}
-
-.section-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #64748b;
-  margin-bottom: 1.25rem;
-}
-
-/* flex container — row with equal gaps */
-.card-row {
-  display: flex;
-  gap: 1.25rem;
-}
-
-/* flex: 1 — each card takes equal share of available width */
-.podcast-card {
-  flex: 1;
-  background-color: #18181f;
-  border: 1px solid #2a2a35;
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;   /* column inside each card */
-}
-
-.card-cover {
-  height: 140px;
-}
-
-.cover-1 { background-color: #2d1b4e; background-image: url('https://picsum.photos/seed/podcast-tech/560/280'); background-size: cover; background-position: center; }
-.cover-2 { background-color: #0d2b3e; background-image: url('https://picsum.photos/seed/podcast-science/560/280'); background-size: cover; background-position: center; }
-.cover-3 { background-color: #1a2e1a; background-image: url('https://picsum.photos/seed/podcast-design/560/280'); background-size: cover; background-position: center; }
-.cover-4 { background-color: #2e1a1a; background-image: url('https://picsum.photos/seed/podcast-business/560/280'); background-size: cover; background-position: center; }
-
-/* flex: 1 on .card-meta fills remaining height — makes all cards equal */
-.card-meta {
-  padding: 1.1rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.category-tag {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #a78bfa;
-  background-color: rgba(167, 139, 250, 0.12);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  margin-bottom: 0.6rem;
-  align-self: flex-start;
-}
-
-.card-meta h3 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
-  color: #f0f0fa;
-}
-
-.card-meta p {
-  font-size: 0.82rem;
-  color: #64748b;
-  line-height: 1.55;
-  flex: 1;   /* pushes ep-info to the bottom */
-}
-
-.ep-info {
-  font-size: 0.75rem;
-  color: #475569;
-  margin-top: 0.75rem;
-}
-```
-
----
-
-### Step 6: Add a featured row with `flex` proportions
-
-```html
 <section class="featured-section">
   <h2 class="section-label">Editor&apos;s pick</h2>
   <div class="featured-row">
@@ -547,20 +371,273 @@ body {
 </section>
 ```
 
+Open `wavelength.html` in Chrome. Everything stacks in a single column — the browser's default block layout. The logo and nav sit on separate lines; the four podcast cards stack vertically. This is the baseline you will reshape step by step.
+
+---
+
+### Step 3: Add base styles
+
+These are not Flexbox properties — they establish the visual foundation.
+
 ```css
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background-color: #0f0f13;
+  color: #e8e8f0;
+  margin: 0;
+}
+```
+
+Refresh. The page turns dark. Layout has not changed — logo and nav still stack vertically.
+
+---
+
+### Step 4: Apply `display: flex` to the header
+
+```css
+.site-header {
+  background-color: #18181f;
+  border-bottom: 1px solid #2a2a35;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+}
+```
+
+Refresh. The logo and nav links are now on the same horizontal line — `display: flex` placed the two children of `.header-inner` side by side. Both are crowded to the left with no space between them.
+
+---
+
+### Step 5: Push them apart with `justify-content`
+
+Add one property to `.header-inner`:
+
+```css
+.header-inner {
+  justify-content: space-between;
+}
+```
+
+Refresh. The logo moves to the far left, the nav group to the far right. `justify-content: space-between` puts the first item at the start and the last at the end, with all remaining space between them.
+
+---
+
+### Step 6: Centre items vertically with `align-items`
+
+```css
+.header-inner {
+  align-items: center;
+}
+```
+
+Refresh. The logo and nav are now centred vertically relative to each other. `align-items: center` aligns children along the cross axis (vertical, because `flex-direction` defaults to `row`).
+
+Now make the nav links a nested flex row:
+
+```css
+.site-logo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #a78bfa;
+}
+
+.header-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+```
+
+Refresh. The nav links sit horizontally with even gaps. A flex item can itself be a flex container for its own children — nesting is a normal pattern.
+
+---
+
+### Step 7: Style the hero and section wrappers
+
+No Flexbox needed here — this demonstrates that you only add `display: flex` where items actually need to flow differently.
+
+```css
+.hero {
+  max-width: 1100px;
+  margin: 4rem auto 3rem;
+  padding: 0 2rem;
+}
+
+.hero-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #a78bfa;
+  margin-bottom: 0.75rem;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #f0f0fa;
+}
+
+.episodes-section,
 .featured-section {
   max-width: 1100px;
   margin: 0 auto 5rem;
   padding: 0 2rem;
 }
 
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #64748b;
+  margin-bottom: 1.25rem;
+}
+```
+
+---
+
+### Step 8: Turn the card row into a flex container
+
+```css
+.card-row {
+  display: flex;
+}
+```
+
+Refresh. The four podcast cards are now in a horizontal row — but different widths (sized to their content) and no space between them.
+
+---
+
+### Step 9: Add `gap` between cards
+
+```css
+.card-row {
+  gap: 1.25rem;
+}
+```
+
+Refresh. Even spacing appears between the cards. `gap` does not add space before the first or after the last item — cleaner than `margin`.
+
+---
+
+### Step 10: Make cards share width equally with `flex: 1`
+
+```css
+.podcast-card {
+  flex: 1;
+  background-color: #18181f;
+  border: 1px solid #2a2a35;
+  border-radius: 12px;
+  overflow: hidden;
+}
+```
+
+Refresh. Every card takes the same fraction of available width. With four cards each at `flex: 1`, they share the space in equal parts.
+
+---
+
+### Step 11: Make cards equal height with `flex-direction: column`
+
+Cards with less text are shorter than neighbours with more. Fix this by making each card a flex container flowing vertically:
+
+```css
+.podcast-card {
+  display: flex;
+  flex-direction: column;
+}
+```
+
+Add cover images and the card-meta with `flex: 1`:
+
+```css
+.card-cover {
+  height: 140px;
+}
+
+.cover-1 { background-color: #2d1b4e; background-image: url('https://picsum.photos/seed/podcast-tech/560/280'); background-size: cover; background-position: center; }
+.cover-2 { background-color: #0d2b3e; background-image: url('https://picsum.photos/seed/podcast-science/560/280'); background-size: cover; background-position: center; }
+.cover-3 { background-color: #1a2e1a; background-image: url('https://picsum.photos/seed/podcast-design/560/280'); background-size: cover; background-position: center; }
+.cover-4 { background-color: #2e1a1a; background-image: url('https://picsum.photos/seed/podcast-business/560/280'); background-size: cover; background-position: center; }
+
+.card-meta {
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+```
+
+Refresh. All cards are now exactly the same height. `flex: 1` on `.card-meta` absorbs any leftover vertical space — so a card with two lines of text stretches its meta area to match a card with four lines.
+
+---
+
+### Step 12: Finish the card meta styles
+
+```css
+.category-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #a78bfa;
+  background-color: rgba(167, 139, 250, 0.12);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.6rem;
+  align-self: flex-start;
+}
+
+.card-meta h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #f0f0fa;
+}
+
+.card-meta p {
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.55;
+  flex: 1;
+}
+
+.ep-info {
+  font-size: 0.75rem;
+  color: #475569;
+  margin-top: 0.75rem;
+}
+```
+
+Notice `align-self: flex-start` on `.category-tag` — it overrides `align-items: stretch` for just this one item, keeping the tag at its natural width instead of stretching to full card width.
+
+---
+
+### Step 13: Add the featured row with proportional `flex` values
+
+```css
 .featured-row {
   display: flex;
   gap: 1.5rem;
   align-items: flex-start;
 }
 
-/* flex: 3 — takes 3x more space than the aside */
 .featured-main {
   flex: 3;
   background-color: #18181f;
@@ -569,6 +646,20 @@ body {
   overflow: hidden;
 }
 
+.featured-aside {
+  flex: 1;
+  background-color: #18181f;
+  border: 1px solid #2a2a35;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+```
+
+Refresh. The article and sidebar sit side by side in a 3:1 ratio — the article takes three-quarters of the row, the sidebar one-quarter.
+
+Finish the featured section:
+
+```css
 .featured-cover {
   height: 220px;
   background-color: #1e1030;
@@ -595,15 +686,6 @@ body {
   margin-bottom: 0.75rem;
 }
 
-/* flex: 1 — takes 1/4 of the row */
-.featured-aside {
-  flex: 1;
-  background-color: #18181f;
-  border: 1px solid #2a2a35;
-  border-radius: 12px;
-  padding: 1.5rem;
-}
-
 .aside-heading {
   font-size: 0.75rem;
   font-weight: 700;
@@ -615,6 +697,8 @@ body {
 
 .queue-list {
   list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
@@ -636,25 +720,11 @@ body {
 
 ---
 
-### Step 7: Observe equal-height cards
+### Step 14: Experiment in DevTools
 
-Resize the browser window and notice the podcast cards stay the same height as each other regardless of text length — because `flex: 1` on `.card-meta` fills any remaining space. Remove `flex: 1` from `.card-meta` temporarily to see the height difference without it.
+In DevTools, select `.card-row` and live-edit `justify-content` through `flex-start`, `center`, `space-between`, and `space-evenly`. Watch cards redistribute while `gap` stays constant.
 
----
-
-### Step 8: Experiment with `justify-content` values
-
-In DevTools, select `.card-row` and live-edit `justify-content` through `flex-start`, `center`, `space-between`, and `space-evenly`. Watch how the cards redistribute. Confirm that `gap` still applies between items regardless of the value.
-
----
-
-### Step 9: Ask AI to enhance
-
-Paste your `wavelength.html` into Gemini and prompt:
-
-> *"Here is a podcast directory page. Add CSS to: add a play button overlay centred on each .card-cover using position: absolute and Flexbox centering, show a subtle bottom border on each podcast card that turns purple on hover, and make the featured-aside display its list items as flex rows with a coloured dot on the left. Keep all existing CSS intact."*
-
-Save as `wavelength_styled.html`.
+Temporarily remove `flex: 1` from `.podcast-card` — cards collapse to their content width. Restore it. Then remove `flex: 1` from `.card-meta` — card heights become uneven again. Restore it.
 
 ---
 
