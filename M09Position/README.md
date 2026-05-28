@@ -258,17 +258,114 @@ See `crispy_example.html` in this folder for the finished result.
 
 ---
 
-### Step 1: Create the file
+### Step 1: Create the file and add all HTML
 
 In `M09Position`, create `crispy.html`. Title: `Crispy — Food Delivery`. Add an empty `<style>` block.
 
+Then add the full page structure inside `<body>`. Read through it and identify each element before writing any CSS:
+
+```html
+<nav class="site-nav">
+  <div class="nav-inner">
+    <span class="nav-logo">Crispy</span>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Food that reaches you fast.</h1>
+  <p>Hot meals from 200+ local restaurants — delivered in under 30 minutes.</p>
+</section>
+
+<section id="menu" class="menu-section">
+  <h2 class="section-title">Popular right now</h2>
+  <div class="card-grid">
+
+    <article class="menu-card">
+      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&h=320&fit=crop&auto=format&q=80'); background-size: cover; background-position: center;">
+        <div class="card-badge">20 min</div>
+      </div>
+      <div class="card-info">
+        <h3>Spicy Ramen</h3>
+        <p>Rich tonkotsu broth, chashu pork, soft egg.</p>
+        <span class="price">$14.90</span>
+      </div>
+    </article>
+
+    <article class="menu-card">
+      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=320&fit=crop&auto=format&q=80'); background-size: cover; background-position: center;">
+        <div class="card-badge">15 min</div>
+      </div>
+      <div class="card-info">
+        <h3>Crispy Chicken Burger</h3>
+        <p>Double-fried thigh, pickled slaw, sriracha mayo.</p>
+        <span class="price">$12.50</span>
+      </div>
+    </article>
+
+    <article class="menu-card">
+      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=600&h=320&fit=crop&auto=format&q=80'); background-size: cover; background-position: center;">
+        <div class="card-badge">25 min</div>
+      </div>
+      <div class="card-info">
+        <h3>Margherita Pizza</h3>
+        <p>San Marzano tomato, fresh mozzarella, basil.</p>
+        <span class="price">$16.00</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="how-it-works" class="how-section">
+  <div class="how-inner">
+    <h2 class="section-title">How Crispy works</h2>
+    <div class="how-grid">
+      <div class="how-step">
+        <span class="step-num">1</span>
+        <h3>Choose your meal</h3>
+        <p>Browse 200+ restaurants. Filter by cuisine, rating, or delivery time.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-num">2</span>
+        <h3>We pick it up</h3>
+        <p>A Crispy rider collects your order the moment it leaves the kitchen.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-num">3</span>
+        <h3>Delivered hot</h3>
+        <p>Insulated bags keep your food at temperature. Average delivery: 28 min.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-section">
+  <h2>About Crispy</h2>
+  <p>Founded in 2022, Crispy connects hungry people with the best local restaurants in under 30 minutes. We partner with 200+ kitchens across the city — from family-run noodle shops to award-winning burger joints.</p>
+  <p>Questions? Email us at <a href="mailto:hello@crispy.co">hello@crispy.co</a>.</p>
+</section>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Crispy &middot; Food delivered in minutes.</p>
+</footer>
+
+<button class="float-btn">Order now</button>
+```
+
+Open `crispy.html` in Chrome. Unstyled content — all elements stack in normal flow.
+
 ---
 
-### Step 2: Add the box-sizing rule and base styles
+### Step 2: Add the base and layout styles
 
 ```css
-*, *::before, *::after {
-  box-sizing: border-box;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -277,24 +374,94 @@ body {
   color: #1a1a1a;
   margin: 0;
 }
+
+.how-section {
+  background-color: #fff3ee;
+  padding: 5rem 2rem;
+  margin-bottom: 3rem;
+}
+
+.how-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.how-grid {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.how-step {
+  flex: 1;
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background-color: #e85d2f;
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.how-step h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.how-step p {
+  font-size: 0.88rem;
+  color: #888;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.about-section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 5rem 2rem 6rem;
+}
+
+.about-section h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0 0 1rem;
+}
+
+.about-section p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+
+.about-section a { color: #e85d2f; }
+
+.site-footer {
+  background-color: #1a1a1a;
+  color: #888;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
 ```
+
+Refresh. The page now has enough content to scroll — which is essential for observing `position: sticky` and `position: fixed` in the next steps.
 
 ---
 
-### Step 3: Add the sticky navbar HTML and CSS
-
-```html
-<nav class="site-nav">
-  <div class="nav-inner">
-    <span class="nav-logo">Crispy</span>
-    <ul class="nav-links">
-      <li><a href="#">Menu</a></li>
-      <li><a href="#">How it works</a></li>
-      <li><a href="#">About</a></li>
-    </ul>
-  </div>
-</nav>
-```
+### Step 3: Style the sticky navbar
 
 ```css
 .site-nav {
@@ -338,14 +505,7 @@ Scroll down the page — the navbar locks at the top of the viewport.
 
 ---
 
-### Step 4: Add the hero section
-
-```html
-<section class="hero">
-  <h1>Food that reaches you fast.</h1>
-  <p>Hot meals from 200+ local restaurants — delivered in under 30 minutes.</p>
-</section>
-```
+### Step 4: Style the hero section
 
 ```css
 .hero {
@@ -371,53 +531,7 @@ Scroll down the page — the navbar locks at the top of the viewport.
 
 ---
 
-### Step 5: Add the menu card grid HTML
-
-```html
-<section class="menu-section">
-  <h2 class="section-title">Popular right now</h2>
-  <div class="card-grid">
-
-    <article class="menu-card">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&h=320&fit=crop&auto=format&q=80'); background-size: cover; background-position: center;">
-        <div class="card-badge">20 min</div>
-      </div>
-      <div class="card-info">
-        <h3>Spicy Ramen</h3>
-        <p>Rich tonkotsu broth, chashu pork, soft egg.</p>
-        <span class="price">$14.90</span>
-      </div>
-    </article>
-
-    <article class="menu-card">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=320&fit=crop&auto=format&q=80'); background-size: cover; background-position: center;">
-        <div class="card-badge">15 min</div>
-      </div>
-      <div class="card-info">
-        <h3>Crispy Chicken Burger</h3>
-        <p>Double-fried thigh, pickled slaw, sriracha mayo.</p>
-        <span class="price">$12.50</span>
-      </div>
-    </article>
-
-    <article class="menu-card">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=600&h=320&fit=crop&auto=format&q=80'); background-size: cover; background-position: center;">
-        <div class="card-badge">25 min</div>
-      </div>
-      <div class="card-info">
-        <h3>Margherita Pizza</h3>
-        <p>San Marzano tomato, fresh mozzarella, basil.</p>
-        <span class="price">$16.00</span>
-      </div>
-    </article>
-
-  </div>
-</section>
-```
-
----
-
-### Step 6: Style the cards with `position: relative` and the badge with `position: absolute`
+### Step 5: Style the cards with `position: relative` and the badge with `position: absolute`
 
 ```css
 .menu-section {
@@ -491,12 +605,7 @@ Scroll down the page — the navbar locks at the top of the viewport.
 
 ---
 
-### Step 7: Add the floating order button with `position: fixed`
-
-```html
-<!-- place just before </body> -->
-<button class="float-btn">Order now</button>
-```
+### Step 6: Style the floating order button with `position: fixed`
 
 ```css
 /* position: fixed — stays in viewport regardless of scroll */
@@ -521,7 +630,7 @@ Scroll the page — the button stays pinned to the bottom-right corner.
 
 ---
 
-### Step 8: Inspect in DevTools
+### Step 7: Inspect in DevTools
 
 Open DevTools (`F12`), click `.card-badge`, and observe:
 - `position: absolute` under Computed styles
@@ -532,7 +641,7 @@ Then click `.site-nav` and confirm `position: sticky` with `top: 0`.
 
 ---
 
-### Step 9: Ask AI to enhance
+### Step 8: Ask AI to enhance
 
 Paste your `crispy.html` into Gemini and prompt:
 
