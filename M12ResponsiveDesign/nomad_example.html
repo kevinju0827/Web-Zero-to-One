@@ -6,10 +6,8 @@
     <title>Nomad — Travel Agency</title>
 
     <style>
-      /* ── Reset ─────────────────────────────────────────────── */
-      * {
-        margin: 0;
-        padding: 0;
+      /* ── Box-sizing — include padding and border in element width ── */
+      *, *::before, *::after {
         box-sizing: border-box;
       }
 
@@ -23,6 +21,7 @@
         background-color: #f8f8f5;
         color: #1a1a1a;
         line-height: 1.6;
+        margin: 0;
       }
 
       /* ── Header — mobile: stacked; tablet+: row ─────────────── */
@@ -89,7 +88,7 @@
         text-transform: uppercase;
         letter-spacing: 0.15em;
         color: #4a7a5a;
-        margin-bottom: 1rem;
+        margin: 0 0 1rem;
       }
 
       /* clamp: minimum 2rem, preferred 5vw, maximum 3.5rem */
@@ -98,7 +97,7 @@
         font-weight: 800;
         line-height: 1.1;
         color: #1a3a2a;
-        margin-bottom: 1rem;
+        margin: 0 0 1rem;
       }
 
       .hero-sub {
@@ -118,7 +117,7 @@
         font-size: clamp(1.3rem, 3vw, 1.8rem);
         font-weight: 700;
         color: #1a3a2a;
-        margin-bottom: 2rem;
+        margin: 0 0 2rem;
       }
 
       /* Mobile: single column — base style, no query */
@@ -168,14 +167,14 @@
         font-size: 1rem;
         font-weight: 700;
         color: #1a3a2a;
-        margin-bottom: 0.35rem;
+        margin: 0 0 0.35rem;
       }
 
       .card-body p {
         font-size: 0.85rem;
         color: #777;
         line-height: 1.5;
-        margin-bottom: 0.75rem;
+        margin: 0 0 0.75rem;
       }
 
       .duration {

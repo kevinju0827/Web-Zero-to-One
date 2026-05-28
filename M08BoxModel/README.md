@@ -164,7 +164,7 @@ content-box: total width = width + padding-left + padding-right + border-left + 
 **`border-box`** includes padding and border *inside* the declared size — the content shrinks to accommodate them:
 
 ```css
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -176,7 +176,7 @@ content-box: total width = width + padding-left + padding-right + border-left + 
 }
 ```
 
-Apply `box-sizing: border-box` globally with the universal selector (`*`) at the top of every stylesheet. This is standard practice in all modern CSS.
+Apply `box-sizing: border-box` globally using `*, *::before, *::after` near the top of every stylesheet. The `::before` and `::after` ensure generated pseudo-elements follow the same rule. This is standard practice in all modern CSS frameworks.
 
 ---
 
@@ -259,7 +259,7 @@ Before `aspect-ratio` existed, developers used the "padding-top hack" (`padding-
 
 The box model is one of the most common sources of layout bugs AI generates. Common issues to watch for in AI output:
 
-- Missing `box-sizing: border-box` reset — element ends up wider than expected
+- Missing `*, *::before, *::after { box-sizing: border-box }` — element ends up wider than expected
 - Using `padding` on inline elements — vertical padding does not affect line height
 - Setting `margin: auto` on an element that is not a block with a defined width — has no effect
 - Conflating `padding` and `margin` — using one when the other is needed (padding colours the background; margin does not)
@@ -286,12 +286,11 @@ In `M08BoxModel`, create `verona.html` with the standard document skeleton. Titl
 
 ---
 
-### Step 2: Add the global reset and base styles
+### Step 2: Add the box-sizing rule and base styles
 
 ```css
-* {
-  margin: 0;
-  padding: 0;
+/* Every element's width includes its padding and border */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -300,10 +299,11 @@ body {
   background-color: #fdf8f2;
   color: #1a0a00;
   padding: 3rem 1.5rem;
+  margin: 0;
 }
 ```
 
-`box-sizing: border-box` on `*` means every element's `width` includes its padding and border — no arithmetic needed later.
+`box-sizing: border-box` on `*, *::before, *::after` means every element's `width` includes its padding and border — no arithmetic needed later. `margin: 0` on `body` removes the browser's default 8px body gap.
 
 ---
 
@@ -571,9 +571,9 @@ Compare the two callout boxes: `.tasting-menu` uses `border` with a transparent 
 
 ### Step 8: Experiment with `box-sizing`
 
-Temporarily remove `box-sizing: border-box` from the `*` reset. The `.tasting-menu`'s `padding: 2rem` now adds to its width, making it wider than `.menu`'s `max-width: 740px`. Restore it.
+In DevTools, find `.menu-item` and temporarily add `box-sizing: content-box` to override the global rule. Then set `width: 100%` and `padding: 2rem` — the item overflows its container because padding now adds to the declared width. Remove the override to restore `border-box` behaviour.
 
-Then hover a `.menu-item` in DevTools and change its `padding` to `2rem` — watch how the box model diagram updates in real time.
+Then change `padding` on any `.menu-item` in DevTools and watch the box model diagram update in real time.
 
 ---
 

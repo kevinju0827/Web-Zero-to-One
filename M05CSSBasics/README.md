@@ -223,18 +223,16 @@ h1, h2, h3 {
 
 ### Universal Selector: `*`
 
-Matches **every element** on the page. Often used in CSS resets.
+Matches **every element** on the page. Useful for applying a rule globally — for example, setting `box-sizing` (covered in M08):
 
 ```css
-/* Remove default margin and padding from everything */
-* {
-  margin: 0;
-  padding: 0;
+/* Make width include padding and border on every element */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 ```
 
-The `box-sizing: border-box` line on every element is one of the most common patterns in modern CSS — you will use it in M08 Box Model.
+Unlike element or class selectors, `*` carries zero specificity, so any other selector can override it.
 
 ---
 
@@ -512,21 +510,16 @@ Open `bloom.html` in Chrome. Unstyled content — ready for CSS.
 Element selectors target every instance of a tag — they establish global defaults. Add these rules:
 
 ```css
-* {
-  margin: 0;
-  padding: 0;
-}
-
 body {
   font-family: system-ui, sans-serif;
-  background-color: #f9f6f0;
+  background-color: #fdf8fa;
   color: #2c1a0e;
+  margin: 0;             /* removes the browser's default 8px body gap */
 }
 
 h2 {
   font-size: 1.2rem;
-  color: #1b4332;
-  margin-bottom: 0.5rem;
+  color: #7a1e3c;
 }
 
 p {
@@ -540,7 +533,7 @@ h1, h2 {
 }
 ```
 
-Refresh. Every `<p>` and `<h2>` updates at once. The comma in `h1, h2` applies one rule to two selectors simultaneously.
+Refresh. Every `<p>` and `<h2>` updates at once. The comma in `h1, h2` applies one rule to two selectors simultaneously. The `margin: 0` on `body` removes the narrow white gap that browsers add around the page edges by default.
 
 ---
 
@@ -548,16 +541,14 @@ Refresh. Every `<p>` and `<h2>` updates at once. The comma in `h1, h2` applies o
 
 ```css
 #site-header {
-  background-color: #1b4332;
-  color: #d8f3dc;
-  padding: 2.5rem 2rem 2rem;
+  background-color: #7a1e3c;
+  color: #fde8d5;
 }
 
 /* Descendant selector: only <p> tags inside #site-header */
 #site-header p {
-  color: #95d5b2;
+  color: #f4aac8;
   font-size: 1rem;
-  margin-top: 0.5rem;
 }
 ```
 
@@ -571,15 +562,13 @@ Refresh. Every `<p>` and `<h2>` updates at once. The comma in `h1, h2` applies o
 
 ```css
 nav {
-  background-color: #2d6a4f;
-  padding: 0.75rem 2rem;
+  background-color: #a8294e;
 }
 
 /* Descendant selector: <a> inside <nav> only */
 nav a {
-  color: #b7e4c7;
+  color: #fdd5e5;
   text-decoration: none;
-  margin-right: 2rem;
   font-size: 0.9rem;
 }
 
@@ -598,29 +587,24 @@ Hover over the navigation links. The `:hover` pseudo-class fires on interaction 
 
 ```css
 .content {
-  padding: 2rem;
   max-width: 860px;
-  margin: 0 auto;
 }
 
 /* Class selector: targets every element with class="product" */
 .product {
   background-color: #ffffff;
-  border-left: 4px solid #95d5b2;
-  padding: 1.25rem;
-  margin-bottom: 1rem;
+  border-left: 4px solid #f0a8c0;
 }
 
 /* Descendant + class: <h3> inside any .product */
 .product h3 {
-  color: #1b4332;
+  color: #7a1e3c;
   font-size: 1rem;
-  margin-bottom: 0.3rem;
 }
 
 /* Pseudo-class on a class selector */
 .product:hover {
-  background-color: #f0fdf4;
+  background-color: #fff5f8;
 }
 ```
 
@@ -633,17 +617,15 @@ All four product entries now share the same style because all four carry `class=
 ```css
 .price {
   font-weight: 700;
-  color: #2d6a4f;
+  color: #a8294e;
   font-size: 0.95rem;
 }
 
 .sale {
-  background-color: #e76f51;
+  background-color: #b5622a;
   color: white;
   font-size: 0.72rem;
   font-weight: 700;
-  padding: 0.1rem 0.5rem;
-  margin-right: 0.4rem;
 }
 ```
 
@@ -657,7 +639,7 @@ The featured Monstera carries both `class="product"` and `id="featured"`. Add a 
 /* ID specificity (0-1-0) beats class specificity (0-0-1)     */
 /* so #featured wins the border-left conflict with .product   */
 #featured {
-  border-left-color: #e76f51;
+  border-left-color: #b5622a;
   border-left-width: 6px;
 }
 ```
@@ -672,8 +654,8 @@ Open Chrome DevTools (F12 → Elements → select the Monstera article → Style
 
 ```css
 footer {
-  background-color: #1b4332;
-  color: #95d5b2;
+  background-color: #7a1e3c;
+  color: #f4aac8;
   padding: 1.5rem 2rem;
   margin-top: 3rem;
   font-size: 0.88rem;

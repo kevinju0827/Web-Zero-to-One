@@ -141,7 +141,7 @@ img {
 }
 ```
 
-Add this to your reset. It ensures images never exceed their container's width.
+Add this near your base styles. It ensures images never exceed their container's width.
 
 ---
 
@@ -264,12 +264,10 @@ In `M12ResponsiveDesign`, create `nomad.html`. Title: `Nomad — Travel Agency`.
 
 ---
 
-### Step 2: Add the global reset and mobile-first base
+### Step 2: Add the box-sizing rule and mobile-first base
 
 ```css
-* {
-  margin: 0;
-  padding: 0;
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -283,6 +281,7 @@ body {
   background-color: #f8f8f5;
   color: #1a1a1a;
   line-height: 1.6;
+  margin: 0;
 }
 ```
 

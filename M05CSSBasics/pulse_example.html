@@ -6,30 +6,24 @@
     <title>Bloom — Indoor Plants &amp; Flowers</title>
 
     <style>
-      /* ── Reset ──────────────────────────────────────────────── */
-      * {
-        margin: 0;
-        padding: 0;
-      }
-
       /* ── Element selector — <body> ───────────────────────────── */
       body {
         font-family: system-ui, sans-serif;
-        background-color: #f9f6f0;
+        background-color: #fdf8fa;
         color: #2c1a0e;
+        margin: 0;
       }
 
       /* ── Element selectors — headings ────────────────────────── */
       h1 {
         font-size: 2.4rem;
         font-weight: 300;
-        color: #d8f3dc;
+        color: #fde8f0;
       }
 
       h2 {
         font-size: 1.2rem;
-        color: #1b4332;
-        margin-bottom: 0.5rem;
+        color: #7a1e3c;
       }
 
       /* Grouping selector: h1 and h2 share letter-spacing */
@@ -45,28 +39,28 @@
 
       /* ── ID selector — site header (one unique element) ─────── */
       #site-header {
-        background-color: #1b4332;
-        color: #d8f3dc;
+        background-color: #7a1e3c;
+        color: #fde8f0;
         padding: 2.5rem 2rem 2rem;
       }
 
       /* Descendant selector: only <p> elements inside #site-header */
       #site-header p {
-        color: #95d5b2;
+        color: #f4aac8;
         font-size: 1rem;
         margin-top: 0.5rem;
       }
 
       /* ── Element selector — <nav> ────────────────────────────── */
       nav {
-        background-color: #2d6a4f;
+        background-color: #a8294e;
         padding: 0.75rem 2rem;
       }
 
       /* Descendant selector: <a> inside <nav> only */
       /* These rules do NOT apply to other <a> tags on the page  */
       nav a {
-        color: #b7e4c7;
+        color: #fdd5e5;
         text-decoration: none;
         margin-right: 2rem;
         font-size: 0.9rem;
@@ -88,33 +82,32 @@
       /* ── Class selector — all .product blocks ─────────────────── */
       .product {
         background-color: #ffffff;
-        border-left: 4px solid #95d5b2;
+        border-left: 4px solid #f0a8c0;
         padding: 1.25rem;
         margin-bottom: 1rem;
       }
 
       /* Descendant + class: <h3> inside any .product block */
       .product h3 {
-        color: #1b4332;
+        color: #7a1e3c;
         font-size: 1rem;
-        margin-bottom: 0.3rem;
       }
 
       /* Pseudo-class: background changes when hovering any .product */
       .product:hover {
-        background-color: #f0fdf4;
+        background-color: #fff5f8;
       }
 
       /* ── Class selector — .price label ───────────────────────── */
       .price {
         font-weight: 700;
-        color: #2d6a4f;
+        color: #a8294e;
         font-size: 0.95rem;
       }
 
       /* ── Class selector — .sale badge on a <span> ─────────────── */
       .sale {
-        background-color: #e76f51;
+        background-color: #b5622a;
         color: white;
         font-size: 0.72rem;
         font-weight: 700;
@@ -126,14 +119,14 @@
       /* ID specificity (0-1-0) beats class specificity (0-0-1),    */
       /* so #featured wins the border-left colour conflict           */
       #featured {
-        border-left-color: #e76f51;
+        border-left-color: #b5622a;
         border-left-width: 6px;
       }
 
       /* ── Element selector — <footer> ─────────────────────────── */
       footer {
-        background-color: #1b4332;
-        color: #95d5b2;
+        background-color: #7a1e3c;
+        color: #f4aac8;
         padding: 1.5rem 2rem;
         margin-top: 3rem;
         font-size: 0.88rem;

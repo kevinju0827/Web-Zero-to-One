@@ -274,12 +274,10 @@ In `M10Flexbox`, create `wavelength.html`. Title: `Wavelength — Podcast Discov
 
 ---
 
-### Step 2: Add the global reset and base
+### Step 2: Add the box-sizing rule and base styles
 
 ```css
-* {
-  margin: 0;
-  padding: 0;
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -287,6 +285,7 @@ body {
   font-family: system-ui, sans-serif;
   background-color: #0f0f13;
   color: #e8e8f0;
+  margin: 0;
 }
 ```
 

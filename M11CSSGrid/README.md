@@ -256,12 +256,10 @@ In `M11CSSGrid`, create `aperture.html`. Title: `Aperture — Photography Studio
 
 ---
 
-### Step 2: Add the global reset and base
+### Step 2: Add the box-sizing rule and base styles
 
 ```css
-* {
-  margin: 0;
-  padding: 0;
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -269,6 +267,7 @@ body {
   font-family: system-ui, sans-serif;
   background-color: #111111;
   color: #e0e0e0;
+  margin: 0;
 }
 ```
 

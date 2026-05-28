@@ -6,10 +6,8 @@
     <title>Crispy — Food Delivery</title>
 
     <style>
-      /* ── Reset ─────────────────────────────────────────────── */
-      * {
-        margin: 0;
-        padding: 0;
+      /* ── Box-sizing — include padding and border in element width ── */
+      *, *::before, *::after {
         box-sizing: border-box;
       }
 
@@ -17,6 +15,7 @@
         font-family: system-ui, sans-serif;
         background-color: #fafaf8;
         color: #1a1a1a;
+        margin: 0;
       }
 
       /* ── Sticky navbar — locks to top of viewport on scroll ── */
@@ -45,6 +44,8 @@
 
       .nav-links {
         list-style: none;
+        padding: 0;
+        margin: 0;
         display: flex;
         gap: 2rem;
       }
@@ -68,7 +69,7 @@
         font-size: 3rem;
         font-weight: 800;
         line-height: 1.15;
-        margin-bottom: 1rem;
+        margin: 0 0 1rem;
       }
 
       .hero p {
@@ -87,7 +88,7 @@
       .section-title {
         font-size: 1.4rem;
         font-weight: 700;
-        margin-bottom: 1.5rem;
+        margin: 0 0 1.5rem;
       }
 
       .card-grid {
@@ -132,14 +133,14 @@
       .card-info h3 {
         font-size: 1rem;
         font-weight: 700;
-        margin-bottom: 0.35rem;
+        margin: 0 0 0.35rem;
       }
 
       .card-info p {
         font-size: 0.85rem;
         color: #888;
         line-height: 1.5;
-        margin-bottom: 0.75rem;
+        margin: 0 0 0.75rem;
       }
 
       .price {

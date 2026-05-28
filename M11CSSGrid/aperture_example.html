@@ -6,10 +6,8 @@
     <title>Aperture — Photography Studio</title>
 
     <style>
-      /* ── Reset ─────────────────────────────────────────────── */
-      * {
-        margin: 0;
-        padding: 0;
+      /* ── Box-sizing — include padding and border in element width ── */
+      *, *::before, *::after {
         box-sizing: border-box;
       }
 
@@ -17,6 +15,7 @@
         font-family: system-ui, sans-serif;
         background-color: #f8f8f6;
         color: #1a1a1a;
+        margin: 0;
       }
 
       /* ── Page layout — grid-template-areas ──────────────────── */
@@ -114,7 +113,7 @@
         text-transform: uppercase;
         letter-spacing: 0.15em;
         color: #888;
-        margin-bottom: 1.25rem;
+        margin: 0 0 1.25rem;
       }
 
       /* auto-fill: reflows from 4 cols → 1 without media queries */
@@ -148,7 +147,7 @@
         font-size: 0.95rem;
         font-weight: 700;
         color: #1a1a1a;
-        margin-bottom: 0.4rem;
+        margin: 0 0 0.4rem;
       }
 
       .series-body p {

@@ -456,22 +456,23 @@ Open in Chrome. Unformatted content — ready for CSS.
 ### Step 3: Set up global defaults
 
 ```css
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'Lato', system-ui, sans-serif;
   background-color: #f8f7f4;
   color: #1c1c2e;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto;   /* 0 removes the browser's default body gap; auto centres the column */
+}
+
+h1 { margin: 0; }
+h2 { margin: 0 0 0.5rem; }
+
+p {
+  margin: 0 0 1.25rem;
 }
 ```
 
-`max-width` + `margin: 0 auto` centres the content column on wide screens — a pattern you will use in almost every project.
+`max-width` + `margin: 0 auto` centres the content column on wide screens — a pattern you will use in almost every project. Setting `margin: 0` explicitly on headings prevents the browser's built-in heading margins from adding unexpected space.
 
 ---
 

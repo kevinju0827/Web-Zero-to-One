@@ -284,12 +284,10 @@ In `M13Transitions`, create `vivid.html`. Title: `Vivid — UI Component Showcas
 
 ---
 
-### Step 2: Add the global reset and base
+### Step 2: Add the box-sizing rule and base styles
 
 ```css
-* {
-  margin: 0;
-  padding: 0;
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -298,6 +296,7 @@ body {
   background-color: #f4f4f8;
   color: #1a1a2e;
   padding: 3rem 2rem;
+  margin: 0;
 }
 
 .showcase {

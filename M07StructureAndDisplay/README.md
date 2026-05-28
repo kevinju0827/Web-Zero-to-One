@@ -450,17 +450,12 @@ Open in Chrome. Observe: everything stacks vertically because all semantic and `
 ### Step 3: Add global defaults
 
 ```css
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: system-ui, sans-serif;
   background-color: #f5f7f4;
   color: #1c2b1a;
   line-height: 1.6;
+  margin: 0;
 }
 
 a {

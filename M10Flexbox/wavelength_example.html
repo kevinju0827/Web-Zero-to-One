@@ -6,10 +6,8 @@
     <title>Wavelength — Podcast Discovery</title>
 
     <style>
-      /* ── Reset ─────────────────────────────────────────────── */
-      * {
-        margin: 0;
-        padding: 0;
+      /* ── Box-sizing — include padding and border in element width ── */
+      *, *::before, *::after {
         box-sizing: border-box;
       }
 
@@ -17,6 +15,7 @@
         font-family: system-ui, sans-serif;
         background-color: #0f0f13;
         color: #e8e8f0;
+        margin: 0;
       }
 
       /* ── Site header — justify-content: space-between ───────── */
@@ -74,6 +73,7 @@
         font-weight: 800;
         line-height: 1.2;
         color: #f0f0fa;
+        margin: 0;
       }
 
       /* ── Section label ──────────────────────────────────────── */
@@ -83,7 +83,7 @@
         text-transform: uppercase;
         letter-spacing: 0.15em;
         color: #64748b;
-        margin-bottom: 1.25rem;
+        margin: 0 0 1.25rem;
       }
 
       /* ── Podcast card row — all cards equal width ───────────── */
@@ -144,7 +144,7 @@
       .card-meta h3 {
         font-size: 0.95rem;
         font-weight: 700;
-        margin-bottom: 0.4rem;
+        margin: 0 0 0.4rem;
         color: #f0f0fa;
       }
 
@@ -207,7 +207,7 @@
         font-size: 0.9rem;
         color: #94a3b8;
         line-height: 1.7;
-        margin-bottom: 0.75rem;
+        margin: 0 0 0.75rem;
       }
 
       /* flex: 1 — aside takes 1/4 of the row */
@@ -225,12 +225,14 @@
         text-transform: uppercase;
         letter-spacing: 0.15em;
         color: #64748b;
-        margin-bottom: 1rem;
+        margin: 0 0 1rem;
       }
 
       /* flex-direction: column inside the list */
       .queue-list {
         list-style: none;
+        padding: 0;
+        margin: 0;
         display: flex;
         flex-direction: column;
         gap: 0.85rem;
