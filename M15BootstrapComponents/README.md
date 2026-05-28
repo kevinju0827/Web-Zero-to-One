@@ -335,6 +335,23 @@ See `summit_components_example.html` in this folder for the finished result.
 
 In `M15BootstrapComponents`, create `summit_components.html`. Copy the Bootstrap CDN links and the base content structure from M14's `summit_example.html` as a starting point.
 
+Add the following custom CSS in a `<style>` block inside `<head>`, *after* the Bootstrap CDN link. This overrides Bootstrap's default green for all uses of `.btn-success`, `.bg-success`, and `.badge.bg-success` on the page:
+
+```css
+.btn-success,
+.bg-success,
+.badge.bg-success {
+  --bs-btn-bg: #2a5a3a;
+  --bs-btn-border-color: #2a5a3a;
+  --bs-btn-hover-bg: #1e4a2e;
+  background-color: #2a5a3a !important;
+  border-color: #2a5a3a !important;
+}
+.btn-success:hover { background-color: #1e4a2e !important; }
+```
+
+> **Why `!important` here?** Bootstrap's utility classes like `.bg-success` use their own CSS custom properties which can resist simple rule overrides. The `!important` ensures the brand green wins without needing to modify the CDN file.
+
 ---
 
 ### Step 2: Add a responsive Bootstrap navbar
@@ -354,7 +371,7 @@ Replace any existing header with:
 
     <div class="collapse navbar-collapse" id="summitNav">
       <ul class="navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link active" href="#">Gear</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Gear</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Apparel</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Footwear</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Expeditions</a></li>

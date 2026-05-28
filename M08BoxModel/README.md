@@ -276,7 +276,7 @@ Useful AI prompts:
 
 **Scenario:** You are building the menu page for **Verona** — a fictional Italian restaurant. The layout demonstrates every box model layer: `padding` creates breathing room inside menu items, `border` draws visible dividers and the tasting-menu callout, `border-radius` rounds containers, and `margin` spaces sections apart.
 
-See `solstice_example.html` in this folder for the finished result. (The file is named `solstice_example.html` for historical reasons — it contains the Verona restaurant layout.)
+See `verona_example.html` in this folder for the finished result.
 
 ---
 

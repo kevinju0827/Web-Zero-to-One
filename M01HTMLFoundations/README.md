@@ -1,6 +1,6 @@
 # M01 HTML Foundations
 
-![Module 1 of 15](https://img.shields.io/badge/Module-1_of_15-6366f1?style=flat-square)
+![Module 1 of 16](https://img.shields.io/badge/Module-1_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![1-2 hours](https://img.shields.io/badge/Time-1--2_hours-60a5fa?style=flat-square)
 ![Prerequisites: None](https://img.shields.io/badge/Prerequisites-None-94a3b8?style=flat-square)
@@ -310,6 +310,14 @@ Refresh the browser. Notice how `<h1>` creates a large, bold title automatically
 <p>
   Try our croissants — rated <b>4.9 / 5</b> on local review sites three
   years running. Gluten-free options available.<sup>*</sup>
+</p>
+
+<h3>Drinks</h3>
+<p>
+  We roast our own single-origin beans. The signature blend is a 60/40
+  mix of Arabica and Robusta — roughly 80 mg of caffeine per 250 ml
+  serving (about 8 oz). That works out to roughly 0.32 mg per ml,
+  or 3.2×10<sup>-1</sup> mg/ml if you prefer scientific notation.
 </p>
 ```
 

@@ -1,6 +1,6 @@
 # M02 Links, Images & Media
 
-![Module 2 of 15](https://img.shields.io/badge/Module-2_of_15-6366f1?style=flat-square)
+![Module 2 of 16](https://img.shields.io/badge/Module-2_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![1-2 hours](https://img.shields.io/badge/Time-1--2_hours-60a5fa?style=flat-square)
 ![Prerequisites: M01](https://img.shields.io/badge/Prerequisites-M01-94a3b8?style=flat-square)
@@ -391,10 +391,10 @@ Confirm it opens in a new tab. Note that `rel="noopener noreferrer"` is always r
 
 ### Step 6: Intentionally break a path
 
-In `index.html`, change the hero image `src` to a bad value:
+In `index.html`, change the hero image `src` to a path that does not exist:
 
 ```html
-<img src="https://picsum.photos/seed/DOESNOTEXIST/900/480" ...>
+<img src="images/hero-photo.jpg" ...>
 ```
 
 Reload Chrome. The broken image icon and the `alt` text appear. Open DevTools → **Network** tab → filter by **Img** — the failed request appears in red. This is how you diagnose broken assets. Restore the correct URL.

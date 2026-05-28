@@ -1,6 +1,6 @@
 # M07 Structure & Display
 
-![Module 7 of 15](https://img.shields.io/badge/Module-7_of_15-6366f1?style=flat-square)
+![Module 7 of 16](https://img.shields.io/badge/Module-7_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![1-2 hours](https://img.shields.io/badge/Time-1--2_hours-60a5fa?style=flat-square)
 ![Prerequisites: M01–M06](https://img.shields.io/badge/Prerequisites-M01–M06-94a3b8?style=flat-square)
@@ -337,7 +337,7 @@ Review AI output carefully: AI frequently overuses `<section>` (wrapping everyth
 
 **Scenario:** You are building the homepage for **Terrain** — a fictional outdoor adventure and gear review site. The page needs a clear semantic structure, a horizontal navigation bar using `display: inline-block`, article cards, a sidebar, and a demonstration of `display: none`.
 
-See `helix_example.html` in this folder for the finished result. (The file is named `helix_example.html` for historical reasons — it contains the Terrain outdoor site layout.)
+See `terrain_example.html` in this folder for the finished result.
 
 ---
 

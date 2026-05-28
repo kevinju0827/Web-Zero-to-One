@@ -1,6 +1,6 @@
 # M05 CSS Basics
 
-![Module 5 of 15](https://img.shields.io/badge/Module-5_of_15-6366f1?style=flat-square)
+![Module 5 of 16](https://img.shields.io/badge/Module-5_of_16-6366f1?style=flat-square)
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-4ade80?style=flat-square)
 ![1.5-2 hours](https://img.shields.io/badge/Time-1.5--2_hours-60a5fa?style=flat-square)
 ![Prerequisites: M01–M04](https://img.shields.io/badge/Prerequisites-M01–M04-94a3b8?style=flat-square)
@@ -431,7 +431,7 @@ Paste both the conflicting HTML and the conflicting CSS rules. Ask: *"Which of t
 
 **Scenario:** You are building the homepage for **Bloom** — a fictional indoor plant and flower shop. The page has a branded header, a navigation bar, a product listing, and one featured product that needs to stand out from the rest using the cascade.
 
-See `pulse_example.html` in this folder for the finished result.
+See `bloom_example.html` in this folder for the finished result.
 
 ---
 
@@ -570,6 +570,7 @@ nav a {
   color: #fdd5e5;
   text-decoration: none;
   font-size: 0.9rem;
+  margin-right: 2rem;
 }
 
 /* Pseudo-class: applies only when the mouse hovers */
@@ -587,13 +588,17 @@ Hover over the navigation links. The `:hover` pseudo-class fires on interaction 
 
 ```css
 .content {
+  padding: 2rem;
   max-width: 860px;
+  margin: 0 auto;
 }
 
 /* Class selector: targets every element with class="product" */
 .product {
   background-color: #ffffff;
   border-left: 4px solid #f0a8c0;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 /* Descendant + class: <h3> inside any .product */
@@ -626,6 +631,8 @@ All four product entries now share the same style because all four carry `class=
   color: white;
   font-size: 0.72rem;
   font-weight: 700;
+  padding: 0.1rem 0.5rem;
+  margin-right: 0.4rem;
 }
 ```
 
@@ -644,7 +651,7 @@ The featured Monstera carries both `class="product"` and `id="featured"`. Add a 
 }
 ```
 
-`.product` sets `border-left: 4px solid #95d5b2`. The `#featured` rule overrides only the colour and width — the border style (`solid`) is inherited from `.product` because `#featured` does not set it.
+`.product` sets `border-left: 4px solid #f0a8c0`. The `#featured` rule overrides only the colour and width — the border style (`solid`) is inherited from `.product` because `#featured` does not set it.
 
 Open Chrome DevTools (F12 → Elements → select the Monstera article → Styles panel). You will see `.product`'s `border-left-color` crossed out with a strikethrough, and `#featured`'s value winning. That crossed-out rule is the cascade in action.
 
