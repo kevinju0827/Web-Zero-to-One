@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summit Basecamp — Dashboard (plain HTML + CSS, no Bootstrap)</title>
+
+    <!--
+      This is the SAME dashboard as summit_layout_example.html — built with only
+      the CSS you already know: CSS Grid, Flexbox, @media queries, and custom
+      properties for theming.
+
+      Read it once and notice the effort the LAYOUT and THEME take by hand:
+        - grid-template-columns redefined inside TWO @media breakpoints
+        - a whole second colour palette written out for "dark mode"
+      In the Guided Practice you rebuild this with Bootstrap's grid classes
+      (col-12 col-lg-3 …) and data-bs-theme — no media queries, no second palette.
+    -->
+
+    <style>
+      /* ---- Theme via custom properties (one light palette) ---- */
+      :root {
+        --bg: #ffffff;
+        --surface: #f8f9fa;
+        --text: #212529;
+        --muted: #6c757d;
+        --border: #dee2e6;
+        --brand: #2a5a3a;
+        --radius: 0.75rem;
+      }
+
+      /* The "dark" panel re-declares every colour by hand.
+         Bootstrap does this for you with data-bs-theme="dark". */
+      .dark-panel {
+        --bg: #1a1d21;
+        --surface: #212529;
+        --text: #f8f9fa;
+        --muted: #adb5bd;
+        --border: #343a40;
+        background: var(--bg);
+        color: var(--text);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        line-height: 1.5;
+        background: var(--bg);
+        color: var(--text);
+      }
+      h1, h2, h3 { margin: 0 0 0.5rem; }
+
+      .container {
+        width: 100%;
+        max-width: 1140px;
+        margin-inline: auto;
+        padding: 1.5rem;
+      }
+
+      /* ---- Header ---- */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 1.5rem;
+      }
+      .brand { font-weight: 700; font-size: 1.25rem; color: var(--brand); }
+      .subtitle { color: var(--muted); font-size: 0.9rem; }
+
+      /* ---- The dashboard grid — hand-built with CSS Grid ----
+         Mobile-first: one column, then redefined at each breakpoint below. */
+      .dashboard {
+        display: grid;
+        grid-template-columns: 1fr;      /* phones: single column */
+        gap: 1.5rem;
+      }
+
+      /* Tablet: sidebar + main share a row, aside drops below */
+      @media (min-width: 768px) {
+        .dashboard {
+          grid-template-columns: 1fr 2fr;
+        }
+        .aside { grid-column: 1 / -1; }   /* span full width */
+      }
+
+      /* Desktop: three columns — sidebar | main | aside */
+      @media (min-width: 992px) {
+        .dashboard {
+          grid-template-columns: 1fr 2fr 1fr;
+        }
+        .aside { grid-column: auto; }     /* undo the tablet override */
+      }
+
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+      }
+      .section-label {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--muted);
+        margin-bottom: 0.75rem;
+      }
+
+      /* Sidebar nav */
+      .trip-list { list-style: none; margin: 0; padding: 0; }
+      .trip-list li {
+        padding: 0.6rem 0.75rem;
+        border-radius: 0.5rem;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+      .trip-list li.active { background: var(--brand); color: #fff; }
+
+      /* Nested stat grid inside the main panel */
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      @media (min-width: 576px) {
+        .stats { grid-template-columns: repeat(3, 1fr); }
+      }
+      .stat {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        text-align: center;
+      }
+      .stat-number { font-size: 1.75rem; font-weight: 700; }
+      .stat-label { color: var(--muted); font-size: 0.8rem; }
+
+      /* Checklist */
+      .checklist { list-style: none; margin: 0; padding: 0; font-size: 0.9rem; }
+      .checklist li { padding: 0.35rem 0; border-bottom: 1px solid var(--border); }
+      .checklist li:last-child { border-bottom: none; }
+
+      /* ---- An "offset" feature row — pushed in from the left by hand ---- */
+      .feature-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 1.5rem;
+      }
+      @media (min-width: 768px) {
+        .feature-row {
+          /* empty 2 cols + 8 cols of content + empty 2 cols = centred 8/12 */
+          grid-template-columns: 2fr 8fr 2fr;
+        }
+        .feature-row .panel { grid-column: 2; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+
+      <!-- Header -->
+      <div class="header">
+        <div>
+          <div class="brand">Summit Basecamp</div>
+          <div class="subtitle">Expedition planning dashboard</div>
+        </div>
+        <div class="subtitle">Logged in as Kira</div>
+      </div>
+
+      <!-- Dashboard: sidebar | main | aside -->
+      <div class="dashboard">
+
+        <!-- Sidebar -->
+        <div class="panel sidebar">
+          <div class="section-label">Trips</div>
+          <ul class="trip-list">
+            <li class="active">Mont Blanc</li>
+            <li>Torres del Paine</li>
+            <li>Annapurna Circuit</li>
+            <li>Kungsleden</li>
+          </ul>
+        </div>
+
+        <!-- Main -->
+        <div class="panel main">
+          <div class="section-label">Next expedition</div>
+          <h2>Mont Blanc — North Face</h2>
+          <p class="subtitle">Departs 14 July · 4 days · 2 climbers</p>
+          <!-- nested grid -->
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-number">38<span style="font-size:1rem">km</span></div>
+              <div class="stat-label">Distance</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">2.4<span style="font-size:1rem">km</span></div>
+              <div class="stat-label">Elevation</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">4</div>
+              <div class="stat-label">Days</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aside -->
+        <div class="panel aside">
+          <div class="section-label">Gear checklist</div>
+          <ul class="checklist">
+            <li>Crampons &amp; ice axe</li>
+            <li>40L summit pack</li>
+            <li>Down jacket</li>
+            <li>Glacier rope</li>
+            <li>Navigation + GPS</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Offset feature row -->
+      <div class="feature-row">
+        <div class="panel">
+          <div class="section-label">Conditions</div>
+          <h3>Weather window looks good</h3>
+          <p class="subtitle">Clear skies forecast 13–16 July, light winds above 3,000m. Book the refuge now.</p>
+        </div>
+      </div>
+
+      <!-- Colour-modes demo: a dark panel, palette written out by hand -->
+      <div class="feature-row">
+        <div class="dark-panel">
+          <div class="section-label">Trip notes (dark panel)</div>
+          <h3>Same content, dark surface</h3>
+          <p style="color: var(--muted); margin: 0;">
+            To make this panel dark, every colour variable was re-declared by hand in
+            <code>.dark-panel</code>. Bootstrap produces this with a single
+            <code>data-bs-theme="dark"</code> attribute.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

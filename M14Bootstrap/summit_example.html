@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summit — Outdoor Gear</title>
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 CSS (official quick-start CDN, with integrity hash) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <style>
       /* Custom overrides — loaded after Bootstrap so they win */
@@ -21,6 +21,19 @@
     </style>
   </head>
   <body>
+
+    <!-- Navbar — a component that would take many lines of HTML/CSS to build by hand -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Summit</a>
+        <ul class="navbar-nav flex-row gap-3">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Gear</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Apparel</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Footwear</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Expeditions</a></li>
+        </ul>
+      </div>
+    </nav>
 
     <!-- Hero — bg-dark text-white, container, responsive row -->
     <section class="bg-dark text-white py-5">
@@ -40,7 +53,7 @@
             </div>
           </div>
           <div class="col-12 col-md-5 mt-4 mt-md-0">
-            <img src="https://picsum.photos/seed/summit-mountain/800/560" class="rounded-3 w-100" style="height:280px; object-fit:cover;" alt="Hiker ascending a rocky mountain ridge at golden hour">
+            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&h=560&fit=crop" class="rounded-3 w-100" style="height:280px; object-fit:cover;" alt="Hiker ascending a rocky mountain ridge at golden hour">
           </div>
         </div>
       </div>
@@ -172,6 +185,6 @@
     </footer>
 
     <!-- Bootstrap JS bundle (includes Popper for dropdowns, tooltips, modals) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summit Basecamp — Dashboard (Bootstrap)</title>
+
+    <!-- Bootstrap 5 CSS (official quick-start CDN, with integrity hash) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+      /* ---- Customisation: override Bootstrap's CSS variables (loaded AFTER the CDN) ----
+         A few lines re-theme the whole page — brand colour, rounder corners. No second
+         palette for dark mode: data-bs-theme handles that for us below. */
+      :root {
+        --bs-primary: #2a5a3a;
+        --bs-primary-rgb: 42, 90, 58;
+        --bs-border-radius: 0.75rem;
+        --bs-border-radius-lg: 0.75rem;
+      }
+      /* Make the .btn-primary / .bg-primary helpers pick up the brand green */
+      .btn-primary {
+        --bs-btn-bg: #2a5a3a;
+        --bs-btn-border-color: #2a5a3a;
+        --bs-btn-hover-bg: #1e4a2e;
+        --bs-btn-hover-border-color: #1e4a2e;
+      }
+      .bg-primary { background-color: #2a5a3a !important; }
+      .text-primary { color: #2a5a3a !important; }
+    </style>
+  </head>
+  <body class="bg-body-tertiary">
+    <div class="container py-4">
+
+      <!-- Header — flex utilities -->
+      <header class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+        <div>
+          <div class="fw-bold fs-5 text-primary">Summit Basecamp</div>
+          <div class="text-secondary small">Expedition planning dashboard</div>
+        </div>
+        <div class="text-secondary small">Logged in as Kira</div>
+      </header>
+
+      <!-- Dashboard grid: sidebar | main | aside.
+           col-12 stacks on phones; col-lg-* splits 3/6/3 on large screens. -->
+      <div class="row g-4">
+
+        <!-- Sidebar -->
+        <div class="col-12 col-lg-3">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <div class="text-uppercase fw-bold text-secondary small mb-3" style="letter-spacing:.08em;">Trips</div>
+              <div class="list-group list-group-flush">
+                <button class="list-group-item list-group-item-action active border-0 rounded">Mont Blanc</button>
+                <button class="list-group-item list-group-item-action border-0">Torres del Paine</button>
+                <button class="list-group-item list-group-item-action border-0">Annapurna Circuit</button>
+                <button class="list-group-item list-group-item-action border-0">Kungsleden</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main -->
+        <div class="col-12 col-lg-6">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <div class="text-uppercase fw-bold text-secondary small mb-2" style="letter-spacing:.08em;">Next expedition</div>
+              <h2 class="h4 fw-bold mb-1">Mont Blanc — North Face</h2>
+              <p class="text-secondary small mb-3">Departs 14 July · 4 days · 2 climbers</p>
+
+              <!-- Nested row — a row inside a column -->
+              <div class="row g-3">
+                <div class="col-12 col-sm-4">
+                  <div class="border rounded text-center p-3">
+                    <div class="fs-3 fw-bold">38<span class="fs-6">km</span></div>
+                    <div class="text-secondary small">Distance</div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="border rounded text-center p-3">
+                    <div class="fs-3 fw-bold">2.4<span class="fs-6">km</span></div>
+                    <div class="text-secondary small">Elevation</div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="border rounded text-center p-3">
+                    <div class="fs-3 fw-bold">4</div>
+                    <div class="text-secondary small">Days</div>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#" class="btn btn-primary mt-3">View itinerary</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aside -->
+        <div class="col-12 col-lg-3">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <div class="text-uppercase fw-bold text-secondary small mb-3" style="letter-spacing:.08em;">Gear checklist</div>
+              <ul class="list-unstyled small mb-0">
+                <li class="py-2 border-bottom">Crampons &amp; ice axe</li>
+                <li class="py-2 border-bottom">40L summit pack</li>
+                <li class="py-2 border-bottom">Down jacket</li>
+                <li class="py-2 border-bottom">Glacier rope</li>
+                <li class="py-2">Navigation + GPS</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Offset row — col-md-8 pushed in by offset-md-2, so it sits centred at 8/12 -->
+      <div class="row mt-4">
+        <div class="col-12 col-md-8 offset-md-2">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <div class="text-uppercase fw-bold text-secondary small mb-2" style="letter-spacing:.08em;">Conditions</div>
+              <h3 class="h5 fw-bold">Weather window looks good</h3>
+              <p class="text-secondary mb-0">Clear skies forecast 13–16 July, light winds above 3,000m. Book the refuge now.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colour modes — data-bs-theme="dark" flips this panel to a dark palette,
+           no hand-written colours needed -->
+      <div class="row mt-4">
+        <div class="col-12 col-md-8 offset-md-2">
+          <div class="card border-0 shadow-sm" data-bs-theme="dark">
+            <div class="card-body">
+              <div class="text-uppercase fw-bold text-secondary small mb-2" style="letter-spacing:.08em;">Trip notes (dark panel)</div>
+              <h3 class="h5 fw-bold">Same content, dark surface</h3>
+              <p class="text-secondary mb-0">
+                This card carries <code>data-bs-theme="dark"</code>. Bootstrap swaps in its
+                dark palette automatically — one attribute, no second set of colour rules.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bootstrap JS bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

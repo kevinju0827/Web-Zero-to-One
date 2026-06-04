@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summit — Outdoor Gear (plain HTML + CSS, no Bootstrap)</title>
+
+    <!--
+      This is the SAME Summit landing page as summit_example.html — but built
+      with only the HTML and CSS you already know (M01–M13). No Bootstrap.
+
+      Read it once and notice how much CSS it takes: ~190 lines of hand-written
+      rules for a navbar, a card grid, buttons, and spacing. In the Guided
+      Practice you will rebuild this exact page with Bootstrap and write almost
+      no CSS of your own. THAT difference is the point of this module.
+    -->
+
+    <style>
+      /* ---- Base / reset (M08) ---- */
+      *, *::before, *::after { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        line-height: 1.5;
+        color: #212529;
+      }
+      img { max-width: 100%; display: block; }
+      a { text-decoration: none; }
+
+      /* A reusable centred container — Bootstrap gives you .container for free */
+      .container {
+        width: 100%;
+        max-width: 1140px;
+        margin-inline: auto;
+        padding-inline: 0.75rem;
+      }
+
+      /* ---- Navbar (M10 flexbox) ---- */
+      .navbar {
+        background-color: #212529;
+        padding: 0.75rem 0;
+      }
+      .navbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .navbar-brand {
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.25rem;
+      }
+      .navbar-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar-links a { color: rgba(255, 255, 255, 0.75); font-size: 0.95rem; }
+      .navbar-links a:hover,
+      .navbar-links a.active { color: #fff; }
+      /* NOTE: on a real site the links would need JavaScript to collapse into a
+         hamburger menu on phones. Here they simply stay in a row. */
+
+      /* ---- Hero ---- */
+      .hero {
+        background-color: #212529;
+        color: #fff;
+        padding: 4rem 0;
+      }
+      .hero-row {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .hero-text { flex: 1 1 380px; }
+      .hero-media { flex: 1 1 300px; }
+      .hero-eyebrow {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        color: #6eaa70;
+        margin: 0 0 0.5rem;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 0 0 1rem;
+        line-height: 1.2;
+      }
+      .hero-lead {
+        font-size: 1.25rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin: 0 0 1.5rem;
+      }
+      .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+      .hero-img {
+        height: 280px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 0.5rem;
+      }
+
+      /* ---- Buttons (hand-styled — Bootstrap gives .btn .btn-* for free) ---- */
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        border: 2px solid transparent;
+        cursor: pointer;
+        font-size: 1.1rem;
+      }
+      .btn-primary { background-color: #2a5a3a; color: #fff; border-color: #2a5a3a; }
+      .btn-primary:hover { background-color: #1e4a2e; border-color: #1e4a2e; }
+      .btn-outline { background-color: transparent; color: #fff; border-color: #fff; }
+      .btn-outline:hover { background-color: #fff; color: #212529; }
+
+      /* ---- Feature highlights ---- */
+      .features { background-color: #f8f9fa; padding: 4rem 0; }
+      .features-row {
+        display: flex;
+        gap: 1.5rem;
+        text-align: center;
+        flex-wrap: wrap;
+      }
+      .feature { flex: 1 1 240px; padding: 1.5rem; }
+      .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+      .feature h3 { font-weight: 700; margin: 0 0 0.5rem; }
+      .feature p { color: #6c757d; margin: 0; }
+
+      /* ---- Product cards ---- */
+      .products { padding: 4rem 0; }
+      .section-title { font-weight: 700; margin: 0 0 1.5rem; font-size: 2rem; }
+      .card-row {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .card {
+        flex: 1 1 240px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        background: #fff;
+      }
+      .card-img { height: 180px; background-color: #6c757d; }
+      .card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; }
+      .card-title { font-weight: 700; margin: 0.5rem 0; font-size: 1.1rem; }
+      .card-text { color: #6c757d; font-size: 0.875rem; margin: 0 0 auto; }
+      .price { font-weight: 700; margin-top: 0.75rem; }
+      .price-old { color: #6c757d; text-decoration: line-through; font-weight: 400; font-size: 0.85rem; }
+
+      /* Badges (hand-styled — Bootstrap gives .badge .bg-* for free) */
+      .badge {
+        display: inline-block;
+        align-self: flex-start;
+        padding: 0.35em 0.65em;
+        border-radius: 0.375rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #fff;
+      }
+      .badge-new { background-color: #2a5a3a; }
+      .badge-sale { background-color: #ffc107; color: #000; }
+      .badge-low { background-color: #dc3545; }
+
+      /* ---- Stats bar ---- */
+      .stats { background-color: #212529; color: #fff; padding: 2rem 0; }
+      .stats-row {
+        display: flex;
+        text-align: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+      .stat { flex: 1 1 140px; }
+      .stat-number { font-size: 2.5rem; font-weight: 700; margin: 0; }
+      .stat-label { color: rgba(255, 255, 255, 0.5); font-size: 0.875rem; margin: 0; }
+
+      /* ---- Footer ---- */
+      .footer { background-color: #212529; color: rgba(255, 255, 255, 0.5); padding: 2rem 0; }
+      .footer-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+      .footer-brand { color: #fff; font-weight: 700; margin: 0 0 0.25rem; }
+      .footer small { font-size: 0.875rem; }
+      .footer a { color: rgba(255, 255, 255, 0.5); }
+
+      /* ---- A taste of responsive: stack on small screens (M12) ----
+         Bootstrap's grid does this automatically with col-md-* classes. */
+      @media (max-width: 768px) {
+        .navbar-links { display: none; }
+        .hero h1 { font-size: 2rem; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container navbar-inner">
+        <a class="navbar-brand" href="#">Summit</a>
+        <ul class="navbar-links">
+          <li><a class="active" href="#">Gear</a></li>
+          <li><a href="#">Apparel</a></li>
+          <li><a href="#">Footwear</a></li>
+          <li><a href="#">Expeditions</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-row">
+        <div class="hero-text">
+          <p class="hero-eyebrow">Gear built for real terrain</p>
+          <h1>Climb higher.<br>Go further.</h1>
+          <p class="hero-lead">
+            Equipment for mountaineers, trail runners, and everyone who treats the outdoors as a destination, not a backdrop.
+          </p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary">Shop gear</a>
+            <a href="#" class="btn btn-outline">Our story</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img class="hero-img" src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&h=560&fit=crop" alt="Hiker ascending a rocky mountain ridge at golden hour">
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature highlights -->
+    <section class="features">
+      <div class="container features-row">
+        <div class="feature">
+          <div class="feature-icon">🏔️</div>
+          <h3>Built for altitude</h3>
+          <p>Tested above 4,000m. Every seam, buckle, and layer engineered for cold and wind.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚖️</div>
+          <h3>Gram-conscious design</h3>
+          <p>We obsess over weight so you carry less without losing capability.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">♻️</div>
+          <h3>Sustainable materials</h3>
+          <p>Recycled fabrics, bluesign-certified dyes, and a repair-not-replace warranty.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product cards -->
+    <section class="products">
+      <div class="container">
+        <h2 class="section-title">New arrivals</h2>
+        <div class="card-row">
+
+          <div class="card">
+            <div class="card-img"></div>
+            <div class="card-body">
+              <span class="badge badge-new">New</span>
+              <h5 class="card-title">Ridgeline Shell</h5>
+              <p class="card-text">3-layer waterproof jacket. Packable. 420g.</p>
+              <p class="price">$289</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img"></div>
+            <div class="card-body">
+              <span class="badge badge-sale">Sale</span>
+              <h5 class="card-title">Summit 28L Pack</h5>
+              <p class="card-text">Daypack with hydration sleeve and helmet carry.</p>
+              <p class="price">$149 <span class="price-old">$189</span></p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img"></div>
+            <div class="card-body">
+              <h5 class="card-title">Alpenglow Beanie</h5>
+              <p class="card-text">Merino wool, mid-weight. One size.</p>
+              <p class="price">$55</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img"></div>
+            <div class="card-body">
+              <span class="badge badge-low">Low stock</span>
+              <h5 class="card-title">Trailblazer Trekking Poles</h5>
+              <p class="card-text">Carbon fibre, foldable, 170g each.</p>
+              <p class="price">$195</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats bar -->
+    <section class="stats">
+      <div class="container stats-row">
+        <div class="stat">
+          <p class="stat-number">14</p>
+          <p class="stat-label">Years in the field</p>
+        </div>
+        <div class="stat">
+          <p class="stat-number">38k</p>
+          <p class="stat-label">Expeditions equipped</p>
+        </div>
+        <div class="stat">
+          <p class="stat-number">62</p>
+          <p class="stat-label">Countries reached</p>
+        </div>
+        <div class="stat">
+          <p class="stat-number">100%</p>
+          <p class="stat-label">Recycled packaging</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-row">
+        <div>
+          <p class="footer-brand">Summit</p>
+          <small>Outdoor gear built for serious terrain.</small>
+        </div>
+        <div>
+          <small>&copy; 2026 Summit Outdoor Co. · <a href="#">Privacy</a></small>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
